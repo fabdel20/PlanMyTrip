@@ -1,0 +1,596 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		010F42772874BD29006D101E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 010F42762874BD29006D101E /* AppDelegate.m */; };
+		010F427A2874BD29006D101E /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 010F42792874BD29006D101E /* SceneDelegate.m */; };
+		010F427D2874BD2A006D101E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 010F427C2874BD2A006D101E /* ViewController.m */; };
+		010F42802874BD2A006D101E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 010F427E2874BD2A006D101E /* Main.storyboard */; };
+		010F42822874BD2B006D101E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 010F42812874BD2B006D101E /* Assets.xcassets */; };
+		010F42852874BD2B006D101E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 010F42832874BD2B006D101E /* LaunchScreen.storyboard */; };
+		010F42882874BD2B006D101E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 010F42872874BD2B006D101E /* main.m */; };
+		010F42922874BD2C006D101E /* PlanMyTripTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 010F42912874BD2C006D101E /* PlanMyTripTests.m */; };
+		010F429C2874BD2C006D101E /* PlanMyTripUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 010F429B2874BD2C006D101E /* PlanMyTripUITests.m */; };
+		010F429E2874BD2C006D101E /* PlanMyTripUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 010F429D2874BD2C006D101E /* PlanMyTripUITestsLaunchTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		010F428E2874BD2C006D101E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 010F426A2874BD29006D101E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 010F42712874BD29006D101E;
+			remoteInfo = PlanMyTrip;
+		};
+		010F42982874BD2C006D101E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 010F426A2874BD29006D101E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 010F42712874BD29006D101E;
+			remoteInfo = PlanMyTrip;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		010F42722874BD29006D101E /* PlanMyTrip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlanMyTrip.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		010F42752874BD29006D101E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		010F42762874BD29006D101E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		010F42782874BD29006D101E /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		010F42792874BD29006D101E /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		010F427B2874BD29006D101E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		010F427C2874BD2A006D101E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		010F427F2874BD2A006D101E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		010F42812874BD2B006D101E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		010F42842874BD2B006D101E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		010F42862874BD2B006D101E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		010F42872874BD2B006D101E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		010F428D2874BD2C006D101E /* PlanMyTripTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlanMyTripTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		010F42912874BD2C006D101E /* PlanMyTripTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlanMyTripTests.m; sourceTree = "<group>"; };
+		010F42972874BD2C006D101E /* PlanMyTripUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlanMyTripUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		010F429B2874BD2C006D101E /* PlanMyTripUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlanMyTripUITests.m; sourceTree = "<group>"; };
+		010F429D2874BD2C006D101E /* PlanMyTripUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlanMyTripUITestsLaunchTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		010F426F2874BD29006D101E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		010F428A2874BD2C006D101E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		010F42942874BD2C006D101E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		010F42692874BD29006D101E = {
+			isa = PBXGroup;
+			children = (
+				010F42742874BD29006D101E /* PlanMyTrip */,
+				010F42902874BD2C006D101E /* PlanMyTripTests */,
+				010F429A2874BD2C006D101E /* PlanMyTripUITests */,
+				010F42732874BD29006D101E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		010F42732874BD29006D101E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				010F42722874BD29006D101E /* PlanMyTrip.app */,
+				010F428D2874BD2C006D101E /* PlanMyTripTests.xctest */,
+				010F42972874BD2C006D101E /* PlanMyTripUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		010F42742874BD29006D101E /* PlanMyTrip */ = {
+			isa = PBXGroup;
+			children = (
+				010F42752874BD29006D101E /* AppDelegate.h */,
+				010F42762874BD29006D101E /* AppDelegate.m */,
+				010F42782874BD29006D101E /* SceneDelegate.h */,
+				010F42792874BD29006D101E /* SceneDelegate.m */,
+				010F427B2874BD29006D101E /* ViewController.h */,
+				010F427C2874BD2A006D101E /* ViewController.m */,
+				010F427E2874BD2A006D101E /* Main.storyboard */,
+				010F42812874BD2B006D101E /* Assets.xcassets */,
+				010F42832874BD2B006D101E /* LaunchScreen.storyboard */,
+				010F42862874BD2B006D101E /* Info.plist */,
+				010F42872874BD2B006D101E /* main.m */,
+			);
+			path = PlanMyTrip;
+			sourceTree = "<group>";
+		};
+		010F42902874BD2C006D101E /* PlanMyTripTests */ = {
+			isa = PBXGroup;
+			children = (
+				010F42912874BD2C006D101E /* PlanMyTripTests.m */,
+			);
+			path = PlanMyTripTests;
+			sourceTree = "<group>";
+		};
+		010F429A2874BD2C006D101E /* PlanMyTripUITests */ = {
+			isa = PBXGroup;
+			children = (
+				010F429B2874BD2C006D101E /* PlanMyTripUITests.m */,
+				010F429D2874BD2C006D101E /* PlanMyTripUITestsLaunchTests.m */,
+			);
+			path = PlanMyTripUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		010F42712874BD29006D101E /* PlanMyTrip */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 010F42A12874BD2C006D101E /* Build configuration list for PBXNativeTarget "PlanMyTrip" */;
+			buildPhases = (
+				010F426E2874BD29006D101E /* Sources */,
+				010F426F2874BD29006D101E /* Frameworks */,
+				010F42702874BD29006D101E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PlanMyTrip;
+			productName = PlanMyTrip;
+			productReference = 010F42722874BD29006D101E /* PlanMyTrip.app */;
+			productType = "com.apple.product-type.application";
+		};
+		010F428C2874BD2C006D101E /* PlanMyTripTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 010F42A42874BD2C006D101E /* Build configuration list for PBXNativeTarget "PlanMyTripTests" */;
+			buildPhases = (
+				010F42892874BD2C006D101E /* Sources */,
+				010F428A2874BD2C006D101E /* Frameworks */,
+				010F428B2874BD2C006D101E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				010F428F2874BD2C006D101E /* PBXTargetDependency */,
+			);
+			name = PlanMyTripTests;
+			productName = PlanMyTripTests;
+			productReference = 010F428D2874BD2C006D101E /* PlanMyTripTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		010F42962874BD2C006D101E /* PlanMyTripUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 010F42A72874BD2C006D101E /* Build configuration list for PBXNativeTarget "PlanMyTripUITests" */;
+			buildPhases = (
+				010F42932874BD2C006D101E /* Sources */,
+				010F42942874BD2C006D101E /* Frameworks */,
+				010F42952874BD2C006D101E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				010F42992874BD2C006D101E /* PBXTargetDependency */,
+			);
+			name = PlanMyTripUITests;
+			productName = PlanMyTripUITests;
+			productReference = 010F42972874BD2C006D101E /* PlanMyTripUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		010F426A2874BD29006D101E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					010F42712874BD29006D101E = {
+						CreatedOnToolsVersion = 13.4;
+					};
+					010F428C2874BD2C006D101E = {
+						CreatedOnToolsVersion = 13.4;
+						TestTargetID = 010F42712874BD29006D101E;
+					};
+					010F42962874BD2C006D101E = {
+						CreatedOnToolsVersion = 13.4;
+						TestTargetID = 010F42712874BD29006D101E;
+					};
+				};
+			};
+			buildConfigurationList = 010F426D2874BD29006D101E /* Build configuration list for PBXProject "PlanMyTrip" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 010F42692874BD29006D101E;
+			productRefGroup = 010F42732874BD29006D101E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				010F42712874BD29006D101E /* PlanMyTrip */,
+				010F428C2874BD2C006D101E /* PlanMyTripTests */,
+				010F42962874BD2C006D101E /* PlanMyTripUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		010F42702874BD29006D101E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				010F42852874BD2B006D101E /* LaunchScreen.storyboard in Resources */,
+				010F42822874BD2B006D101E /* Assets.xcassets in Resources */,
+				010F42802874BD2A006D101E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		010F428B2874BD2C006D101E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		010F42952874BD2C006D101E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		010F426E2874BD29006D101E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				010F427D2874BD2A006D101E /* ViewController.m in Sources */,
+				010F42772874BD29006D101E /* AppDelegate.m in Sources */,
+				010F42882874BD2B006D101E /* main.m in Sources */,
+				010F427A2874BD29006D101E /* SceneDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		010F42892874BD2C006D101E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				010F42922874BD2C006D101E /* PlanMyTripTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		010F42932874BD2C006D101E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				010F429E2874BD2C006D101E /* PlanMyTripUITestsLaunchTests.m in Sources */,
+				010F429C2874BD2C006D101E /* PlanMyTripUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		010F428F2874BD2C006D101E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 010F42712874BD29006D101E /* PlanMyTrip */;
+			targetProxy = 010F428E2874BD2C006D101E /* PBXContainerItemProxy */;
+		};
+		010F42992874BD2C006D101E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 010F42712874BD29006D101E /* PlanMyTrip */;
+			targetProxy = 010F42982874BD2C006D101E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		010F427E2874BD2A006D101E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				010F427F2874BD2A006D101E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		010F42832874BD2B006D101E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				010F42842874BD2B006D101E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		010F429F2874BD2C006D101E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		010F42A02874BD2C006D101E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		010F42A22874BD2C006D101E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PlanMyTrip/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fabdel20.PlanMyTrip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		010F42A32874BD2C006D101E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PlanMyTrip/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fabdel20.PlanMyTrip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		010F42A52874BD2C006D101E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fabdel20.PlanMyTripTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PlanMyTrip.app/PlanMyTrip";
+			};
+			name = Debug;
+		};
+		010F42A62874BD2C006D101E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fabdel20.PlanMyTripTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PlanMyTrip.app/PlanMyTrip";
+			};
+			name = Release;
+		};
+		010F42A82874BD2C006D101E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fabdel20.PlanMyTripUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PlanMyTrip;
+			};
+			name = Debug;
+		};
+		010F42A92874BD2C006D101E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fabdel20.PlanMyTripUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PlanMyTrip;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		010F426D2874BD29006D101E /* Build configuration list for PBXProject "PlanMyTrip" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				010F429F2874BD2C006D101E /* Debug */,
+				010F42A02874BD2C006D101E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		010F42A12874BD2C006D101E /* Build configuration list for PBXNativeTarget "PlanMyTrip" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				010F42A22874BD2C006D101E /* Debug */,
+				010F42A32874BD2C006D101E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		010F42A42874BD2C006D101E /* Build configuration list for PBXNativeTarget "PlanMyTripTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				010F42A52874BD2C006D101E /* Debug */,
+				010F42A62874BD2C006D101E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		010F42A72874BD2C006D101E /* Build configuration list for PBXNativeTarget "PlanMyTripUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				010F42A82874BD2C006D101E /* Debug */,
+				010F42A92874BD2C006D101E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 010F426A2874BD29006D101E /* Project object */;
+}
