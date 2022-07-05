@@ -1,0 +1,6 @@
+framework module Pods_PlanMyTrip {
+  umbrella header "Pods-PlanMyTrip-umbrella.h"
+
+  export *
+  module * { export * }
+}
