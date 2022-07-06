@@ -235,7 +235,6 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="logInButton:" destination="cjG-PL-MKb" eventType="touchUpInside" id="iv5-y8-oE9"/>
-                                    <segue destination="geX-Iv-rRl" kind="show" identifier="logInSegue" id="wmq-6W-iIR"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -246,6 +245,7 @@
                     <connections>
                         <outlet property="passwordOutput" destination="uQR-vj-orq" id="dY1-8k-Y5f"/>
                         <outlet property="usernameOutput" destination="yYt-VT-606" id="CXp-37-dVN"/>
+                        <segue destination="geX-Iv-rRl" kind="show" identifier="logInSegue" id="fXN-EE-mHw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k0H-zz-1uh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -316,7 +316,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="f7P-ha-o3n"/>
+        <segue reference="fXN-EE-mHw"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBlueColor">
