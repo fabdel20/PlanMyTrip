@@ -17,6 +17,8 @@
 		010F42922874BD2C006D101E /* PlanMyTripTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 010F42912874BD2C006D101E /* PlanMyTripTests.m */; };
 		010F429C2874BD2C006D101E /* PlanMyTripUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 010F429B2874BD2C006D101E /* PlanMyTripUITests.m */; };
 		010F429E2874BD2C006D101E /* PlanMyTripUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 010F429D2874BD2C006D101E /* PlanMyTripUITestsLaunchTests.m */; };
+		010F42AC2874D8B5006D101E /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 010F42AB2874D8B5006D101E /* SignUpViewController.m */; };
+		010F42AF2874D905006D101E /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 010F42AE2874D905006D101E /* SignInViewController.m */; };
 		380D04BE09E776D66DD1A6DE /* Pods_PlanMyTrip_PlanMyTripUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 899E7F247C96E1C51F6ECB98 /* Pods_PlanMyTrip_PlanMyTripUITests.framework */; };
 		A0B4AE45AB6D3D4DEDD64F83 /* Pods_PlanMyTripTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBBADCC2173EEE170DD9E2BD /* Pods_PlanMyTripTests.framework */; };
 		A7FF21666711CF69270204EB /* Pods_PlanMyTrip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F1811EA646716ED1A1995A /* Pods_PlanMyTrip.framework */; };
@@ -57,6 +59,10 @@
 		010F42972874BD2C006D101E /* PlanMyTripUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlanMyTripUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		010F429B2874BD2C006D101E /* PlanMyTripUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlanMyTripUITests.m; sourceTree = "<group>"; };
 		010F429D2874BD2C006D101E /* PlanMyTripUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlanMyTripUITestsLaunchTests.m; sourceTree = "<group>"; };
+		010F42AA2874D8B5006D101E /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		010F42AB2874D8B5006D101E /* SignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		010F42AD2874D905006D101E /* SignInViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = "<group>"; };
+		010F42AE2874D905006D101E /* SignInViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = "<group>"; };
 		2834C760C584EF20B97EF4CF /* Pods-PlanMyTrip-PlanMyTripUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlanMyTrip-PlanMyTripUITests.release.xcconfig"; path = "Target Support Files/Pods-PlanMyTrip-PlanMyTripUITests/Pods-PlanMyTrip-PlanMyTripUITests.release.xcconfig"; sourceTree = "<group>"; };
 		30F1811EA646716ED1A1995A /* Pods_PlanMyTrip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlanMyTrip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BE145F0E6B2785A2928D897 /* Pods-PlanMyTrip-PlanMyTripUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlanMyTrip-PlanMyTripUITests.debug.xcconfig"; path = "Target Support Files/Pods-PlanMyTrip-PlanMyTripUITests/Pods-PlanMyTrip-PlanMyTripUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -128,6 +134,10 @@
 				010F427B2874BD29006D101E /* ViewController.h */,
 				010F427C2874BD2A006D101E /* ViewController.m */,
 				010F427E2874BD2A006D101E /* Main.storyboard */,
+				010F42AD2874D905006D101E /* SignInViewController.h */,
+				010F42AE2874D905006D101E /* SignInViewController.m */,
+				010F42AA2874D8B5006D101E /* SignUpViewController.h */,
+				010F42AB2874D8B5006D101E /* SignUpViewController.m */,
 				010F42812874BD2B006D101E /* Assets.xcassets */,
 				010F42832874BD2B006D101E /* LaunchScreen.storyboard */,
 				010F42862874BD2B006D101E /* Info.plist */,
@@ -163,7 +173,6 @@
 				AFA5C4CC0925A04D81A9D107 /* Pods-PlanMyTripTests.debug.xcconfig */,
 				60F88D84D371100B8DC4ABDD /* Pods-PlanMyTripTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -416,8 +425,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				010F427D2874BD2A006D101E /* ViewController.m in Sources */,
+				010F42AC2874D8B5006D101E /* SignUpViewController.m in Sources */,
 				010F42772874BD29006D101E /* AppDelegate.m in Sources */,
 				010F42882874BD2B006D101E /* main.m in Sources */,
+				010F42AF2874D905006D101E /* SignInViewController.m in Sources */,
 				010F427A2874BD29006D101E /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
