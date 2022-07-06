@@ -114,7 +114,9 @@ typedef void(^PFUserLogoutResultBlock)(NSError *_Nullable error);
  The email for the `PFUser`.
  */
 @property (nullable, nonatomic, strong) NSString *email;
-
+@property (nullable, nonatomic, strong) NSString *firstName;
+@property (nullable, nonatomic, strong) NSString *lastName;
+@property (nullable, nonatomic, strong) NSDate *birthDay;
 /**
  Signs up the user *asynchronously*.
 

@@ -20,11 +20,10 @@
 
         configuration.applicationId = @"wxzqERdPjckzLAmjjt7Css9b5oJIqgxAjbPkMweq"; // <- UPDATE
         configuration.clientKey = @"2ZxV04zVg502WTGAumrXE9jId9NDMy5uguUCnPVT"; // <- UPDATE
-        configuration.server = @"https://parseapi.back4app.com";
+        configuration.server = @"https://parseapi.back4app.com/";
     }];
-
+    
     [Parse initializeWithConfiguration:config];
-
     return YES;
 }
 
