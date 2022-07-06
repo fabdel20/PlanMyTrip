@@ -162,7 +162,6 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="signUpButton:" destination="Bly-Jr-e6L" eventType="touchUpInside" id="wyf-iH-yZV"/>
-                                    <segue destination="geX-Iv-rRl" kind="show" identifier="signUpSegue" id="f7P-ha-o3n"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -176,6 +175,7 @@
                         <outlet property="firstName" destination="Eqx-cH-gCR" id="2XB-Co-QBh"/>
                         <outlet property="lastName" destination="Kjl-r3-Gub" id="TDf-Ob-2yx"/>
                         <outlet property="password" destination="q7M-aO-tHi" id="cIe-8F-fVf"/>
+                        <segue destination="geX-Iv-rRl" kind="show" identifier="signUpSegue" id="iAh-zN-t0d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SjW-dB-DsZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -261,12 +261,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Home Page" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GHE-Wz-upM">
-                                <rect key="frame" x="117" y="423" width="180" height="50"/>
+                                <rect key="frame" x="117" y="108" width="180" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="35"/>
                                 <color key="textColor" red="0.98909138159999999" green="0.98909138159999999" blue="0.98909138159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lzq-nH-rBg">
+                                <rect key="frame" x="97" y="702" width="236" height="108"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Plan New Trip " cornerStyle="medium">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" red="0.98909138159999999" green="0.98909138159999999" blue="0.98909138159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </backgroundConfiguration>
+                                    <color key="baseForegroundColor" systemColor="systemBlueColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="signUpButton:" destination="Bly-Jr-e6L" eventType="touchUpInside" id="cCn-ek-dfg"/>
+                                    <segue destination="b1t-Pt-bpX" kind="show" id="HYD-cl-bHF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ayo-7U-G3k"/>
                         <color key="backgroundColor" red="0.31691095969999999" green="0.6362713404" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -275,7 +290,98 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gOS-6S-rdQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4058" y="-228"/>
+            <point key="canvasLocation" x="4057.971014492754" y="-228.34821428571428"/>
+        </scene>
+        <!--Trip Type View Controller-->
+        <scene sceneID="HFB-bE-Kwi">
+            <objects>
+                <viewController id="b1t-Pt-bpX" customClass="TripTypeViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uXZ-uN-SXr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Is this a work or personal trip?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FaB-bV-23K">
+                                <rect key="frame" x="20" y="88" width="374" height="109"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="35"/>
+                                <color key="textColor" red="0.98909138159999999" green="0.98909138159999999" blue="0.98909138159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="47a-7s-0cU">
+                                <rect key="frame" x="76" y="247" width="236" height="108"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Buisness Trip" cornerStyle="medium">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" red="0.98909138159999999" green="0.98909138159999999" blue="0.98909138159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </backgroundConfiguration>
+                                    <color key="baseForegroundColor" systemColor="systemBlueColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="signUpButton:" destination="Bly-Jr-e6L" eventType="touchUpInside" id="ufR-54-Wua"/>
+                                    <segue destination="v0W-K0-wyV" kind="show" id="ncb-qB-Ak4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fuC-Mh-Y5t">
+                                <rect key="frame" x="76" y="441" width="236" height="108"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Personal Trip" cornerStyle="medium">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" red="0.98909138159999999" green="0.98909138159999999" blue="0.98909138159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </backgroundConfiguration>
+                                    <color key="baseForegroundColor" systemColor="systemBlueColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="signUpButton:" destination="Bly-Jr-e6L" eventType="touchUpInside" id="wjF-pc-VmA"/>
+                                    <segue destination="v0W-K0-wyV" kind="show" id="1bD-lQ-B3c"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="7J6-Lu-ytA"/>
+                        <color key="backgroundColor" red="0.31691095969999999" green="0.6362713404" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="oo3-Eq-2FE"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mt9-Iq-aHs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5231.884057971015" y="-228.34821428571428"/>
+        </scene>
+        <!--Select Services View Controller-->
+        <scene sceneID="amY-0C-LLQ">
+            <objects>
+                <viewController id="v0W-K0-wyV" customClass="SelectServicesViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vqZ-cw-euZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="What services would you like?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EL1-zE-xpO">
+                                <rect key="frame" x="20" y="100" width="374" height="109"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="35"/>
+                                <color key="textColor" red="0.98909138159999999" green="0.98909138159999999" blue="0.98909138159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vcq-gG-mEO"/>
+                        <color key="backgroundColor" red="0.31691095969999999" green="0.6362713404" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ZwJ-F7-z1e">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="N0O-GV-oDK">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="b2g-fu-yoI">
+                                <rect key="frame" x="302" y="5" width="92" height="34.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="homekit" catalog="system" title=" ">
+                                    <color key="baseForegroundColor" red="0.98909138159999999" green="0.98909138159999999" blue="0.98909138159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </buttonConfiguration>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WEo-kT-AYh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6490" y="-228"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XyY-kI-4Ur">
@@ -316,9 +422,11 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="fXN-EE-mHw"/>
+        <segue reference="iAh-zN-t0d"/>
+        <segue reference="1bD-lQ-B3c"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="homekit" catalog="system" width="128" height="106"/>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
