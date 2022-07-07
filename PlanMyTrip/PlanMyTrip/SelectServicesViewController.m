@@ -8,12 +8,12 @@
 #import "SelectServicesViewController.h"
 
 @interface SelectServicesViewController ()
-@property (nonatomic) BOOL checkedH;
-@property (nonatomic) BOOL checkedF;
-@property (nonatomic) BOOL checkedC;
+@property (nonatomic) BOOL isHotelSelected;
+@property (nonatomic) BOOL isFlightSelected;
+@property (nonatomic) BOOL isCarSelected;
 @property (weak, nonatomic) IBOutlet UIButton *carsB;
 @property (weak, nonatomic) IBOutlet UIButton *flightsB;
-@property (strong, nonatomic) IBOutlet UIButton *hotelsB;
+@property (weak, nonatomic) IBOutlet UIButton *hotelsB;
 - (IBAction)carsCheck:(id)sender;
 - (IBAction)flightsCheck:(id)sender;
 - (IBAction)hotelsCheck:(id)sender;
@@ -41,34 +41,34 @@
 */
 
 - (IBAction)hotelsCheck:(id)sender {
-    if(!_checkedH){
+    if(!_isHotelSelected){
             _hotelsB.backgroundColor = [UIColor redColor];
-            _checkedH = YES;
-        } else if(_checkedH){
+            _isHotelSelected = YES;
+        } else if(_isHotelSelected){
             _hotelsB.backgroundColor = [UIColor whiteColor];
-            _checkedH = NO;
+            _isHotelSelected = NO;
         }
 }
 
 - (IBAction)flightsCheck:(id)sender {
-    if(!_checkedF){
+    if(!_isFlightSelected){
         _flightsB.backgroundColor = [UIColor redColor];
-            _checkedF = YES;
+            _isFlightSelected = YES;
         }
-        else if(_checkedF){
+        else if(_isFlightSelected){
             _flightsB.backgroundColor = [UIColor whiteColor];
-            _checkedF = NO;
+            _isFlightSelected = NO;
         }
 }
 
 - (IBAction)carsCheck:(id)sender {
-    if(!_checkedC){
+    if(!_isCarSelected){
         _carsB.backgroundColor = [UIColor redColor];
-            _checkedC = YES;
+        _isCarSelected = YES;
         }
-        else if(_checkedC){
+        else if(_isCarSelected){
             _carsB.backgroundColor = [UIColor whiteColor];
-            _checkedC = NO;
+            _isCarSelected= NO;
         }
 }
 @end
