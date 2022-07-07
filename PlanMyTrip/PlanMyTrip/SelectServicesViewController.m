@@ -45,7 +45,7 @@
 - (IBAction)flightsCheck:(id)sender {
     if(!_isFlightSelected){
         _flightsB.backgroundColor = [UIColor redColor];
-            _isFlightSelected = YES;
+        _isFlightSelected = YES;
         } else if(_isFlightSelected) {
             _flightsB.backgroundColor = [UIColor whiteColor];
             _isFlightSelected = NO;
