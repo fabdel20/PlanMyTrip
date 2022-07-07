@@ -6,7 +6,7 @@
 //
 
 #import "SignUpViewController.h"
-#import "Parse/Parse.h"
+#import <Parse/Parse.h>
 @interface SignUpViewController ()
 @property (strong, nonatomic) IBOutlet UITextField *firstName;
 @property (strong, nonatomic) IBOutlet UITextField *lastName;
@@ -24,20 +24,12 @@
     // Do any additional setup after loading the view.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (IBAction)signUpButton:(id)sender {
-    if([self.email.text isEqual:@""] || [self.password.text isEqual:@""] || [self.firstName.text isEqual:@""]|| [self.lastName.text isEqual:@""]){
+    if([self.email.text isEqualToString:@""] || [self.password.text isEqualToString:@""] || [self.firstName.text isEqualToString:@""]|| [self.lastName.text isEqualToString:@""]){
             [self showAlert];
-        }else{
+        } else {
             PFUser *newUser = [PFUser user];
             
             newUser.username = self.email.text;
@@ -48,7 +40,7 @@
             
             [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
                 if(error != nil){
-                }else{
+                } else {
                     [self performSegueWithIdentifier:@"signUpSegue" sender:nil];
                 }
             }];

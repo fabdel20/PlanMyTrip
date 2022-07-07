@@ -30,21 +30,13 @@
     _carsB.backgroundColor = [UIColor whiteColor];
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (IBAction)hotelsCheck:(id)sender {
     if(!_isHotelSelected){
             _hotelsB.backgroundColor = [UIColor redColor];
             _isHotelSelected = YES;
-        } else if(_isHotelSelected){
+        } else if(_isHotelSelected) {
             _hotelsB.backgroundColor = [UIColor whiteColor];
             _isHotelSelected = NO;
         }
@@ -54,8 +46,7 @@
     if(!_isFlightSelected){
         _flightsB.backgroundColor = [UIColor redColor];
             _isFlightSelected = YES;
-        }
-        else if(_isFlightSelected){
+        } else if(_isFlightSelected) {
             _flightsB.backgroundColor = [UIColor whiteColor];
             _isFlightSelected = NO;
         }
@@ -65,8 +56,7 @@
     if(!_isCarSelected){
         _carsB.backgroundColor = [UIColor redColor];
         _isCarSelected = YES;
-        }
-        else if(_isCarSelected){
+        } else if(_isCarSelected) {
             _carsB.backgroundColor = [UIColor whiteColor];
             _isCarSelected= NO;
         }

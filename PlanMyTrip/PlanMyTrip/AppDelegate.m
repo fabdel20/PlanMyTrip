@@ -6,7 +6,7 @@
 //
 
 #import "AppDelegate.h"
-#import "Parse/Parse.h"
+#import <Parse/Parse.h>
 
 @interface AppDelegate ()
 
@@ -18,8 +18,8 @@
 
     ParseClientConfiguration *config = [ParseClientConfiguration  configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
 
-        configuration.applicationId = @"wxzqERdPjckzLAmjjt7Css9b5oJIqgxAjbPkMweq"; // <- UPDATE
-        configuration.clientKey = @"2ZxV04zVg502WTGAumrXE9jId9NDMy5uguUCnPVT"; // <- UPDATE
+        configuration.applicationId = @"wxzqERdPjckzLAmjjt7Css9b5oJIqgxAjbPkMweq";
+        configuration.clientKey = @"2ZxV04zVg502WTGAumrXE9jId9NDMy5uguUCnPVT";
         configuration.server = @"https://parseapi.back4app.com/";
     }];
     
