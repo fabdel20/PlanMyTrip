@@ -48,32 +48,17 @@
 
 - (IBAction)hotelsButtonTapped:(id)sender {
     //[changeColorOfButton Button:_hotelsButton checkState: _isHotelSelected];
-    if(!_isHotelSelected){
-        _hotelsButton.backgroundColor = [UIColor redColor];
-        _isHotelSelected = YES;
-    } else if(_isHotelSelected){
-        _hotelsButton.backgroundColor = [UIColor whiteColor];
-        _isHotelSelected = NO;
-    }
+    _hotelsButton.backgroundColor = _isHotelSelected ? UIColor.whiteColor : UIColor.redColor;
+    _isHotelSelected = !_isHotelSelected;
 }
 
 - (IBAction)flightsButtonTapped:(id)sender {
-    if(!_isFlightSelected){
-        _flightsButton.backgroundColor = [UIColor redColor];
-        _isFlightSelected = YES;
-    } else if(_isFlightSelected){
-        _flightsButton.backgroundColor = [UIColor whiteColor];
-        _isFlightSelected = NO;
-    }
+    _flightsButton.backgroundColor = _isFlightSelected ? UIColor.whiteColor : UIColor.redColor;
+    _isFlightSelected = !_isFlightSelected;
 }
 
 - (IBAction)carsButtonTapped:(id)sender {
-    if(!_isCarSelected){
-        _carsButton.backgroundColor = [UIColor redColor];
-        _isCarSelected = YES;
-    } else if(_isCarSelected){
-        _carsButton.backgroundColor = [UIColor whiteColor];
-        _isCarSelected = NO;
-    }
+    _carsButton.backgroundColor = _isCarSelected ? UIColor.whiteColor : UIColor.redColor;
+    _isCarSelected = !_isCarSelected;
 }
 @end
