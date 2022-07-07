@@ -25,6 +25,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _hotelsB.backgroundColor = [UIColor whiteColor];
+    _flightsB.backgroundColor = [UIColor whiteColor];
+    _carsB.backgroundColor = [UIColor whiteColor];
 }
 
 /*
