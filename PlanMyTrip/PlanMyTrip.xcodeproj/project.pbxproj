@@ -21,6 +21,7 @@
 		010F42AF2874D905006D101E /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 010F42AE2874D905006D101E /* SignInViewController.m */; };
 		010F42B828760272006D101E /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 010F42B728760272006D101E /* HomeViewController.m */; };
 		010F42BB28760E4F006D101E /* TripTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 010F42BA28760E4F006D101E /* TripTypeViewController.m */; };
+		010F42CB287764C7006D101E /* SelectServicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 010F42CA287764C7006D101E /* SelectServicesViewController.m */; };
 		380D04BE09E776D66DD1A6DE /* Pods_PlanMyTrip_PlanMyTripUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 899E7F247C96E1C51F6ECB98 /* Pods_PlanMyTrip_PlanMyTripUITests.framework */; };
 		A0B4AE45AB6D3D4DEDD64F83 /* Pods_PlanMyTripTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBBADCC2173EEE170DD9E2BD /* Pods_PlanMyTripTests.framework */; };
 		A7FF21666711CF69270204EB /* Pods_PlanMyTrip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F1811EA646716ED1A1995A /* Pods_PlanMyTrip.framework */; };
@@ -65,10 +66,12 @@
 		010F42AB2874D8B5006D101E /* SignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		010F42AD2874D905006D101E /* SignInViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = "<group>"; };
 		010F42AE2874D905006D101E /* SignInViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = "<group>"; };
-		010F42B628760272006D101E /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = PlanMyTrip/HomeViewController.h; sourceTree = "<group>"; };
-		010F42B728760272006D101E /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = PlanMyTrip/HomeViewController.m; sourceTree = "<group>"; };
-		010F42B928760E4F006D101E /* TripTypeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TripTypeViewController.h; path = PlanMyTrip/TripTypeViewController.h; sourceTree = "<group>"; };
-		010F42BA28760E4F006D101E /* TripTypeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TripTypeViewController.m; path = PlanMyTrip/TripTypeViewController.m; sourceTree = "<group>"; };
+		010F42B628760272006D101E /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		010F42B728760272006D101E /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		010F42B928760E4F006D101E /* TripTypeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TripTypeViewController.h; sourceTree = "<group>"; };
+		010F42BA28760E4F006D101E /* TripTypeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TripTypeViewController.m; sourceTree = "<group>"; };
+		010F42C9287764C4006D101E /* SelectServicesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SelectServicesViewController.h; path = /Users/fabdel20/Desktop/Projects/PlanMyTrip/PlanMyTrip/PlanMyTrip/SelectServicesViewController.h; sourceTree = "<absolute>"; };
+		010F42CA287764C7006D101E /* SelectServicesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SelectServicesViewController.m; path = /Users/fabdel20/Desktop/Projects/PlanMyTrip/PlanMyTrip/PlanMyTrip/SelectServicesViewController.m; sourceTree = "<absolute>"; };
 		2834C760C584EF20B97EF4CF /* Pods-PlanMyTrip-PlanMyTripUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlanMyTrip-PlanMyTripUITests.release.xcconfig"; path = "Target Support Files/Pods-PlanMyTrip-PlanMyTripUITests/Pods-PlanMyTrip-PlanMyTripUITests.release.xcconfig"; sourceTree = "<group>"; };
 		30F1811EA646716ED1A1995A /* Pods_PlanMyTrip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlanMyTrip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BE145F0E6B2785A2928D897 /* Pods-PlanMyTrip-PlanMyTripUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlanMyTrip-PlanMyTripUITests.debug.xcconfig"; path = "Target Support Files/Pods-PlanMyTrip-PlanMyTripUITests/Pods-PlanMyTrip-PlanMyTripUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -111,10 +114,6 @@
 		010F42692874BD29006D101E = {
 			isa = PBXGroup;
 			children = (
-				010F42B928760E4F006D101E /* TripTypeViewController.h */,
-				010F42BA28760E4F006D101E /* TripTypeViewController.m */,
-				010F42B628760272006D101E /* HomeViewController.h */,
-				010F42B728760272006D101E /* HomeViewController.m */,
 				010F42742874BD29006D101E /* PlanMyTrip */,
 				010F42902874BD2C006D101E /* PlanMyTripTests */,
 				010F429A2874BD2C006D101E /* PlanMyTripUITests */,
@@ -137,7 +136,13 @@
 		010F42742874BD29006D101E /* PlanMyTrip */ = {
 			isa = PBXGroup;
 			children = (
+				010F42B928760E4F006D101E /* TripTypeViewController.h */,
+				010F42BA28760E4F006D101E /* TripTypeViewController.m */,
+				010F42B628760272006D101E /* HomeViewController.h */,
+				010F42B728760272006D101E /* HomeViewController.m */,
 				010F42752874BD29006D101E /* AppDelegate.h */,
+				010F42CA287764C7006D101E /* SelectServicesViewController.m */,
+				010F42C9287764C4006D101E /* SelectServicesViewController.h */,
 				010F42762874BD29006D101E /* AppDelegate.m */,
 				010F42782874BD29006D101E /* SceneDelegate.h */,
 				010F42792874BD29006D101E /* SceneDelegate.m */,
@@ -440,6 +445,7 @@
 				010F42BB28760E4F006D101E /* TripTypeViewController.m in Sources */,
 				010F42882874BD2B006D101E /* main.m in Sources */,
 				010F42AF2874D905006D101E /* SignInViewController.m in Sources */,
+				010F42CB287764C7006D101E /* SelectServicesViewController.m in Sources */,
 				010F42B828760272006D101E /* HomeViewController.m in Sources */,
 				010F427A2874BD29006D101E /* SceneDelegate.m in Sources */,
 			);

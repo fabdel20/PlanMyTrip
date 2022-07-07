@@ -2,10 +2,10 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:PlanMyTrip/SelectServicesViewController.h">
+      location = "group:/Users/fabdel20/Desktop/Projects/PlanMyTrip/PlanMyTrip/PlanMyTrip/SelectServicesViewController.h">
    </FileRef>
    <FileRef
-      location = "group:PlanMyTrip/SelectServicesViewController.m">
+      location = "group:/Users/fabdel20/Desktop/Projects/PlanMyTrip/PlanMyTrip/PlanMyTrip/SelectServicesViewController.m">
    </FileRef>
    <FileRef
       location = "group:PlanMyTrip.xcodeproj">
