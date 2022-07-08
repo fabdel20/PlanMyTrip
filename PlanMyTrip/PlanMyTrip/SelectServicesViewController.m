@@ -26,6 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    // new branch
     _hotelsButton.backgroundColor = [UIColor whiteColor];
     _flightsButton.backgroundColor = [UIColor whiteColor];
     _carsButton.backgroundColor = [UIColor whiteColor];
