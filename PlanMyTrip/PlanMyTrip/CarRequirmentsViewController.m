@@ -12,6 +12,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *location;
 @property (strong, nonatomic) IBOutlet UIDatePicker *pickUpDate;
 @property (strong, nonatomic) IBOutlet UIDatePicker *dropOffDate;
+@property Cars_Information *carInfo;
 
 @end
 
@@ -20,6 +21,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _carInfo.location = (NSString *) _location;
+    _carInfo.pickUpDate = (NSDate *) _pickUpDate.date;
+    _carInfo.dropOffDate = (NSDate *) _dropOffDate.date;
 }
 
 /*
