@@ -569,6 +569,14 @@
                         <color key="backgroundColor" red="0.31691095969999999" green="0.6362713404" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
                     <navigationItem key="navigationItem" id="qJc-mr-Lm7"/>
+                    <connections>
+                        <outlet property="arrivalCity" destination="mQN-tW-nKa" id="5M3-QT-6KX"/>
+                        <outlet property="cabin" destination="oe8-Ba-xS0" id="306-wf-IdC"/>
+                        <outlet property="departingDate" destination="dPE-zR-9Xt" id="a6t-54-3vo"/>
+                        <outlet property="departureCity" destination="qBg-mt-Z94" id="F6j-wZ-gEa"/>
+                        <outlet property="numberOfTravelers" destination="WQh-fM-LdZ" id="NwS-YM-Epc"/>
+                        <outlet property="returnDate" destination="gNd-P8-Z6O" id="hyG-D8-EyT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qw5-d0-Vd0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -659,6 +667,12 @@
                         <color key="backgroundColor" red="0.31691095969999999" green="0.6362713404" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
                     <navigationItem key="navigationItem" id="Gqb-zL-ftP"/>
+                    <connections>
+                        <outlet property="arrivalDate" destination="BSw-KY-b2p" id="Bb6-3J-pjx"/>
+                        <outlet property="departureDate" destination="Rhh-QN-KS9" id="9ft-cg-9QG"/>
+                        <outlet property="destination" destination="tso-tb-6fT" id="eZt-eP-kRk"/>
+                        <outlet property="numberOfGuests" destination="unX-mn-0BY" id="tbS-kb-N8J"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P0p-4p-Igm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -721,6 +735,11 @@
                         <color key="backgroundColor" red="0.31691095969999999" green="0.6362713404" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
                     <navigationItem key="navigationItem" id="lTV-py-c85"/>
+                    <connections>
+                        <outlet property="dropOffDate" destination="W3Y-VJ-fuo" id="EFi-9R-3a0"/>
+                        <outlet property="location" destination="5ff-mR-PAf" id="vr3-tM-moN"/>
+                        <outlet property="pickUpDate" destination="7XG-hO-0Hb" id="R4y-6d-AAC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vNd-t3-AvU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

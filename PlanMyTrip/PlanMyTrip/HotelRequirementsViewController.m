@@ -6,8 +6,13 @@
 //
 
 #import "HotelRequirementsViewController.h"
+#import "Hotels_Information.h"
 
 @interface HotelRequirementsViewController ()
+@property (strong, nonatomic) IBOutlet UITextField *destination;
+@property (strong, nonatomic) IBOutlet UIDatePicker *arrivalDate;
+@property (strong, nonatomic) IBOutlet UIDatePicker *departureDate;
+@property (strong, nonatomic) IBOutlet UITextField *numberOfGuests;
 
 @end
 

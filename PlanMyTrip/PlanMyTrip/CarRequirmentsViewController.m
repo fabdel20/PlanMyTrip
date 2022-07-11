@@ -6,8 +6,12 @@
 //
 
 #import "CarRequirmentsViewController.h"
+#import "Cars_Information.h"
 
 @interface CarRequirmentsViewController ()
+@property (strong, nonatomic) IBOutlet UITextField *location;
+@property (strong, nonatomic) IBOutlet UIDatePicker *pickUpDate;
+@property (strong, nonatomic) IBOutlet UIDatePicker *dropOffDate;
 
 @end
 
