@@ -482,6 +482,8 @@
 		00F3424182BC731506C60714EED61CAF /* PFAnalyticsUtilities.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PFAnalyticsUtilities.m; path = Parse/Parse/Internal/Analytics/Utilities/PFAnalyticsUtilities.m; sourceTree = "<group>"; };
 		0167F9462878B1EA0085F4C6 /* HotelRequirementsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HotelRequirementsViewController.h; path = ../PlanMyTrip/HotelRequirementsViewController.h; sourceTree = "<group>"; };
 		0167F9472878B1EA0085F4C6 /* HotelRequirementsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HotelRequirementsViewController.m; path = ../PlanMyTrip/HotelRequirementsViewController.m; sourceTree = "<group>"; };
+		0167F94B2878F0050085F4C6 /* CarRequirmentsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CarRequirmentsViewController.h; path = ../PlanMyTrip/CarRequirmentsViewController.h; sourceTree = "<group>"; };
+		0167F94C2878F0050085F4C6 /* CarRequirmentsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CarRequirmentsViewController.m; path = ../PlanMyTrip/CarRequirmentsViewController.m; sourceTree = "<group>"; };
 		0184E71092122B481514F281071F6A94 /* PFAlertView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PFAlertView.m; path = Parse/Parse/Internal/PFAlertView.m; sourceTree = "<group>"; };
 		0207C131A843CE483EBBD3BEDA060913 /* PFConfig.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PFConfig.h; path = Parse/Parse/PFConfig.h; sourceTree = "<group>"; };
 		02E561BBFD9133B35D95C0CCF5A849B5 /* Parse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = Parse.m; path = Parse/Parse/Parse.m; sourceTree = "<group>"; };
@@ -1530,6 +1532,8 @@
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
+				0167F94B2878F0050085F4C6 /* CarRequirmentsViewController.h */,
+				0167F94C2878F0050085F4C6 /* CarRequirmentsViewController.m */,
 				0167F9462878B1EA0085F4C6 /* HotelRequirementsViewController.h */,
 				0167F9472878B1EA0085F4C6 /* HotelRequirementsViewController.m */,
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
