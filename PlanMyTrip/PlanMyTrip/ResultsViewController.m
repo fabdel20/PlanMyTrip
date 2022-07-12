@@ -18,9 +18,10 @@
 @property (nonatomic) NSDictionary *carUserInformation;
 @property (nonatomic) NSDictionary *hotelSearchInformation;
 @property (nonatomic) NSDictionary *hotelUserInformation;
-@property (nonatomic) NSArray *flighsResults;
-@property (nonatomic) NSArray *carResults;
-@property (nonatomic) NSArray *hotelResults;
+@property (strong, nonatomic) NSMutableArray *hotelResults;
+@property (strong, nonatomic) NSMutableArray *flightsResults;
+@property (strong, nonatomic) NSMutableArray *carResults;
+
 
 @end
 
@@ -153,8 +154,38 @@
 }
 */
 
+// I can't make a generic recomendation system, i have to make three different functions because for each service there is a specifc tag I want to check that is unique to the service
+-(NSArray *)searchHotelResultsDictionary: (NSDictionary *)hotelSearchInformation userHotelRequirmentsDictionary: (NSDictionary *)hotelUserInformation returnArray: (NSMutableArray *)hotelResults{
+    int count = 0;
+    int minCount = 0;
+    for(id key in hotelSearchInformation){
+        if([hotelSearchInformation objectForKey:key] == [hotelUserInformation objectForKey:key]){
+            count = count + 1;
+        }
+    }
+    if(count < minCount){
+        minCount = count;
+        count = 0;
+        NSString *hotelName = [hotelSearchInformation objectForKey:@"hotel_id"];
+        [hotelResults addObject:(id)hotelName];
+    }
+    return hotelResults;
+}
 
--(NSArray *)searchResultsDictionary: (NSDictionary *)searchResultsDict userRequirmentsDictionary: (NSDictionary *)userReqsDict returnArray: (NSArray *)resultsArray{
-    return resultsArray; 
+-(NSArray *)searchFlightResultsDictionary: (NSDictionary *)flightSearchInformation userFlightRequirmentsDictionary: (NSDictionary *)flightUserInformation returnArray: (NSMutableArray *)flightResults{
+    int count = 0;
+    int minCount = 0;
+    for(id key in flightSearchInformation){
+        if([flightSearchInformation objectForKey:key] == [flightUserInformation objectForKey:key]){
+            count = count + 1;
+        }
+    }
+    if(count < minCount){
+        minCount = count;
+        count = 0;
+        NSString *airlineName = [flightSearchInformation objectForKey:@"flight_id"];
+        [flightResults addObject:(id)airlineName];
+    }
+    return flightResults;
 }
 @end
