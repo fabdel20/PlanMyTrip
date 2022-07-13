@@ -29,14 +29,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
-    /*
-    // to get a list of hotels from a search
+    // search hotels
     NSDictionary *headers = @{ @"X-RapidAPI-Key": @"2ebe338c7fmsha84e37a2c76338dp16b94djsn34264f5722a0",
-                               @"X-RapidAPI-Host": @"priceline-com.p.rapidapi.com" };
+                               @"X-RapidAPI-Host": @"priceline-com-provider.p.rapidapi.com" };
 
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://priceline-com.p.rapidapi.com/hotels/3000002244?checkin_date=2021-01-22&checkout_date=2021-01-23&rooms=1&offset=0&currency=USD"]
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://priceline-com-provider.p.rapidapi.com/v1/hotels/search?sort_order=HDR&location_id=3000035821&date_checkout=2022-11-16&date_checkin=2022-11-15&star_rating_ids=3.0%2C3.5%2C4.0%2C4.5%2C5.0&rooms_number=1&amenities_ids=FINTRNT%2CFBRKFST"]
                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy
                                                        timeoutInterval:10.0];
     [request setHTTPMethod:@"GET"];
@@ -54,42 +51,18 @@
                                                 }];
     [dataTask resume];
     
-    // roundtrip flights
-    NSDictionary *headersFlightsRound = @{ @"X-RapidAPI-Key": @"2ebe338c7fmsha84e37a2c76338dp16b94djsn34264f5722a0",
-                                           @"X-RapidAPI-Host": @"priceline-com.p.rapidapi.com" };
+    // search roundtrip flights
+    NSDictionary *headersRoundTrip = @{ @"X-RapidAPI-Key": @"2ebe338c7fmsha84e37a2c76338dp16b94djsn34264f5722a0",
+                               @"X-RapidAPI-Host": @"priceline-com-provider.p.rapidapi.com" };
 
-    NSMutableURLRequest *requestFlightsRound = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://priceline-com.p.rapidapi.com/flights/SFO/LAX/2021-02-15/2021-02-25?adults=1"]
-                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0];
-    [requestFlightsRound setHTTPMethod:@"GET"];
-    [requestFlightsRound setAllHTTPHeaderFields:headersFlightsRound];
-    
-    NSURLSession *sessionFlightsRound = [NSURLSession sharedSession];
-    NSURLSessionDataTask *dataTaskFlightsRound = [sessionFlightsRound  dataTaskWithRequest:requestFlightsRound completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        if (error) {
-            NSLog(@"%@", error);
-            
-        } else {
-            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
-            NSLog(@"%@", httpResponse);
-            
-        }
-        
-    }];
-    
-    [dataTaskFlightsRound resume];
-
-    
-    // one way flights
-    NSDictionary *headersFlightsOneWay = @{ @"X-RapidAPI-Key": @"2ebe338c7fmsha84e37a2c76338dp16b94djsn34264f5722a0", @"X-RapidAPI-Host": @"priceline-com.p.rapidapi.com" };
-
-    NSMutableURLRequest *requestFlightsOneWay = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://priceline-com.p.rapidapi.com/flights/LAX/SFO/2021-02-17?adults=1"]
+    NSMutableURLRequest *requestRoundTrip = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://priceline-com-provider.p.rapidapi.com/v2/flight/roundTrip?departure_date=2021-12-21%2C2021-12-25&adults=1&sid=iSiX639&destination_airport_code=JFK%2CYWG&origin_airport_code=YWG%2CJFK"]
                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy
                                                        timeoutInterval:10.0];
-    [requestFlightsOneWay setHTTPMethod:@"GET"];
-    [requestFlightsOneWay setAllHTTPHeaderFields:headersFlightsOneWay];
+    [requestRoundTrip setHTTPMethod:@"GET"];
+    [requestRoundTrip setAllHTTPHeaderFields:headersRoundTrip];
 
-    NSURLSession *sessionFlightsOneWay = [NSURLSession sharedSession];
-    NSURLSessionDataTask *dataTaskFlightsOneWay = [sessionFlightsOneWay dataTaskWithRequest:request
+    NSURLSession *sessionRoundTrip = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTaskRoundTrip = [sessionRoundTrip dataTaskWithRequest:requestRoundTrip
                                                 completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                                                     if (error) {
                                                         NSLog(@"%@", error);
@@ -98,20 +71,42 @@
                                                         NSLog(@"%@", httpResponse);
                                                     }
                                                 }];
-    [dataTaskFlightsOneWay resume];
+    [dataTaskRoundTrip resume];
     
-    // car Rental Prices
-    NSDictionary *headersCars = @{ @"X-RapidAPI-Key": @"2ebe338c7fmsha84e37a2c76338dp16b94djsn34264f5722a0",
-                               @"X-RapidAPI-Host": @"priceline-com.p.rapidapi.com" };
+    // search one way flights
+    NSDictionary *headersOneWayFlights = @{ @"X-RapidAPI-Key": @"2ebe338c7fmsha84e37a2c76338dp16b94djsn34264f5722a0",
+                               @"X-RapidAPI-Host": @"priceline-com-provider.p.rapidapi.com" };
 
-    NSMutableURLRequest *requestCars = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://priceline-com.p.rapidapi.com/cars/SEA?pickup_date=2021-01-31T12%3A00&return_date=2021-02-10T12%3A00"]
+    NSMutableURLRequest *requestOneWayFlights = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://priceline-com-provider.p.rapidapi.com/v2/flight/departures?sid=iSiX639&departure_date=2022-06-21&adults=1&origin_airport_code=YWG&destination_airport_code=JFK"]
+                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                       timeoutInterval:10.0];
+    [requestOneWayFlights setHTTPMethod:@"GET"];
+    [requestOneWayFlights setAllHTTPHeaderFields:headersOneWayFlights];
+
+    NSURLSession *sessionOneWayFlights = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTaskOneWayFlights = [sessionOneWayFlights dataTaskWithRequest:requestOneWayFlights
+                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                    if (error) {
+                                                        NSLog(@"%@", error);
+                                                    } else {
+                                                        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                                                        NSLog(@"%@", httpResponse);
+                                                    }
+                                                }];
+    [dataTaskOneWayFlights resume];
+    
+    // search car results
+    NSDictionary *headersCars = @{ @"X-RapidAPI-Key": @"2ebe338c7fmsha84e37a2c76338dp16b94djsn34264f5722a0",
+                               @"X-RapidAPI-Host": @"priceline-com-provider.p.rapidapi.com" };
+
+    NSMutableURLRequest *requestCars = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://priceline-com-provider.p.rapidapi.com/v2/cars/resultsRequest?dropoff_time=10%3A00&dropoff_date=04%2F02%2F2022&pickup_time=10%3A00&pickup_date=04%2F01%2F2022&dropoff_city_id=800049480&dropoff_city_string=New%20York&pickup_airport_code=JFK"]
                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy
                                                        timeoutInterval:10.0];
     [requestCars setHTTPMethod:@"GET"];
     [requestCars setAllHTTPHeaderFields:headersCars];
 
     NSURLSession *sessionCars = [NSURLSession sharedSession];
-    NSURLSessionDataTask *dataTaskCars = [sessionCars dataTaskWithRequest:request
+    NSURLSessionDataTask *dataTaskCars = [sessionCars dataTaskWithRequest:requestCars
                                                 completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                                                     if (error) {
                                                         NSLog(@"%@", error);
@@ -121,38 +116,9 @@
                                                     }
                                                 }];
     [dataTaskCars resume];
-    */
-    NSDictionary *headers = @{ @"X-RapidAPI-Key": @"3fcc55202fmshc1444290b76fd80p1efcafjsn78fcd8f96c9b",
-                               @"X-RapidAPI-Host": @"booking-com.p.rapidapi.com" };
-
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://booking-com.p.rapidapi.com/3fcc55202fmshc1444290b76fd80p1efcafjsn78fcd8f96c9b/v1/metadata/exchange-rates?currency=AED&locale=en-gb"]
-                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                                       timeoutInterval:10.0];
-    [request setHTTPMethod:@"GET"];
-    [request setAllHTTPHeaderFields:headers];
-
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
-                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                                    if (error) {
-                                                        NSLog(@"%@", error);
-                                                    } else {
-                                                        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
-                                                        NSLog(@"%@", httpResponse);
-                                                    }
-                                                }];
-    [dataTask resume];
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 // I can't make a generic recomendation system, i have to make three different functions because for each service there is a specifc tag I want to check that is unique to the service
 -(NSArray *)searchHotelResultsDictionary: (NSDictionary *)hotelSearchInformation userHotelRequirmentsDictionary: (NSDictionary *)hotelUserInformation returnArray: (NSMutableArray *)hotelResults{
