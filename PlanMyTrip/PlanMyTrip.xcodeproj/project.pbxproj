@@ -158,37 +158,10 @@
 		010F42742874BD29006D101E /* PlanMyTrip */ = {
 			isa = PBXGroup;
 			children = (
-				010F42B928760E4F006D101E /* TripTypeViewController.h */,
-				010F42BA28760E4F006D101E /* TripTypeViewController.m */,
-				010F42B628760272006D101E /* HomeViewController.h */,
-				010F42B728760272006D101E /* HomeViewController.m */,
-				010F42752874BD29006D101E /* AppDelegate.h */,
-				010F42CA287764C7006D101E /* SelectServicesViewController.m */,
-				010F42C9287764C4006D101E /* SelectServicesViewController.h */,
-				010F42762874BD29006D101E /* AppDelegate.m */,
-				010F42782874BD29006D101E /* SceneDelegate.h */,
-				010F42792874BD29006D101E /* SceneDelegate.m */,
-				010F427B2874BD29006D101E /* ViewController.h */,
-				010F427C2874BD2A006D101E /* ViewController.m */,
+				0167F95E2880A0540085F4C6 /* View Controllers */,
+				0167F95F2880A1760085F4C6 /* Delegate */,
 				010F427E2874BD2A006D101E /* Main.storyboard */,
-				0167F959287CC3C20085F4C6 /* ResultsViewController.h */,
-				0167F95A287CC3C20085F4C6 /* ResultsViewController.m */,
-				0167F956287C9D370085F4C6 /* Cars_Information.h */,
-				0167F957287C9D370085F4C6 /* Cars_Information.m */,
-				0167F953287C9C320085F4C6 /* Hotels_Information.h */,
-				0167F954287C9C320085F4C6 /* Hotels_Information.m */,
-				0167F9432878A1A80085F4C6 /* FlightRequirmentsViewController.h */,
-				0167F9442878A1A80085F4C6 /* FlightRequirmentsViewController.m */,
-				0167F950287C976B0085F4C6 /* Flights_Information.h */,
-				0167F951287C976B0085F4C6 /* Flights_Information.m */,
-				010F42AD2874D905006D101E /* SignInViewController.h */,
-				010F42AE2874D905006D101E /* SignInViewController.m */,
-				0167F9482878B1F10085F4C6 /* HotelRequirementsViewController.m */,
-				0167F94A2878B1F80085F4C6 /* HotelRequirementsViewController.h */,
-				010F42AA2874D8B5006D101E /* SignUpViewController.h */,
-				0167F94F2878F00E0085F4C6 /* CarRequirmentsViewController.h */,
-				0167F94D2878F00B0085F4C6 /* CarRequirmentsViewController.m */,
-				010F42AB2874D8B5006D101E /* SignUpViewController.m */,
+				0167F9602880A1AD0085F4C6 /* Models */,
 				010F42812874BD2B006D101E /* Assets.xcassets */,
 				0167F95D287CE9950085F4C6 /* Property List.plist */,
 				010F42832874BD2B006D101E /* LaunchScreen.storyboard */,
@@ -213,6 +186,58 @@
 				010F429D2874BD2C006D101E /* PlanMyTripUITestsLaunchTests.m */,
 			);
 			path = PlanMyTripUITests;
+			sourceTree = "<group>";
+		};
+		0167F95E2880A0540085F4C6 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				010F42CA287764C7006D101E /* SelectServicesViewController.m */,
+				010F42C9287764C4006D101E /* SelectServicesViewController.h */,
+				010F42B728760272006D101E /* HomeViewController.m */,
+				010F42B628760272006D101E /* HomeViewController.h */,
+				010F42B928760E4F006D101E /* TripTypeViewController.h */,
+				010F42BA28760E4F006D101E /* TripTypeViewController.m */,
+				010F427B2874BD29006D101E /* ViewController.h */,
+				0167F959287CC3C20085F4C6 /* ResultsViewController.h */,
+				0167F95A287CC3C20085F4C6 /* ResultsViewController.m */,
+				010F427C2874BD2A006D101E /* ViewController.m */,
+				0167F9442878A1A80085F4C6 /* FlightRequirmentsViewController.m */,
+				0167F9432878A1A80085F4C6 /* FlightRequirmentsViewController.h */,
+				010F42AD2874D905006D101E /* SignInViewController.h */,
+				010F42AE2874D905006D101E /* SignInViewController.m */,
+				0167F9482878B1F10085F4C6 /* HotelRequirementsViewController.m */,
+				0167F94A2878B1F80085F4C6 /* HotelRequirementsViewController.h */,
+				010F42AA2874D8B5006D101E /* SignUpViewController.h */,
+				010F42AB2874D8B5006D101E /* SignUpViewController.m */,
+				0167F94D2878F00B0085F4C6 /* CarRequirmentsViewController.m */,
+				0167F94F2878F00E0085F4C6 /* CarRequirmentsViewController.h */,
+			);
+			name = "View Controllers";
+			path = "PlanMyTrip/View Controllers";
+			sourceTree = SOURCE_ROOT;
+		};
+		0167F95F2880A1760085F4C6 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				010F42762874BD29006D101E /* AppDelegate.m */,
+				010F42782874BD29006D101E /* SceneDelegate.h */,
+				010F42792874BD29006D101E /* SceneDelegate.m */,
+				010F42752874BD29006D101E /* AppDelegate.h */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		0167F9602880A1AD0085F4C6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0167F951287C976B0085F4C6 /* Flights_Information.m */,
+				0167F950287C976B0085F4C6 /* Flights_Information.h */,
+				0167F954287C9C320085F4C6 /* Hotels_Information.m */,
+				0167F953287C9C320085F4C6 /* Hotels_Information.h */,
+				0167F957287C9D370085F4C6 /* Cars_Information.m */,
+				0167F956287C9D370085F4C6 /* Cars_Information.h */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		5080A95AB6B9AA6F93162B5F /* Pods */ = {

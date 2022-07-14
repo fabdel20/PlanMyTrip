@@ -16,7 +16,8 @@
 @property Hotels_Information *hotelsInfo;
 @end
 
-@implementation HotelRequirementsViewController
+@implementation HotelRequirementsViewController 
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];

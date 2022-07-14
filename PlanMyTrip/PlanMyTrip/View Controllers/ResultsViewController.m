@@ -9,18 +9,22 @@
 #import "CarRequirmentsViewController.h"
 #import "FlightRequirmentsViewController.h"
 #import "HotelRequirementsViewController.h"
+#import "Hotels_Information.h"
 #import <Foundation/Foundation.h>
 
 @interface ResultsViewController ()
-@property (nonatomic) NSDictionary *flightSearchInformation;
+@property (strong, nonnull) NSDictionary *flightSearchInformation;
 @property (nonatomic) NSDictionary *flightUserInformation;
-@property (nonatomic) NSDictionary *carSearchInformation;
+@property (strong, nonnull) NSDictionary *carSearchInformation;
 @property (nonatomic) NSDictionary *carUserInformation;
-@property (nonatomic) NSDictionary *hotelSearchInformation;
-@property (nonatomic) NSDictionary *hotelUserInformation;
+@property (strong, nonnull) NSDictionary *hotelSearchInformation;
+@property (strong, nonatomic) NSDictionary *hotelUserInformation;
 @property (strong, nonatomic) NSMutableArray *hotelResults;
 @property (strong, nonatomic) NSMutableArray *flightsResults;
 @property (strong, nonatomic) NSMutableArray *carResults;
+@property (strong, nonnull) NSHTTPURLResponse *hotelsAPIOutpt;
+@property (strong, nonnull) NSHTTPURLResponse *flightsAPIOutpt;
+@property (strong, nonnull) NSHTTPURLResponse *carsAPIOutpt;
 
 
 @end
@@ -30,6 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // search hotels
+    
     NSDictionary *headers = @{ @"X-RapidAPI-Key": @"2ebe338c7fmsha84e37a2c76338dp16b94djsn34264f5722a0",
                                @"X-RapidAPI-Host": @"priceline-com-provider.p.rapidapi.com" };
 
@@ -45,8 +50,9 @@
                                                     if (error) {
                                                         NSLog(@"%@", error);
                                                     } else {
-                                                        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
-                                                        NSLog(@"%@", httpResponse);
+                                                        self.hotelsAPIOutpt = (NSHTTPURLResponse *) response;
+                                                        self.hotelSearchInformation = self.hotelsAPIOutpt.allHeaderFields;
+                                                        NSLog(@"%@", self.hotelSearchInformation);
                                                     }
                                                 }];
     [dataTask resume];
@@ -67,8 +73,9 @@
                                                     if (error) {
                                                         NSLog(@"%@", error);
                                                     } else {
-                                                        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
-                                                        NSLog(@"%@", httpResponse);
+                                                        self.flightsAPIOutpt = (NSHTTPURLResponse *) response;
+                                                        self.flightSearchInformation = self.flightsAPIOutpt.allHeaderFields;
+                                                        NSLog(@"%@", self.flightSearchInformation);
                                                     }
                                                 }];
     [dataTaskRoundTrip resume];
@@ -89,8 +96,9 @@
                                                     if (error) {
                                                         NSLog(@"%@", error);
                                                     } else {
-                                                        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
-                                                        NSLog(@"%@", httpResponse);
+                                                        self.flightsAPIOutpt = (NSHTTPURLResponse *) response;
+                                                        self.flightSearchInformation = self.flightsAPIOutpt.allHeaderFields;
+                                                        NSLog(@"%@", self.flightSearchInformation);
                                                     }
                                                 }];
     [dataTaskOneWayFlights resume];
@@ -111,8 +119,9 @@
                                                     if (error) {
                                                         NSLog(@"%@", error);
                                                     } else {
-                                                        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
-                                                        NSLog(@"%@", httpResponse);
+                                                        self.carsAPIOutpt = (NSHTTPURLResponse *) response;
+                                                        self.carSearchInformation = self.carsAPIOutpt.allHeaderFields;
+                                                        NSLog(@"%@", self.carSearchInformation);
                                                     }
                                                 }];
     [dataTaskCars resume];
