@@ -66,7 +66,7 @@
     [self fillHotelUserInformation:_hotelsInfo fillDict:_hotelUserInformation];
     [self fillFlightUserInformation:_flightsInfo fillDict:_flightUserInformation];
     
-    NSDictionary *headers = @{ @"X-RapidAPI-Key": @"2ebe338c7fmsha84e37a2c76338dp16b94djsn34264f5722a0",
+    NSDictionary *headers = @{ @"X-RapidAPI-Key": @"",
                                @"X-RapidAPI-Host": @"priceline-com-provider.p.rapidapi.com" };
     
     NSString *urlHotels = @"https://priceline-com-provider.p.rapidapi .com/v1/hotels/search?sort_order=HDR&location_id=3000035821&date_checkout=2022-11-16&date_checkin=2022-11-15&star_rating_ids=3.0%2C3.5%2C4.0%2C4.5%2C5.0&rooms_number=1&amenities_ids=FINTRNT%2CFBRKFST";
@@ -103,7 +103,7 @@
     [dataTask resume];
     
     // search roundtrip flights
-    NSDictionary *headersRoundTrip = @{ @"X-RapidAPI-Key": @"2ebe338c7fmsha84e37a2c76338dp16b94djsn34264f5722a0",
+    NSDictionary *headersRoundTrip = @{ @"X-RapidAPI-Key": @"",
                                @"X-RapidAPI-Host": @"priceline-com-provider.p.rapidapi.com" };
 
     NSString *urlFlights = @"https://priceline-com-provider.p.rapidapi.com/v2/flight/roundTrip?departure_date=2021-12-21%2C2021-12-25&adults=1&sid=iSiX639&destination_airport_code=JFK%2CYWG&origin_airport_code=YWG%2CJFK";
@@ -136,7 +136,7 @@
     [dataTaskRoundTrip resume];
     
     // search one way flights
-    NSDictionary *headersOneWayFlights = @{ @"X-RapidAPI-Key": @"2ebe338c7fmsha84e37a2c76338dp16b94djsn34264f5722a0",
+    NSDictionary *headersOneWayFlights = @{ @"X-RapidAPI-Key": @"",
                                @"X-RapidAPI-Host": @"priceline-com-provider.p.rapidapi.com" };
     
     NSString *urlFlightsOneWay = @"https://priceline-com-provider.p.rapidapi.com/v2/flight/departures?sid=iSiX639&departure_date=2022-06-21&adults=1&origin_airport_code=YWG&destination_airport_code=JFK";
@@ -170,7 +170,7 @@
     [dataTaskOneWayFlights resume];
     
     // search car results
-    NSDictionary *headersCars = @{ @"X-RapidAPI-Key": @"2ebe338c7fmsha84e37a2c76338dp16b94djsn34264f5722a0",
+    NSDictionary *headersCars = @{ @"X-RapidAPI-Key": @"",
                                @"X-RapidAPI-Host": @"priceline-com-provider.p.rapidapi.com" };
     
     NSString *urlCars = @"https://priceline-com-provider.p.rapidapi.com/v2/cars/resultsRequest?dropoff_time=10%3A00&dropoff_date=04%2F02%2F2022&pickup_time=10%3A01&pickup_date=04%2F01%2F2022&dropoff_city_id=800049480&dropoff_city_string=New%20York&pickup_airport_code=JFK";
