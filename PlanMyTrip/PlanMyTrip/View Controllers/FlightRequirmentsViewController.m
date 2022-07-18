@@ -14,7 +14,7 @@
 @property (strong, nonatomic) IBOutlet UIDatePicker *returnDate;
 @property (strong, nonatomic) IBOutlet UITextField *numberOfTravelers;
 @property (strong, nonatomic) IBOutlet UIButton *cabin;
-@property Flights_Information *flightsInfo;
+
 
 @end
 
@@ -23,12 +23,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    _flightsInfo.departureCity = (NSString *) _departureCity;
-    _flightsInfo.arrivalCity = (NSString *) _arrivalCity;
-    _flightsInfo.departureDate = (NSDate *) _departingDate.date;
-    _flightsInfo.returnDate = (NSDate *) _returnDate.date;
-    _flightsInfo.numberOfTravelers = (int) _numberOfTravelers;
-    _flightsInfo.cabin = (NSString *) _cabin;
+    self.flightsInfo.departureCity = (NSString *) _departureCity;
+    self.flightsInfo.arrivalCity = (NSString *) _arrivalCity;
+    self.flightsInfo.departureDate = (NSDate *) _departingDate.date;
+    self.flightsInfo.returnDate = (NSDate *) _returnDate.date;
+    self.flightsInfo.numberOfTravelers = (int) _numberOfTravelers;
+    self.flightsInfo.cabin = (NSString *) _cabin;
 }
 
 

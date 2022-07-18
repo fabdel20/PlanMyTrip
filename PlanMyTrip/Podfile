@@ -7,7 +7,8 @@ target 'PlanMyTrip' do
 
   # Pods for PlanMyTrip
   pod 'Parse'
-
+  pod 'AFNetworking'
+  
   target 'PlanMyTripTests' do
     inherit! :search_paths
     # Pods for testing

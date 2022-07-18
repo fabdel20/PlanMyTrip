@@ -6,11 +6,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Cars_Information.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CarRequirmentsViewController : UIViewController
-
+@property Cars_Information *carInfo;
 @end
 
 NS_ASSUME_NONNULL_END
