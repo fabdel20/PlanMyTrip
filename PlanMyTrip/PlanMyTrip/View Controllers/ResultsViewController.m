@@ -22,9 +22,6 @@
 @property (strong, nonatomic) NSMutableArray *hotelResults;
 @property (strong, nonatomic) NSMutableArray *flightsResults;
 @property (strong, nonatomic) NSMutableArray *carResults;
-@property (strong, nonnull) NSHTTPURLResponse *hotelsAPIOutpt;
-@property (strong, nonnull) NSHTTPURLResponse *flightsAPIOutpt;
-@property (strong, nonnull) NSHTTPURLResponse *carsAPIOutpt;
 
 
 @end
@@ -61,8 +58,7 @@
                                                     if (error) {
                                                         NSLog(@"%@", error);
                                                     } else {
-                                                        self.hotelsAPIOutpt = (NSHTTPURLResponse *) response;
-                                                        self.hotelSearchInformation = self.hotelsAPIOutpt.allHeaderFields;
+                                                        self.hotelSearchInformation = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
                                                         NSLog(@"%@", self.hotelSearchInformation);
                                                     }
                                                 }];
@@ -95,9 +91,7 @@
                                                     if (error) {
                                                         NSLog(@"%@", error);
                                                     } else {
-                                                        self.flightsAPIOutpt = (NSHTTPURLResponse *) response;
-                                                        self.flightSearchInformation = self.flightsAPIOutpt.allHeaderFields;
-                                                        NSLog(@"%@", self.flightSearchInformation);
+                                                        self.flightSearchInformation = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];;
                                                     }
                                                 }];
     [dataTaskRoundTrip resume];
@@ -130,9 +124,7 @@
                                                     if (error) {
                                                         NSLog(@"%@", error);
                                                     } else {
-                                                        self.flightsAPIOutpt = (NSHTTPURLResponse *) response;
-                                                        self.flightSearchInformation = self.flightsAPIOutpt.allHeaderFields;
-                                                        NSLog(@"%@", self.flightSearchInformation);
+                                                        self.flightSearchInformation = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];;
                                                     }
                                                 }];
     [dataTaskOneWayFlights resume];
@@ -177,9 +169,7 @@
                                                     if (error) {
                                                         NSLog(@"%@", error);
                                                     } else {
-                                                        self.carsAPIOutpt = (NSHTTPURLResponse *) response;
-                                                        self.carSearchInformation = self.carsAPIOutpt.allHeaderFields;
-                                                        NSLog(@"%@", self.carSearchInformation);
+                                                        self.carSearchInformation = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];;
                                                     }
                                                 }];
     [dataTaskCars resume];
