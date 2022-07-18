@@ -225,7 +225,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mC7-8w-JEa">
-                                <rect key="frame" x="150" y="329" width="114" height="61"/>
+                                <rect key="frame" x="150" y="460" width="114" height="61"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Log in" cornerStyle="medium">
@@ -236,6 +236,15 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="logInButton:" destination="cjG-PL-MKb" eventType="touchUpInside" id="iv5-y8-oE9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WOM-Dn-sNt">
+                                <rect key="frame" x="20" y="310" width="192" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Reset Password"/>
+                                <connections>
+                                    <action selector="forgotPassword:" destination="cjG-PL-MKb" eventType="touchUpInside" id="AZy-TR-gpm"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -251,7 +260,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k0H-zz-1uh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2222" y="187"/>
+            <point key="canvasLocation" x="2221.739130434783" y="186.83035714285714"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="9IN-3a-qyJ">
