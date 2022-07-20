@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *destination;
 @property (nonatomic, strong) NSDate *arrivalDate;
 @property (nonatomic, strong) NSDate *departureDate;
-@property (nonatomic) int numberOfGuests;
+@property (nonatomic, strong) NSString *numberOfGuests;
 
 @end
 

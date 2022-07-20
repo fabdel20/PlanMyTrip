@@ -20,7 +20,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *JSONLabel;
 @property (strong, nonnull) NSDictionary *carSearchInformation;
 @property (nonatomic) NSMutableDictionary *carUserInformation;
-@property (strong, nonnull) NSDictionary *hotelSearchInformation;
 @property (strong, nonatomic) NSMutableDictionary *hotelUserInformation;
 @property (strong, nonatomic) NSMutableArray *hotelResults;
 @property (strong, nonatomic) NSMutableArray *flightsResults;
@@ -28,10 +27,6 @@
 @property (strong, nonnull) NSHTTPURLResponse *hotelsAPIOutpt;
 @property (strong, nonnull) NSHTTPURLResponse *flightsAPIOutpt;
 @property (strong, nonnull) NSHTTPURLResponse *carsAPIOutpt;
-
-@property (nonatomic, retain) Flights_Information *flightsInfo;
-@property (nonatomic, retain) Hotels_Information *hotelsInfo;
-@property (nonatomic, retain) Cars_Information *carsInfo;
 
 @end
 
@@ -60,11 +55,47 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSDictionary *headers = @{ @"X-RapidAPI-Key": @"SIGN-UP-FOR-KEY",
+                               @"X-RapidAPI-Host": @"priceline-com-provider.p.rapidapi.com" };
+
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://priceline-com-provider.p.rapidapi.com/v1/hotels/search?sort_order=HDR&location_id=3000035821&date_checkout=2022-11-16&date_checkin=2022-11-15&star_rating_ids=3.0%2C3.5%2C4.0%2C4.5%2C5.0&rooms_number=1&amenities_ids=FINTRNT%2CFBRKFST"]
+                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                       timeoutInterval:10.0];
+    [request setHTTPMethod:@"GET"];
+    [request setAllHTTPHeaderFields:headers];
+
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
+                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                    if (error) {
+                                                        NSLog(@"%@", error);
+                                                    } else {
+                                                        self.hotelSearchInformation = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+                                                        NSLog(@"%@", self.hotelSearchInformation);
+                                                    }
+                                                }];
+    [dataTask resume];
+    //[self searchHotelResultsDictionary: self.hotelSearchInformation returnArray: self.hotelResults];
+    
+    
+    NSLog(@"%@", self.flightUserInfo.departureCity);
+    NSLog(@"%@", self.flightUserInfo.departureDate);
+    NSLog(@"%@", self.flightUserInfo.arrivalCity);
+    NSLog(@"%@", self.flightUserInfo.returnDate);
+    NSLog(@"%@", self.flightUserInfo.numberOfTravelers);
+    NSLog(@"%@", self.carUserInfo.location);
+    NSLog(@"%@", self.carUserInfo.pickUpDate);
+    NSLog(@"%@", self.carUserInfo.dropOffDate);
+    NSLog(@"%@", self.hotelUserInfo.destination);
+    NSLog(@"%@", self.hotelUserInfo.arrivalDate);
+    NSLog(@"%@", self.hotelUserInfo.departureDate);
+    NSLog(@"%@", self.hotelUserInfo.numberOfGuests);
+    /*
     // search hotels
     
-    [self fillCarUserInformation:_carsInfo fillDict:_carUserInformation];
-    [self fillHotelUserInformation:_hotelsInfo fillDict:_hotelUserInformation];
-    [self fillFlightUserInformation:_flightsInfo fillDict:_flightUserInformation];
+    [self fillCarUserInformation: self.carUserInfo fillDict:_carUserInformation];
+    [self fillHotelUserInformation: self.hotelUserInfo fillDict:_hotelUserInformation];
+    [self fillFlightUserInformation: self.flightUserInfo fillDict:_flightUserInformation];
     
     NSDictionary *headers = @{ @"X-RapidAPI-Key": @"",
                                @"X-RapidAPI-Host": @"priceline-com-provider.p.rapidapi.com" };
@@ -75,13 +106,13 @@
     
 
     // switch checkout date
-    [urlHotelsMutable replaceCharactersInRange: [urlHotelsMutable rangeOfString: @"date_checkout=2022-11-16"] withString:[NSString stringWithFormat:@"date_checkout=%@", _hotelsInfo.departureDate]];
+    [urlHotelsMutable replaceCharactersInRange: [urlHotelsMutable rangeOfString: @"date_checkout=2022-11-16"] withString:[NSString stringWithFormat:@"date_checkout=%@", self.hotelUserInfo.departureDate]];
     
     // switch check in date
-    [urlHotelsMutable replaceCharactersInRange: [urlHotelsMutable rangeOfString: @"date_checkin=2022-11-15"] withString:[NSString stringWithFormat:@"date_checkin=%@", _hotelsInfo.arrivalDate]];
+    [urlHotelsMutable replaceCharactersInRange: [urlHotelsMutable rangeOfString: @"date_checkin=2022-11-15"] withString:[NSString stringWithFormat:@"date_checkin=%@", self.hotelUserInfo.arrivalDate]];
     
     // switch location_id
-    [urlHotelsMutable replaceCharactersInRange: [urlHotelsMutable rangeOfString: @"location_id=3000035821"] withString:[NSString stringWithFormat:@"location_id=%@", _hotelsInfo.destination]];
+    [urlHotelsMutable replaceCharactersInRange: [urlHotelsMutable rangeOfString: @"location_id=3000035821"] withString:[NSString stringWithFormat:@"location_id=%@", self.hotelUserInfo.destination]];
    
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://priceline-com-provider.p.rapidapi .com/v1/hotels/search?sort_order=HDR&location_id=3000035821&date_checkout=2022-11-16&date_checkin=2022-11-15&star_rating_ids=3.0%2C3.5%2C4.0%2C4.5%2C5.0&rooms_number=1&amenities_ids=FINTRNT%2CFBRKFST"]
@@ -103,6 +134,28 @@
     [dataTask resume];
     
     // search roundtrip flights
+     
+     NSDictionary *headers = @{ @"X-RapidAPI-Key": @"2ebe338c7fmsha84e37a2c76338dp16b94djsn34264f5722a0",
+                                @"X-RapidAPI-Host": @"priceline-com-provider.p.rapidapi.com" };
+
+     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://priceline-com-provider.p.rapidapi.com/v2/flight/roundTrip?departure_date=2022-12-21%2C2022-12-25&adults=1&sid=iSiX639&destination_airport_code=JFK%2CYWG&origin_airport_code=YWG%2CJFK"]
+                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                        timeoutInterval:10.0];
+     [request setHTTPMethod:@"GET"];
+     [request setAllHTTPHeaderFields:headers];
+
+     NSURLSession *session = [NSURLSession sharedSession];
+     NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
+                                                 completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                     if (error) {
+                                                         NSLog(@"%@", error);
+                                                     } else {
+                                                         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                                                         NSLog(@"%@", httpResponse);
+                                                     }
+                                                 }];
+     [dataTask resume];
+    ==================================================== above is API call i want to use
     NSDictionary *headersRoundTrip = @{ @"X-RapidAPI-Key": @"",
                                @"X-RapidAPI-Host": @"priceline-com-provider.p.rapidapi.com" };
 
@@ -111,13 +164,13 @@
     NSMutableString *urlFlightsMutable = (NSMutableString *)urlFlights;
     
     // switch departure date
-    [urlFlightsMutable replaceCharactersInRange: [urlFlightsMutable rangeOfString: @"departure_date=2021-12-21"] withString:[NSString stringWithFormat:@"departure_date=%@", _flightsInfo.departureDate]];
+    [urlFlightsMutable replaceCharactersInRange: [urlFlightsMutable rangeOfString: @"departure_date=2021-12-21"] withString:[NSString stringWithFormat:@"departure_date=%@", self.flightUserInfo.departureDate]];
     
     // switch destination_airport_code
-    [urlFlightsMutable replaceCharactersInRange: [urlFlightsMutable rangeOfString:@"destination_airport_code=JFK%2CYWG"] withString:[NSString stringWithFormat:@"destination_airport_code=%@", _flightsInfo.arrivalCity]];
+    [urlFlightsMutable replaceCharactersInRange: [urlFlightsMutable rangeOfString:@"destination_airport_code=JFK%2CYWG"] withString:[NSString stringWithFormat:@"destination_airport_code=%@", self.flightUserInfo.arrivalCity]];
     
     // switch origin_airport_code
-    [urlFlightsMutable replaceCharactersInRange: [urlFlightsMutable rangeOfString: @"origin_airport_code=YWG%2CJFK"] withString:[NSString stringWithFormat:@"origin_airport_code=%@", _flightsInfo.departureCity]];
+    [urlFlightsMutable replaceCharactersInRange: [urlFlightsMutable rangeOfString: @"origin_airport_code=YWG%2CJFK"] withString:[NSString stringWithFormat:@"origin_airport_code=%@", self.flightUserInfo.departureCity]];
     
     NSMutableURLRequest *requestRoundTrip = [NSMutableURLRequest requestWithURL:[NSURL URLWithString: urlFlightsMutable] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0];
     [requestRoundTrip setHTTPMethod:@"GET"];
@@ -144,13 +197,13 @@
     NSMutableString *urlFlightsOneWayMutable = (NSMutableString *)urlFlightsOneWay;
     
     // switch departure date
-    [urlFlightsOneWayMutable replaceCharactersInRange: [urlFlightsOneWayMutable rangeOfString:@"departure_date=2022-06-21"] withString:[NSString stringWithFormat:@"departure_date=%@", _flightsInfo.departureDate]];
+    [urlFlightsOneWayMutable replaceCharactersInRange: [urlFlightsOneWayMutable rangeOfString:@"departure_date=2022-06-21"] withString:[NSString stringWithFormat:@"departure_date=%@", self.flightUserInfo.departureDate]];
     
     // switch destination_airport_code
-    [urlFlightsOneWayMutable replaceCharactersInRange: [urlFlightsOneWayMutable rangeOfString:@"destination_airport_code=JFK"] withString:[NSString stringWithFormat:@"destination_airport_code=%@", _flightsInfo.arrivalCity]];
+    [urlFlightsOneWayMutable replaceCharactersInRange: [urlFlightsOneWayMutable rangeOfString:@"destination_airport_code=JFK"] withString:[NSString stringWithFormat:@"destination_airport_code=%@", self.flightUserInfo.arrivalCity]];
     
     // switch origin_airport_code
-    [urlFlightsOneWayMutable replaceCharactersInRange: [urlFlightsOneWayMutable rangeOfString:@"origin_airport_code=YWG"] withString:[NSString stringWithFormat:@"origin_airport_code=%@", _flightsInfo.departureCity]];
+    [urlFlightsOneWayMutable replaceCharactersInRange: [urlFlightsOneWayMutable rangeOfString:@"origin_airport_code=YWG"] withString:[NSString stringWithFormat:@"origin_airport_code=%@", self.flightUserInfo.departureCity]];
     
     NSMutableURLRequest *requestOneWayFlights = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlFlightsOneWayMutable] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0];
     
@@ -178,19 +231,19 @@
     NSMutableString *urlCarsMutable = (NSMutableString *)urlCars;
     
     // switch dropoff date
-    [urlCarsMutable replaceCharactersInRange: [urlCarsMutable rangeOfString: @"dropoff_date=04%2F02%2F2022"] withString:[NSString stringWithFormat:@"dropoff_date=%@", _carsInfo.dropOffDate]];
+    [urlCarsMutable replaceCharactersInRange: [urlCarsMutable rangeOfString: @"dropoff_date=04%2F02%2F2022"] withString:[NSString stringWithFormat:@"dropoff_date=%@", self.carUserInfo.dropOffDate]];
     
     // switch pick up date
-    [urlCarsMutable replaceCharactersInRange: [urlCarsMutable rangeOfString: @"pickup_date=04%2F01%2F2022"] withString:[NSString stringWithFormat:@"pickup_date=%@", _carsInfo.pickUpDate]];
+    [urlCarsMutable replaceCharactersInRange: [urlCarsMutable rangeOfString: @"pickup_date=04%2F01%2F2022"] withString:[NSString stringWithFormat:@"pickup_date=%@", self.carUserInfo.pickUpDate]];
     
     // switch dropoff_city_id
-    [urlCarsMutable replaceCharactersInRange: [urlCarsMutable rangeOfString: @"dropoff_city_id=800049480"] withString:[NSString stringWithFormat:@"dropoff_city_id=%@", _carsInfo.location]];
+    [urlCarsMutable replaceCharactersInRange: [urlCarsMutable rangeOfString: @"dropoff_city_id=800049480"] withString:[NSString stringWithFormat:@"dropoff_city_id=%@", self.carUserInfo.location]];
     
     // switch dropoff_city_string
-    [urlCarsMutable replaceCharactersInRange: [urlCarsMutable rangeOfString: @"dropoff_city_string=New%20York"] withString:[NSString stringWithFormat:@"dropoff_city_string=%@", _carsInfo.location]];
+    [urlCarsMutable replaceCharactersInRange: [urlCarsMutable rangeOfString: @"dropoff_city_string=New%20York"] withString:[NSString stringWithFormat:@"dropoff_city_string=%@", self.carUserInfo.location]];
     
     // switch pickup_airport_code
-    [urlCarsMutable replaceCharactersInRange: [urlCarsMutable rangeOfString: @"pickup_airport_code=JFK"] withString:[NSString stringWithFormat:@"pickup_airport_code=%@", _carsInfo.location]];
+    [urlCarsMutable replaceCharactersInRange: [urlCarsMutable rangeOfString: @"pickup_airport_code=JFK"] withString:[NSString stringWithFormat:@"pickup_airport_code=%@", self.carUserInfo.location]];
     
     NSMutableURLRequest *requestCars = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlCarsMutable] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0];
     
@@ -208,40 +261,146 @@
                                                     }
                                                 }];
     [dataTaskCars resume];
+    [self searchHotelResultsDictionary: _hotelSearchInformation userHotelRequirmentsDictionary:_hotelUserInformation returnArray:_hotelResults];
+     
+    */
 }
 
 
 
 // I can't make a generic recomendation system, i have to make three different functions because for each service there is a specifc tag I want to check that is unique to the service
--(NSArray *)searchHotelResultsDictionary: (NSDictionary *)hotelSearchInformation userHotelRequirmentsDictionary: (NSDictionary *)hotelUserInformation returnArray: (NSMutableArray *)hotelResults{
-    /*
-     [hotelUserInfo setObject:@"departure_date" forKey: hotelInfo.departureDate];
-     [hotelUserInfo setObject:@"destination" forKey: hotelInfo.destination];
-     [hotelUserInfo setObject:@"arrival_date" forKey: hotelInfo.arrivalDate];
-     find the three cheapest results
-     */
-    NSString *hotelValues = [hotelSearchInformation objectForKey:@"hotels"];
-    int minPrice = 0; 
-    for(id key in hotelSearchInformation){
-        NSLog(@"key=%@ value=%@", key, [hotelSearchInformation objectForKey:key]);
+-(NSArray *)searchHotelResultsDictionary: (NSDictionary *)hotelSearchInformation returnArray: (NSMutableArray *)hotelResults{
+    NSArray *hotelValues = [hotelSearchInformation objectForKey:@"hotels"];
+    
+    double minPrice = INT_MAX;
+    
+    for(NSDictionary *hotel in hotelValues){
+        NSDictionary *rateSummary = [hotel objectForKey:@"ratesSummary"];
+        double price = (int64_t)[rateSummary objectForKey:@"minPrice"];
+        if(price < minPrice){
+            minPrice = price;
+        }
     }
+    
+    int count = 0;
+    for(NSDictionary *hotel in hotelValues){
+        NSString *hotelName = [hotel objectForKey:@"name"];
+        double rating = (int64_t)[hotel objectForKey:@"starRating"];
+        if(rating >= 3.0){
+            NSDictionary *rateSummary = [hotel objectForKey:@"ratesSummary"];
+            double price = (int64_t)[rateSummary objectForKey:@"minPrice"];
+            if((minPrice = price) || (price <= minPrice + 100)){
+                if(count < 5){
+                    NSMutableDictionary *newAdd = [NSMutableDictionary alloc];
+                    [newAdd setObject:@"name" forKey:hotelName];
+                    NSNumber *ratingdDub = [NSNumber numberWithDouble:rating];
+                    [newAdd setObject:@"rating" forKey:[ratingdDub stringValue]];
+                    NSNumber *priceDub = [NSNumber numberWithDouble:price];
+                    [newAdd setObject:@"price" forKey:[priceDub stringValue]];
+                    [hotelResults addObject:newAdd];
+                    count++;
+                }
+            }
+        }
+    }
+    
     return hotelResults;
 }
 
--(NSArray *)searchFlightResultsDictionary: (NSDictionary *)flightSearchInformation userFlightRequirmentsDictionary: (NSDictionary *)flightUserInformation returnArray: (NSMutableArray *)flightResults{
+-(NSArray *)searchFlightResultsDictionary: (NSDictionary *)flightSearchInformation returnArray: (NSMutableArray *)flightResults{
+    NSDictionary *sResults = [flightSearchInformation objectForKey:@"results"];
+    NSDictionary *spec = [sResults objectForKey:@"air_search_rsp"];
+    NSDictionary *importantResultInfo = [spec objectForKey:@"filtered_trip_summary"];
+    double minPrice = (int64_t)[importantResultInfo objectForKey:@"minTotalFareWithTaxesAndFees"];
+    double minDuration = (int64_t)[importantResultInfo objectForKey:@"minDuration"];
+    double maxDuration = (int64_t)[importantResultInfo objectForKey:@"maxDuration"];
+    
+    NSDictionary *priced_itinerary = [spec objectForKey:@"priced_itinerary"];
+    
     int count = 0;
-    int minCount = 0;
-    for(id key in flightSearchInformation){
-        if([flightSearchInformation objectForKey:key] == [flightUserInformation objectForKey:key]){
-            count = count + 1;
+    for(id itinerary in priced_itinerary){
+        NSDictionary *value = [priced_itinerary objectForKey:itinerary];
+        NSDictionary *pricingInfo = [value objectForKey:@"pricing_info"];
+        NSString *ticketingAirline = [pricingInfo objectForKey:@"ticketing_airline"];
+        double price = (int64_t)[pricingInfo objectForKey:@"total_fare"];
+        double duration = ((int64_t)[value objectForKey:@"total_trip_duration_in_hours"]) * 60;
+        
+        if((minDuration <= duration) && (duration <= (minDuration + maxDuration)/2)){
+            if((minPrice <= price) && (price <= minPrice + 100)){
+                if(count < 5){
+                    NSMutableDictionary *newAdd = [NSMutableDictionary alloc];
+                    [newAdd setObject:@"Ticketing_Airline" forKey:ticketingAirline];
+                    NSNumber *priceDub = [NSNumber numberWithDouble:price];
+                    [newAdd setObject:@"Price" forKey:[priceDub stringValue]];
+                    NSNumber *durDub = [NSNumber numberWithDouble:duration];
+                    [newAdd setObject:@"Duration" forKey:[durDub stringValue]];
+                    NSDictionary *itin_ref = [pricingInfo objectForKey:@"itinerary_reference"];
+                    NSString *group_id = [itin_ref objectForKey:@"group_id"];
+                    NSString *ref_id = [itin_ref objectForKey:@"ref_id"];
+                    NSString *ref_key = [itin_ref objectForKey:@"ref_key"];
+                    NSString *token = [itin_ref objectForKey:@"token"];
+                    [newAdd setObject:@"group_id" forKey:group_id];
+                    [newAdd setObject:@"ref_id" forKey:ref_id];
+                    [newAdd setObject:@"ref_key" forKey:ref_key];
+                    [newAdd setObject:@"token" forKey:token];
+                    [flightResults addObject:newAdd];
+                    count++; 
+                }
+            }
         }
     }
-    if(count < minCount){
-        minCount = count;
-        count = 0;
-        NSString *airlineName = [flightSearchInformation objectForKey:@"flight_id"];
-        [flightResults addObject:(id)airlineName];
-    }
     return flightResults;
+}
+
+-(NSArray *)searchCarResultsDictionary: (NSDictionary *)carSearchInformation returnArray: (NSMutableArray *)carResults{
+    NSDictionary *vehicleRates = [carSearchInformation objectForKey:@"vehicleRates"];
+    
+    double minPrice = INT_MAX;
+    
+    for(id car in vehicleRates){
+        NSDictionary *rates = [car objectForKey:@"rates"];
+        NSDictionary *ratesInd = [rates objectForKey:@"USD"];
+        double price = (int64_t)[ratesInd objectForKey:@"totalAllInclusivePrice"];
+        if(price < minPrice){
+            minPrice = price;
+        }
+    }
+    int count = 0;
+    for(id car in vehicleRates){
+        NSDictionary *rates = [car objectForKey:@"rates"];
+        NSDictionary *ratesInd = [rates objectForKey:@"USD"];
+        double price = (int64_t)[ratesInd objectForKey:@"totalAllInclusivePrice"];
+        NSString *cancelation = [car objectForKey:@"cancellationAllowed"];
+        NSString *cancelationFee = [car objectForKey:@"freeCancellation"];
+        NSDictionary *carInfo = [car objectForKey:@"vehicleInfo"];
+        NSString *automatic = [carInfo objectForKey:@"automatic"];
+        double numPeople = (int64_t)[carInfo objectForKey:@"peopleCapacity"];
+        NSString *description = [carInfo objectForKey:@"description"];
+        NSString *idName = [car objectForKey:@"id"];
+        
+        if(minPrice <= price && price <= minPrice+100){
+            if([cancelation  isEqual: @"true"] && [cancelationFee isEqual:@"true"]){
+                if([automatic isEqual:@"true"]){
+                    if(numPeople >= 5.0){
+                        if(count < 5){
+                            NSMutableDictionary *newAdd = [NSMutableDictionary alloc];
+                            [newAdd setObject:@"id" forKey:idName];
+                            [newAdd setObject:@"description" forKey:description];
+                            [newAdd setObject:@"cancellation_policy" forKey:cancelation];
+                            [newAdd setObject:@"cancellation_fee" forKey:cancelationFee];
+                            [newAdd setObject:@"automatic" forKey:automatic];
+                            NSNumber *priceDub = [NSNumber numberWithDouble:price];
+                            [newAdd setObject:@"price" forKey:[priceDub stringValue]];
+                            NSNumber *pplDub = [NSNumber numberWithDouble:numPeople];
+                            [newAdd setObject:@"number_of_passengers" forKey:[pplDub stringValue]];
+                            [carResults addObject:newAdd];
+                            count++;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return carResults;
 }
 @end

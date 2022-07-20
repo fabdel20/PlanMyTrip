@@ -11,7 +11,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FlightRequirmentsViewController : UIViewController
-@property Flights_Information *flightsInfo;
+
+@property (nonatomic)Flights_Information *flightsInfoSaved;
+
 @end
 
 NS_ASSUME_NONNULL_END

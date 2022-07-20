@@ -569,8 +569,9 @@
                                     <color key="baseForegroundColor" systemColor="systemBlueColor"/>
                                 </buttonConfiguration>
                                 <connections>
+                                    <action selector="saveInfo:" destination="uax-zJ-ikm" eventType="touchUpInside" id="a35-b6-87R"/>
                                     <action selector="signUpButton:" destination="Bly-Jr-e6L" eventType="touchUpInside" id="WdF-Tf-bDa"/>
-                                    <segue destination="Fg1-Hc-iZ7" kind="show" id="g6N-VN-XLp"/>
+                                    <segue destination="Fg1-Hc-iZ7" kind="show" identifier="flightToHotel" id="dgz-3d-cZN"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -667,8 +668,9 @@
                                     <color key="baseForegroundColor" systemColor="systemBlueColor"/>
                                 </buttonConfiguration>
                                 <connections>
+                                    <action selector="saveData:" destination="Fg1-Hc-iZ7" eventType="touchUpInside" id="kls-dq-g7V"/>
                                     <action selector="signUpButton:" destination="Bly-Jr-e6L" eventType="touchUpInside" id="ItQ-Sc-8kP"/>
-                                    <segue destination="Tkp-rf-pKl" kind="show" id="wmp-2p-A34"/>
+                                    <segue destination="Tkp-rf-pKl" kind="show" identifier="hotelToCars" id="wmp-2p-A34"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -685,7 +687,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P0p-4p-Igm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8528.9855072463779" y="-228.34821428571428"/>
+            <point key="canvasLocation" x="8599" y="-228"/>
         </scene>
         <!--Car Requirments View Controller-->
         <scene sceneID="FjR-aV-Qiv">
@@ -750,8 +752,9 @@
                                     <color key="baseForegroundColor" systemColor="systemBlueColor"/>
                                 </buttonConfiguration>
                                 <connections>
+                                    <action selector="saveInfo:" destination="Tkp-rf-pKl" eventType="touchUpInside" id="fTs-6E-BFk"/>
                                     <action selector="signUpButton:" destination="Bly-Jr-e6L" eventType="touchUpInside" id="bj3-eq-cjA"/>
-                                    <segue destination="vlm-xR-d5v" kind="show" id="wDg-lI-TSu"/>
+                                    <segue destination="vlm-xR-d5v" kind="show" identifier="carToResults" id="wDg-lI-TSu"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -767,7 +770,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vNd-t3-AvU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9646" y="-228"/>
+            <point key="canvasLocation" x="9613" y="-228"/>
         </scene>
         <!--Results View Controller-->
         <scene sceneID="gb1-iy-Yfi">
@@ -795,7 +798,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gBt-Tv-oXO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10711.594202898552" y="-228.34821428571428"/>
+            <point key="canvasLocation" x="10564" y="-228"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XyY-kI-4Ur">

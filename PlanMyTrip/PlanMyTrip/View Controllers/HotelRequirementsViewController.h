@@ -7,10 +7,12 @@
 
 #import <UIKit/UIKit.h>
 #import "Hotels_Information.h"
+#import "Flights_Information.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HotelRequirementsViewController : UIViewController
-@property Hotels_Information *hotelsInfo;
+@property (strong, nonatomic) Hotels_Information *hotelsInfoSaved;
+@property (strong, nonatomic) Flights_Information *flightInfoSaved2;
 
 @end
 

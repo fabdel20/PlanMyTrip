@@ -7,10 +7,14 @@
 
 #import <UIKit/UIKit.h>
 #import "Cars_Information.h"
+#import "Flights_Information.h"
+#import "Hotels_Information.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CarRequirmentsViewController : UIViewController
-@property Cars_Information *carInfo;
+@property (strong, nonatomic) Cars_Information *carInfoSaved;
+@property (strong, nonatomic) Flights_Information *flightInfoSaved;
+@property (strong, nonatomic) Hotels_Information *hotelInfoSaved;
 @end
 
 NS_ASSUME_NONNULL_END
