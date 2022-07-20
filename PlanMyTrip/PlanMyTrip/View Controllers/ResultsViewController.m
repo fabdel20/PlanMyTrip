@@ -75,21 +75,7 @@
                                                     }
                                                 }];
     [dataTask resume];
-    //[self searchHotelResultsDictionary: self.hotelSearchInformation returnArray: self.hotelResults];
     
-    
-    NSLog(@"%@", self.flightUserInfo.departureCity);
-    NSLog(@"%@", self.flightUserInfo.departureDate);
-    NSLog(@"%@", self.flightUserInfo.arrivalCity);
-    NSLog(@"%@", self.flightUserInfo.returnDate);
-    NSLog(@"%@", self.flightUserInfo.numberOfTravelers);
-    NSLog(@"%@", self.carUserInfo.location);
-    NSLog(@"%@", self.carUserInfo.pickUpDate);
-    NSLog(@"%@", self.carUserInfo.dropOffDate);
-    NSLog(@"%@", self.hotelUserInfo.destination);
-    NSLog(@"%@", self.hotelUserInfo.arrivalDate);
-    NSLog(@"%@", self.hotelUserInfo.departureDate);
-    NSLog(@"%@", self.hotelUserInfo.numberOfGuests);
     /*
     // search hotels
     
