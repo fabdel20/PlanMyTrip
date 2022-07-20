@@ -270,21 +270,21 @@
     
     int count = 0;
     for(NSDictionary *hotel in hotelValues){
-        NSString *hotelName = [hotel objectForKey:@"name"];
-        double rating = (int64_t)[hotel objectForKey:@"starRating"];
-        if(rating >= 3.0){
-            NSDictionary *rateSummary = [hotel objectForKey:@"ratesSummary"];
-            double price = (int64_t)[rateSummary objectForKey:@"minPrice"];
-            if((minPrice = price) || (price <= minPrice + 100)){
-                if(count < 5){
-                    NSMutableDictionary *newAdd = [NSMutableDictionary alloc];
-                    [newAdd setObject:@"name" forKey:hotelName];
-                    NSNumber *ratingdDub = [NSNumber numberWithDouble:rating];
-                    [newAdd setObject:@"rating" forKey:[ratingdDub stringValue]];
-                    NSNumber *priceDub = [NSNumber numberWithDouble:price];
-                    [newAdd setObject:@"price" forKey:[priceDub stringValue]];
-                    [hotelResults addObject:newAdd];
-                    count++;
+        if(count < 5){
+            NSString *hotelName = [hotel objectForKey:@"name"];
+            double rating = (int64_t)[hotel objectForKey:@"starRating"];
+            if(rating >= 3.0){
+                NSDictionary *rateSummary = [hotel objectForKey:@"ratesSummary"];
+                double price = (int64_t)[rateSummary objectForKey:@"minPrice"];
+                if((minPrice = price) || (price <= minPrice + 100)){
+                        NSMutableDictionary *newAdd = [NSMutableDictionary alloc];
+                        [newAdd setObject:@"name" forKey:hotelName];
+                        NSNumber *ratingdDub = [NSNumber numberWithDouble:rating];
+                        [newAdd setObject:@"rating" forKey:[ratingdDub stringValue]];
+                        NSNumber *priceDub = [NSNumber numberWithDouble:price];
+                        [newAdd setObject:@"price" forKey:[priceDub stringValue]];
+                        [hotelResults addObject:newAdd];
+                        count++;
                 }
             }
         }
@@ -304,33 +304,34 @@
     NSDictionary *priced_itinerary = [spec objectForKey:@"priced_itinerary"];
     
     int count = 0;
+    
     for(id itinerary in priced_itinerary){
-        NSDictionary *value = [priced_itinerary objectForKey:itinerary];
-        NSDictionary *pricingInfo = [value objectForKey:@"pricing_info"];
-        NSString *ticketingAirline = [pricingInfo objectForKey:@"ticketing_airline"];
-        double price = (int64_t)[pricingInfo objectForKey:@"total_fare"];
-        double duration = ((int64_t)[value objectForKey:@"total_trip_duration_in_hours"]) * 60;
-        
-        if((minDuration <= duration) && (duration <= (minDuration + maxDuration)/2)){
-            if((minPrice <= price) && (price <= minPrice + 100)){
-                if(count < 5){
-                    NSMutableDictionary *newAdd = [NSMutableDictionary alloc];
-                    [newAdd setObject:@"Ticketing_Airline" forKey:ticketingAirline];
-                    NSNumber *priceDub = [NSNumber numberWithDouble:price];
-                    [newAdd setObject:@"Price" forKey:[priceDub stringValue]];
-                    NSNumber *durDub = [NSNumber numberWithDouble:duration];
-                    [newAdd setObject:@"Duration" forKey:[durDub stringValue]];
-                    NSDictionary *itin_ref = [pricingInfo objectForKey:@"itinerary_reference"];
-                    NSString *group_id = [itin_ref objectForKey:@"group_id"];
-                    NSString *ref_id = [itin_ref objectForKey:@"ref_id"];
-                    NSString *ref_key = [itin_ref objectForKey:@"ref_key"];
-                    NSString *token = [itin_ref objectForKey:@"token"];
-                    [newAdd setObject:@"group_id" forKey:group_id];
-                    [newAdd setObject:@"ref_id" forKey:ref_id];
-                    [newAdd setObject:@"ref_key" forKey:ref_key];
-                    [newAdd setObject:@"token" forKey:token];
-                    [flightResults addObject:newAdd];
-                    count++; 
+        if(count < 5){
+            NSDictionary *value = [priced_itinerary objectForKey:itinerary];
+            NSDictionary *pricingInfo = [value objectForKey:@"pricing_info"];
+            NSString *ticketingAirline = [pricingInfo objectForKey:@"ticketing_airline"];
+            double price = (int64_t)[pricingInfo objectForKey:@"total_fare"];
+            double duration = ((int64_t)[value objectForKey:@"total_trip_duration_in_hours"]) * 60;
+            
+            if((minDuration <= duration) && (duration <= (minDuration + maxDuration)/2)){
+                if((minPrice <= price) && (price <= minPrice + 100)){
+                        NSMutableDictionary *newAdd = [NSMutableDictionary alloc];
+                        [newAdd setObject:@"Ticketing_Airline" forKey:ticketingAirline];
+                        NSNumber *priceDub = [NSNumber numberWithDouble:price];
+                        [newAdd setObject:@"Price" forKey:[priceDub stringValue]];
+                        NSNumber *durDub = [NSNumber numberWithDouble:duration];
+                        [newAdd setObject:@"Duration" forKey:[durDub stringValue]];
+                        NSDictionary *itin_ref = [pricingInfo objectForKey:@"itinerary_reference"];
+                        NSString *group_id = [itin_ref objectForKey:@"group_id"];
+                        NSString *ref_id = [itin_ref objectForKey:@"ref_id"];
+                        NSString *ref_key = [itin_ref objectForKey:@"ref_key"];
+                        NSString *token = [itin_ref objectForKey:@"token"];
+                        [newAdd setObject:@"group_id" forKey:group_id];
+                        [newAdd setObject:@"ref_id" forKey:ref_id];
+                        [newAdd setObject:@"ref_key" forKey:ref_key];
+                        [newAdd setObject:@"token" forKey:token];
+                        [flightResults addObject:newAdd];
+                        count++;
                 }
             }
         }
@@ -353,34 +354,34 @@
     }
     int count = 0;
     for(id car in vehicleRates){
-        NSDictionary *rates = [car objectForKey:@"rates"];
-        NSDictionary *ratesInd = [rates objectForKey:@"USD"];
-        double price = (int64_t)[ratesInd objectForKey:@"totalAllInclusivePrice"];
-        NSString *cancelation = [car objectForKey:@"cancellationAllowed"];
-        NSString *cancelationFee = [car objectForKey:@"freeCancellation"];
-        NSDictionary *carInfo = [car objectForKey:@"vehicleInfo"];
-        NSString *automatic = [carInfo objectForKey:@"automatic"];
-        double numPeople = (int64_t)[carInfo objectForKey:@"peopleCapacity"];
-        NSString *description = [carInfo objectForKey:@"description"];
-        NSString *idName = [car objectForKey:@"id"];
-        
-        if(minPrice <= price && price <= minPrice+100){
-            if([cancelation  isEqual: @"true"] && [cancelationFee isEqual:@"true"]){
-                if([automatic isEqual:@"true"]){
-                    if(numPeople >= 5.0){
-                        if(count < 5){
-                            NSMutableDictionary *newAdd = [NSMutableDictionary alloc];
-                            [newAdd setObject:@"id" forKey:idName];
-                            [newAdd setObject:@"description" forKey:description];
-                            [newAdd setObject:@"cancellation_policy" forKey:cancelation];
-                            [newAdd setObject:@"cancellation_fee" forKey:cancelationFee];
-                            [newAdd setObject:@"automatic" forKey:automatic];
-                            NSNumber *priceDub = [NSNumber numberWithDouble:price];
-                            [newAdd setObject:@"price" forKey:[priceDub stringValue]];
-                            NSNumber *pplDub = [NSNumber numberWithDouble:numPeople];
-                            [newAdd setObject:@"number_of_passengers" forKey:[pplDub stringValue]];
-                            [carResults addObject:newAdd];
-                            count++;
+        if(count < 5){
+            NSDictionary *rates = [car objectForKey:@"rates"];
+            NSDictionary *ratesInd = [rates objectForKey:@"USD"];
+            double price = (int64_t)[ratesInd objectForKey:@"totalAllInclusivePrice"];
+            NSString *cancelation = [car objectForKey:@"cancellationAllowed"];
+            NSString *cancelationFee = [car objectForKey:@"freeCancellation"];
+            NSDictionary *carInfo = [car objectForKey:@"vehicleInfo"];
+            NSString *automatic = [carInfo objectForKey:@"automatic"];
+            double numPeople = (int64_t)[carInfo objectForKey:@"peopleCapacity"];
+            NSString *description = [carInfo objectForKey:@"description"];
+            NSString *idName = [car objectForKey:@"id"];
+
+            if(minPrice <= price && price <= minPrice+100){
+                if([cancelation  isEqual: @"true"] && [cancelationFee isEqual:@"true"]){
+                    if([automatic isEqual:@"true"]){
+                        if(numPeople >= 5.0){
+                                NSMutableDictionary *newAdd = [NSMutableDictionary alloc];
+                                [newAdd setObject:@"id" forKey:idName];
+                                [newAdd setObject:@"description" forKey:description];
+                                [newAdd setObject:@"cancellation_policy" forKey:cancelation];
+                                [newAdd setObject:@"cancellation_fee" forKey:cancelationFee];
+                                [newAdd setObject:@"automatic" forKey:automatic];
+                                NSNumber *priceDub = [NSNumber numberWithDouble:price];
+                                [newAdd setObject:@"price" forKey:[priceDub stringValue]];
+                                NSNumber *pplDub = [NSNumber numberWithDouble:numPeople];
+                                [newAdd setObject:@"number_of_passengers" forKey:[pplDub stringValue]];
+                                [carResults addObject:newAdd];
+                                count++;
                         }
                     }
                 }
