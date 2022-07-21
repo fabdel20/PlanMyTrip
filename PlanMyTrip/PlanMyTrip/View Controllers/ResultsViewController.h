@@ -15,7 +15,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) Flights_Information *flightUserInfo;
 @property (nonatomic, strong) Hotels_Information *hotelUserInfo;
 @property (nonatomic, strong) Cars_Information *carUserInfo;
-@property (nonatomic, strong) NSDictionary *hotelSearchInformation; 
+@property (nonatomic, strong) NSDictionary *hotelSearchInformation;
+@property (strong, nonatomic) NSMutableArray *hotelResults;
+@property (strong, nonnull) NSDictionary *carSearchInformation;
+@property (strong, nonatomic) NSMutableArray *carResults;
+@property (strong, nonnull) NSDictionary *flightSearchInformation;
+@property (strong, nonatomic) NSMutableArray *flightResults;
 @end
 
 NS_ASSUME_NONNULL_END
