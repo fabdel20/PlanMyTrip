@@ -58,8 +58,16 @@
         if(self.departingDate.date == self.returnDate.date){
             [self showAlert];
         } else {
-            flightsInfo.departureDate = self.departingDate.date;
-            flightsInfo.returnDate = self.returnDate.date;
+            NSDate *tempArrival = self.departingDate.date;
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            [formatter setDateFormat:@"yyyy-MM-dd"];
+            flightsInfo.departureDate = [formatter stringFromDate:tempArrival];
+            NSDate *tempDeparture = self.returnDate.date;
+            NSDateFormatter *formatter2 = [[NSDateFormatter alloc] init];
+            [formatter2 setDateFormat:@"yyyy-MM-dd"];
+            flightsInfo.returnDate = [formatter2 stringFromDate:tempDeparture];
+            NSLog(@"%@", flightsInfo.departureDate);
+            NSLog(@"%@", flightsInfo.returnDate);
         }
         
         if(self.numberOfTravelers.text){

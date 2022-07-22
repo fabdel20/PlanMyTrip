@@ -11,8 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Cars_Information : NSObject
 @property (nonatomic, strong) NSString *location;
-@property (nonatomic, strong) NSDate *pickUpDate;
-@property (nonatomic, strong) NSDate *dropOffDate;
+@property (nonatomic, strong) NSString *pickUpDate;
+@property (nonatomic, strong) NSString *dropOffDate;
 @end
 
 NS_ASSUME_NONNULL_END

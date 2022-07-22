@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSMutableArray *carResults;
 @property (strong, nonnull) NSDictionary *flightSearchInformation;
 @property (strong, nonatomic) NSMutableArray *flightResults;
+@property (strong, nonnull) NSString *locationID;
 @end
 
 NS_ASSUME_NONNULL_END

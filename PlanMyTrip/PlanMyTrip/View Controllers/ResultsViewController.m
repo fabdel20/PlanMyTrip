@@ -22,7 +22,6 @@
 @property (strong, nonnull) NSHTTPURLResponse *hotelsAPIOutpt;
 @property (strong, nonnull) NSHTTPURLResponse *flightsAPIOutpt;
 @property (strong, nonnull) NSHTTPURLResponse *carsAPIOutpt;
-
 @end
 
 @implementation ResultsViewController
@@ -50,141 +49,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     //[self callHotelAPI];
-    //[self callCarsAPI];
-    [self callFlightsAPI];
+    [self callCarsAPI];
+    //[self callFlightsAPI];
     /*
-    // search hotels
-    
-    [self fillCarUserInformation: self.carUserInfo fillDict:_carUserInformation];
-    [self fillHotelUserInformation: self.hotelUserInfo fillDict:_hotelUserInformation];
-    [self fillFlightUserInformation: self.flightUserInfo fillDict:_flightUserInformation];
-    
-    NSDictionary *headers = @{ @"X-RapidAPI-Key": @"",
-                               @"X-RapidAPI-Host": @"priceline-com-provider.p.rapidapi.com" };
-    
-    NSString *urlHotels = @"https://priceline-com-provider.p.rapidapi .com/v1/hotels/search?sort_order=HDR&location_id=3000035821&date_checkout=2022-11-16&date_checkin=2022-11-15&star_rating_ids=3.0%2C3.5%2C4.0%2C4.5%2C5.0&rooms_number=1&amenities_ids=FINTRNT%2CFBRKFST";
-    
-    NSMutableString *urlHotelsMutable = (NSMutableString *)urlHotels;
-    
-
-    // switch checkout date
-    [urlHotelsMutable replaceCharactersInRange: [urlHotelsMutable rangeOfString: @"date_checkout=2022-11-16"] withString:[NSString stringWithFormat:@"date_checkout=%@", self.hotelUserInfo.departureDate]];
-    
-    // switch check in date
-    [urlHotelsMutable replaceCharactersInRange: [urlHotelsMutable rangeOfString: @"date_checkin=2022-11-15"] withString:[NSString stringWithFormat:@"date_checkin=%@", self.hotelUserInfo.arrivalDate]];
-    
-    // switch location_id
-    [urlHotelsMutable replaceCharactersInRange: [urlHotelsMutable rangeOfString: @"location_id=3000035821"] withString:[NSString stringWithFormat:@"location_id=%@", self.hotelUserInfo.destination]];
-   
-    
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://priceline-com-provider.p.rapidapi .com/v1/hotels/search?sort_order=HDR&location_id=3000035821&date_checkout=2022-11-16&date_checkin=2022-11-15&star_rating_ids=3.0%2C3.5%2C4.0%2C4.5%2C5.0&rooms_number=1&amenities_ids=FINTRNT%2CFBRKFST"]
-                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                                       timeoutInterval:10.0];
-    [request setHTTPMethod:@"GET"];
-    [request setAllHTTPHeaderFields:headers];
-
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
-                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                                    if (error) {
-                                                        NSLog(@"%@", error);
-                                                    } else {
-                                                        self.hotelSearchInformation = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-                                                        NSLog(@"%@", self.hotelSearchInformation);
-                                                    }
-                                                }];
-    [dataTask resume];
-    
-    // search roundtrip flights
-     
-     NSDictionary *headers = @{ @"X-RapidAPI-Key": @"2ebe338c7fmsha84e37a2c76338dp16b94djsn34264f5722a0",
-                                @"X-RapidAPI-Host": @"priceline-com-provider.p.rapidapi.com" };
-
-     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://priceline-com-provider.p.rapidapi.com/v2/flight/roundTrip?departure_date=2022-12-21%2C2022-12-25&adults=1&sid=iSiX639&destination_airport_code=JFK%2CYWG&origin_airport_code=YWG%2CJFK"]
-                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                                        timeoutInterval:10.0];
-     [request setHTTPMethod:@"GET"];
-     [request setAllHTTPHeaderFields:headers];
-
-     NSURLSession *session = [NSURLSession sharedSession];
-     NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
-                                                 completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                                     if (error) {
-                                                         NSLog(@"%@", error);
-                                                     } else {
-                                                         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
-                                                         NSLog(@"%@", httpResponse);
-                                                     }
-                                                 }];
-     [dataTask resume];
-    ==================================================== above is API call i want to use
-    NSDictionary *headersRoundTrip = @{ @"X-RapidAPI-Key": @"",
-                               @"X-RapidAPI-Host": @"priceline-com-provider.p.rapidapi.com" };
-
-    NSString *urlFlights = @"https://priceline-com-provider.p.rapidapi.com/v2/flight/roundTrip?departure_date=2021-12-21%2C2021-12-25&adults=1&sid=iSiX639&destination_airport_code=JFK%2CYWG&origin_airport_code=YWG%2CJFK";
-    
-    NSMutableString *urlFlightsMutable = (NSMutableString *)urlFlights;
-    
-    // switch departure date
-    [urlFlightsMutable replaceCharactersInRange: [urlFlightsMutable rangeOfString: @"departure_date=2021-12-21"] withString:[NSString stringWithFormat:@"departure_date=%@", self.flightUserInfo.departureDate]];
-    
-    // switch destination_airport_code
-    [urlFlightsMutable replaceCharactersInRange: [urlFlightsMutable rangeOfString:@"destination_airport_code=JFK%2CYWG"] withString:[NSString stringWithFormat:@"destination_airport_code=%@", self.flightUserInfo.arrivalCity]];
-    
-    // switch origin_airport_code
-    [urlFlightsMutable replaceCharactersInRange: [urlFlightsMutable rangeOfString: @"origin_airport_code=YWG%2CJFK"] withString:[NSString stringWithFormat:@"origin_airport_code=%@", self.flightUserInfo.departureCity]];
-    
-    NSMutableURLRequest *requestRoundTrip = [NSMutableURLRequest requestWithURL:[NSURL URLWithString: urlFlightsMutable] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0];
-    [requestRoundTrip setHTTPMethod:@"GET"];
-    [requestRoundTrip setAllHTTPHeaderFields:headersRoundTrip];
-
-    NSURLSession *sessionRoundTrip = [NSURLSession sharedSession];
-    NSURLSessionDataTask *dataTaskRoundTrip = [sessionRoundTrip dataTaskWithRequest:requestRoundTrip
-                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                                    if (error) {
-                                                        NSLog(@"%@", error);
-                                                    } else {
-                                                        self.flightSearchInformation = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-                                                        NSLog(@"%@", self.flightSearchInformation);
-                                                    }
-                                                }];
-    [dataTaskRoundTrip resume];
-    
-    // search one way flights
-    NSDictionary *headersOneWayFlights = @{ @"X-RapidAPI-Key": @"",
-                               @"X-RapidAPI-Host": @"priceline-com-provider.p.rapidapi.com" };
-    
-    NSString *urlFlightsOneWay = @"https://priceline-com-provider.p.rapidapi.com/v2/flight/departures?sid=iSiX639&departure_date=2022-06-21&adults=1&origin_airport_code=YWG&destination_airport_code=JFK";
-    
-    NSMutableString *urlFlightsOneWayMutable = (NSMutableString *)urlFlightsOneWay;
-    
-    // switch departure date
-    [urlFlightsOneWayMutable replaceCharactersInRange: [urlFlightsOneWayMutable rangeOfString:@"departure_date=2022-06-21"] withString:[NSString stringWithFormat:@"departure_date=%@", self.flightUserInfo.departureDate]];
-    
-    // switch destination_airport_code
-    [urlFlightsOneWayMutable replaceCharactersInRange: [urlFlightsOneWayMutable rangeOfString:@"destination_airport_code=JFK"] withString:[NSString stringWithFormat:@"destination_airport_code=%@", self.flightUserInfo.arrivalCity]];
-    
-    // switch origin_airport_code
-    [urlFlightsOneWayMutable replaceCharactersInRange: [urlFlightsOneWayMutable rangeOfString:@"origin_airport_code=YWG"] withString:[NSString stringWithFormat:@"origin_airport_code=%@", self.flightUserInfo.departureCity]];
-    
-    NSMutableURLRequest *requestOneWayFlights = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlFlightsOneWayMutable] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0];
-    
-    [requestOneWayFlights setHTTPMethod:@"GET"];
-    [requestOneWayFlights setAllHTTPHeaderFields:headersOneWayFlights];
-
-    NSURLSession *sessionOneWayFlights = [NSURLSession sharedSession];
-    NSURLSessionDataTask *dataTaskOneWayFlights = [sessionOneWayFlights dataTaskWithRequest:requestOneWayFlights
-                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                                    if (error) {
-                                                        NSLog(@"%@", error);
-                                                    } else {
-                                                        self.flightSearchInformation = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-                                                        NSLog(@"%@", self.flightSearchInformation);
-                                                    }
-                                                }];
-    [dataTaskOneWayFlights resume];
     
     // search car results
     NSDictionary *headersCars = @{ @"X-RapidAPI-Key": @"",
@@ -230,13 +98,22 @@
     */
 }
 
+
+
 -(void)callHotelAPI{
     NSDictionary *headers = @{ @"X-RapidAPI-Key": @"2ebe338c7fmsha84e37a2c76338dp16b94djsn34264f5722a0",
                                @"X-RapidAPI-Host": @"priceline-com-provider.p.rapidapi.com" };
-
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://priceline-com-provider.p.rapidapi.com/v1/hotels/search?sort_order=HDR&location_id=3000035821&date_checkout=2022-11-16&date_checkin=2022-11-15&star_rating_ids=3.0%2C3.5%2C4.0%2C4.5%2C5.0&rooms_number=1&amenities_ids=FINTRNT%2CFBRKFST"]
-                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                                       timeoutInterval:10.0];
+    
+    
+    NSString *urlHotel = [NSString stringWithFormat:@"https://priceline-com-provider.p.rapidapi.com/v1/hotels/search?sort_order=HDR&location_id=%@&date_checkout=%@&date_checkin=%@&star_rating_ids=%@&rooms_number=1&amenities_ids=%@",self.hotelUserInfo.destination,self.hotelUserInfo.departureDate,self.hotelUserInfo.arrivalDate,@"3.0,3.5,4.0,4.5,5.0",@"FINTRNT,FBRKFST"];
+    
+    // switch location_id
+    //[urlHotelsMutable replaceCharactersInRange: [urlHotelsMutable rangeOfString: @"location_id=3000035821"] withString:[NSString stringWithFormat:@"location_id=%@", self.hotelUserInfo.destination]];
+    
+    NSString* webStringURL = [urlHotel stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:webStringURL] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0];
+    
     [request setHTTPMethod:@"GET"];
     [request setAllHTTPHeaderFields:headers];
 
@@ -258,10 +135,16 @@
 -(void)callFlightsAPI{
     NSDictionary *headers = @{ @"X-RapidAPI-Key": @"2ebe338c7fmsha84e37a2c76338dp16b94djsn34264f5722a0",
                                @"X-RapidAPI-Host": @"priceline-com-provider.p.rapidapi.com" };
-
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://priceline-com-provider.p.rapidapi.com/v2/flight/roundTrip?departure_date=2022-12-21%2C2022-12-25&adults=1&sid=iSiX639&destination_airport_code=JFK%2CYWG&origin_airport_code=YWG%2CJFK"]
-                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                                       timeoutInterval:10.0];
+    
+    NSString *dates = [NSString stringWithFormat:@"%@,%@", self.flightUserInfo.departureDate, self.flightUserInfo.returnDate];
+    NSString *loc1 = [NSString stringWithFormat:@"%@,%@", self.flightUserInfo.arrivalCity, self.flightUserInfo.departureCity];
+    NSString *loc2 = [NSString stringWithFormat:@"%@,%@", self.flightUserInfo.departureCity, self.flightUserInfo.arrivalCity];
+    
+    NSString *urlFlight = [NSString stringWithFormat:@"https://priceline-com-provider.p.rapidapi.com/v2/flight/roundTrip?departure_date=%@&adults=1&sid=iSiX639&destination_airport_code=%@&origin_airport_code=%@",dates,loc1,loc2];
+    
+    NSString* webStringURL = [urlFlight stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:webStringURL] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0];
     [request setHTTPMethod:@"GET"];
     [request setAllHTTPHeaderFields:headers];
 
@@ -284,10 +167,15 @@
 -(void)callCarsAPI{
     NSDictionary *headers = @{ @"X-RapidAPI-Key": @"2ebe338c7fmsha84e37a2c76338dp16b94djsn34264f5722a0",
                                @"X-RapidAPI-Host": @"priceline-com-provider.p.rapidapi.com" };
-
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://priceline-com-provider.p.rapidapi.com/v1/cars-rentals/search?location_pickup=JFK&date_time_return=2022-11-16%2013%3A00%3A00&date_time_pickup=2022-11-15%2013%3A00%3A00&location_return=1365100023"]
-                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                                       timeoutInterval:10.0];
+    NSString *dateAndTimePickUp = [NSString stringWithFormat:@"%@ 013:00:00", self.carUserInfo.pickUpDate];
+    NSString *dateAndTimeDroppOff = [NSString stringWithFormat:@"%@ 013:00:00", self.carUserInfo.dropOffDate];
+    
+    NSString *urlCar = [NSString stringWithFormat:@"https://priceline-com-provider.p.rapidapi.com/v1/cars-rentals/search?location_pickup=%@&date_time_return=%@&date_time_pickup=%@&location_return=%@", self.carUserInfo.location,dateAndTimeDroppOff, dateAndTimePickUp,self.carUserInfo.location];
+    
+    NSString* webStringURL = [urlCar stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    NSLog(@"%@", urlCar);
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlCar] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0];
     [request setHTTPMethod:@"GET"];
     [request setAllHTTPHeaderFields:headers];
 
@@ -312,9 +200,9 @@
     
     for(NSMutableDictionary *hotel in hotelValues){
         NSMutableDictionary *rateSummary = [hotel objectForKey:@"ratesSummary"];
-        double price = (int64_t)[rateSummary objectForKey:@"minPrice"];
-        if(price < minPrice){
-            minPrice = price;
+        NSString *price = [rateSummary objectForKey:@"minPrice"];
+        if([price intValue] < minPrice){
+            minPrice = [price intValue];
         }
     }
     
@@ -322,18 +210,16 @@
     for(NSMutableDictionary *hotel in hotelValues){
         if(count < 5){
             NSString *hotelName = [hotel objectForKey:@"name"];
-            double rating = (int64_t)[hotel objectForKey:@"starRating"];
-            if(rating >= 3.0){
+            NSString *rating = [hotel objectForKey:@"starRating"];
+            if([rating intValue] >= 4.0){
                 NSMutableDictionary *rateSummary = [hotel objectForKey:@"ratesSummary"];
-                double price = (int64_t)[rateSummary objectForKey:@"minPrice"];
-                if((minPrice = price) || (price <= minPrice + 100)){
+                NSString *price = [rateSummary objectForKey:@"minPrice"];
+                if((minPrice = [price intValue]) || ([price intValue] <= minPrice + 200)){
                     NSMutableDictionary *newAdd = [[NSMutableDictionary alloc]init];
                     if(hotelName && rating && price){
                         [newAdd setObject:hotelName forKey:@"name"];
-                        NSNumber *ratingdDub = [NSNumber numberWithDouble:rating];
-                        [newAdd setObject: [ratingdDub stringValue] forKey:@"rating"];
-                        NSNumber *priceDub = [NSNumber numberWithDouble:price];
-                        [newAdd setObject:[priceDub stringValue] forKey:@"price"];
+                        [newAdd setObject:rating forKey:@"rating"];
+                        [newAdd setObject:price forKey:@"price"];
                         [hotelResults addObject:newAdd];
                         count++;
                     }

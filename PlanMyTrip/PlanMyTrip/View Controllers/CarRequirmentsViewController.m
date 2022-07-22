@@ -19,8 +19,35 @@
 
 @implementation CarRequirmentsViewController
 
+-(void)parseDict:(NSMutableArray *)dict resHandle:(NSString *)res{
+    NSMutableDictionary *firstElem = [dict firstObject];
+    res = [firstElem objectForKey:@"id"];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSDictionary *headers = @{ @"X-RapidAPI-Key": @"c151066f31mshf429fe6db920209p199187jsnaf96ca6dffe5",
+                               @"X-RapidAPI-Host": @"priceline-com-provider.p.rapidapi.com" };
+    
+    NSString *urlT = [NSString stringWithFormat:@"https://priceline-com-provider.p.rapidapi.com/v1/hotels/locations?name=%@&search_type=ALL", self.hotelInfoSaved.destination];
+    
+    NSString* url = [urlT stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0];
+    [request setHTTPMethod:@"GET"];
+    [request setAllHTTPHeaderFields:headers];
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
+                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                    if (error) {
+                                                        NSLog(@"%@", error);
+                                                    } else {
+                                                        NSMutableArray *resDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+                                                        NSMutableDictionary *firstElem = [resDict firstObject];
+                                                        self.hotelInfoSaved.destination = [firstElem objectForKey:@"id"];
+                                                    }
+                                                }];
+    [dataTask resume];
+    
 }
 
 - (IBAction)saveInfo:(id)sender {
@@ -45,21 +72,30 @@
         }
         
         if(self.pickUpDate.date){
-            carInfo.pickUpDate = self.pickUpDate.date;
+            NSDate *tempArrival = self.pickUpDate.date;
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            [formatter setDateFormat:@"yyyy-MM-dd"];
+            carInfo.pickUpDate = [formatter stringFromDate:tempArrival];
         } else {
             [self showAlert];
         }
         if(self.dropOffDate.date){
-            carInfo.dropOffDate = self.dropOffDate.date;
+            NSDate *tempArrival = self.dropOffDate.date;
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            [formatter setDateFormat:@"yyyy-MM-dd"];
+            carInfo.dropOffDate = [formatter stringFromDate:tempArrival];
         } else {
             [self showAlert];
         }
+        
+        
         self.carInfoSaved = carInfo;
         
-         ResultsViewController *resultsView = [segue destinationViewController];
+        ResultsViewController *resultsView = [segue destinationViewController];
         resultsView.flightUserInfo = self.flightInfoSaved;
         resultsView.hotelUserInfo = self.hotelInfoSaved;
-        resultsView.carUserInfo = carInfo; 
+        resultsView.carUserInfo = carInfo;
+        
     }
 }
 @end

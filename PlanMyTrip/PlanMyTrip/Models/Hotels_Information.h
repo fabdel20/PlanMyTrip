@@ -11,8 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Hotels_Information : NSObject
 @property (nonatomic, strong) NSString *destination;
-@property (nonatomic, strong) NSDate *arrivalDate;
-@property (nonatomic, strong) NSDate *departureDate;
+@property (nonatomic, strong) NSString *arrivalDate;
+@property (nonatomic, strong) NSString *departureDate;
 @property (nonatomic, strong) NSString *numberOfGuests;
 
 @end
