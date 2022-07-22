@@ -8,6 +8,8 @@
 #import "CarRequirmentsViewController.h"
 #import "ResultsViewController.h"
 #import "Cars_Information.h"
+#import "FlightRequirmentsViewController.h"
+#import "Flights_Information.h"
 
 @interface CarRequirmentsViewController ()
 @property (strong, nonatomic) IBOutlet UITextField *location;
@@ -50,7 +52,10 @@
     
 }
 
+
+
 - (IBAction)saveInfo:(id)sender {
+    
 }
 
 -(void)showAlert{
@@ -67,6 +72,7 @@
         
         if(self.location.text){
             carInfo.location = self.location.text;
+            NSLog(@"%@", carInfo.location);
         } else {
             [self showAlert];
         }

@@ -12,10 +12,10 @@
 #import "HotelRequirementsViewController.h"
 #import "Hotels_Information.h"
 #import <Foundation/Foundation.h>
+#import "DisplayResultsViewController.h"
 #import "AFNetworking.h"
 
 @interface ResultsViewController ()
-@property (strong, nonatomic) IBOutlet UILabel *JSONLabel;
 @property (nonatomic) NSMutableDictionary *flightUserInformation;
 @property (nonatomic) NSMutableDictionary *carUserInformation;
 @property (strong, nonatomic) NSMutableDictionary *hotelUserInformation;
@@ -49,53 +49,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //[self callHotelAPI];
-    [self callCarsAPI];
-    //[self callFlightsAPI];
-    /*
+    [self callHotelAPI];
+    //[self callCarsAPI];
+    [self callFlightsAPI];
     
-    // search car results
-    NSDictionary *headersCars = @{ @"X-RapidAPI-Key": @"",
-                               @"X-RapidAPI-Host": @"priceline-com-provider.p.rapidapi.com" };
-    
-    NSString *urlCars = @"https://priceline-com-provider.p.rapidapi.com/v2/cars/resultsRequest?dropoff_time=10%3A00&dropoff_date=04%2F02%2F2022&pickup_time=10%3A01&pickup_date=04%2F01%2F2022&dropoff_city_id=800049480&dropoff_city_string=New%20York&pickup_airport_code=JFK";
-    
-    NSMutableString *urlCarsMutable = (NSMutableString *)urlCars;
-    
-    // switch dropoff date
-    [urlCarsMutable replaceCharactersInRange: [urlCarsMutable rangeOfString: @"dropoff_date=04%2F02%2F2022"] withString:[NSString stringWithFormat:@"dropoff_date=%@", self.carUserInfo.dropOffDate]];
-    
-    // switch pick up date
-    [urlCarsMutable replaceCharactersInRange: [urlCarsMutable rangeOfString: @"pickup_date=04%2F01%2F2022"] withString:[NSString stringWithFormat:@"pickup_date=%@", self.carUserInfo.pickUpDate]];
-    
-    // switch dropoff_city_id
-    [urlCarsMutable replaceCharactersInRange: [urlCarsMutable rangeOfString: @"dropoff_city_id=800049480"] withString:[NSString stringWithFormat:@"dropoff_city_id=%@", self.carUserInfo.location]];
-    
-    // switch dropoff_city_string
-    [urlCarsMutable replaceCharactersInRange: [urlCarsMutable rangeOfString: @"dropoff_city_string=New%20York"] withString:[NSString stringWithFormat:@"dropoff_city_string=%@", self.carUserInfo.location]];
-    
-    // switch pickup_airport_code
-    [urlCarsMutable replaceCharactersInRange: [urlCarsMutable rangeOfString: @"pickup_airport_code=JFK"] withString:[NSString stringWithFormat:@"pickup_airport_code=%@", self.carUserInfo.location]];
-    
-    NSMutableURLRequest *requestCars = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlCarsMutable] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0];
-    
-    [requestCars setHTTPMethod:@"GET"];
-    [requestCars setAllHTTPHeaderFields:headersCars];
-
-    NSURLSession *sessionCars = [NSURLSession sharedSession];
-    NSURLSessionDataTask *dataTaskCars = [sessionCars dataTaskWithRequest:requestCars
-                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                                    if (error) {
-                                                        NSLog(@"%@", error);
-                                                    } else {
-                                                        self.carSearchInformation = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-                                                        NSLog(@"%@", self.carSearchInformation);
-                                                    }
-                                                }];
-    [dataTaskCars resume];
-    [self searchHotelResultsDictionary: _hotelSearchInformation userHotelRequirmentsDictionary:_hotelUserInformation returnArray:_hotelResults];
-     
-    */
 }
 
 
@@ -106,9 +63,6 @@
     
     
     NSString *urlHotel = [NSString stringWithFormat:@"https://priceline-com-provider.p.rapidapi.com/v1/hotels/search?sort_order=HDR&location_id=%@&date_checkout=%@&date_checkin=%@&star_rating_ids=%@&rooms_number=1&amenities_ids=%@",self.hotelUserInfo.destination,self.hotelUserInfo.departureDate,self.hotelUserInfo.arrivalDate,@"3.0,3.5,4.0,4.5,5.0",@"FINTRNT,FBRKFST"];
-    
-    // switch location_id
-    //[urlHotelsMutable replaceCharactersInRange: [urlHotelsMutable rangeOfString: @"location_id=3000035821"] withString:[NSString stringWithFormat:@"location_id=%@", self.hotelUserInfo.destination]];
     
     NSString* webStringURL = [urlHotel stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
@@ -358,4 +312,17 @@
         }
     }
 }
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([segue.identifier isEqualToString:@"confToDisplay"]){
+        
+        DisplayResultsViewController *resultsView = [segue destinationViewController];
+        resultsView.flightResults = self.flightResults;
+        resultsView.hotelResults = self.hotelResults;
+        //resultsView.carResults = (NSString *)self.carResults;
+        
+    }
+}
+
 @end

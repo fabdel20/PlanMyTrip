@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *returnDate;
 @property (nonatomic, strong) NSString *numberOfTravelers;
 @property (nonatomic, strong) NSString *cabin;
-
+@property (nonatomic, strong) NSString *results;
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 @end
 

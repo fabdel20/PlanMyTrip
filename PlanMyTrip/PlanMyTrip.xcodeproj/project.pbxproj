@@ -29,6 +29,7 @@
 		0167F955287C9C320085F4C6 /* Hotels_Information.m in Sources */ = {isa = PBXBuildFile; fileRef = 0167F954287C9C320085F4C6 /* Hotels_Information.m */; };
 		0167F958287C9D370085F4C6 /* Cars_Information.m in Sources */ = {isa = PBXBuildFile; fileRef = 0167F957287C9D370085F4C6 /* Cars_Information.m */; };
 		0167F95B287CC3C20085F4C6 /* ResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0167F95A287CC3C20085F4C6 /* ResultsViewController.m */; };
+		0167F963288B10250085F4C6 /* DisplayResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0167F962288B10250085F4C6 /* DisplayResultsViewController.m */; };
 		380D04BE09E776D66DD1A6DE /* Pods_PlanMyTrip_PlanMyTripUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 899E7F247C96E1C51F6ECB98 /* Pods_PlanMyTrip_PlanMyTripUITests.framework */; };
 		A0B4AE45AB6D3D4DEDD64F83 /* Pods_PlanMyTripTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBBADCC2173EEE170DD9E2BD /* Pods_PlanMyTripTests.framework */; };
 		A7FF21666711CF69270204EB /* Pods_PlanMyTrip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F1811EA646716ED1A1995A /* Pods_PlanMyTrip.framework */; };
@@ -94,6 +95,8 @@
 		0167F959287CC3C20085F4C6 /* ResultsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResultsViewController.h; sourceTree = "<group>"; };
 		0167F95A287CC3C20085F4C6 /* ResultsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResultsViewController.m; sourceTree = "<group>"; };
 		0167F95D287CE9950085F4C6 /* Property List.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Property List.plist"; sourceTree = "<group>"; };
+		0167F961288B10250085F4C6 /* DisplayResultsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DisplayResultsViewController.h; sourceTree = "<group>"; };
+		0167F962288B10250085F4C6 /* DisplayResultsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DisplayResultsViewController.m; sourceTree = "<group>"; };
 		1018D1E939FBA7E9CEA4BBE6 /* Pods-PlanMyTripTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlanMyTripTests.release.xcconfig"; path = "Target Support Files/Pods-PlanMyTripTests/Pods-PlanMyTripTests.release.xcconfig"; sourceTree = "<group>"; };
 		30F1811EA646716ED1A1995A /* Pods_PlanMyTrip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlanMyTrip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		36CCE5AED5E7F0A110402D2C /* Pods-PlanMyTripTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlanMyTripTests.debug.xcconfig"; path = "Target Support Files/Pods-PlanMyTripTests/Pods-PlanMyTripTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -210,6 +213,8 @@
 				010F42AA2874D8B5006D101E /* SignUpViewController.h */,
 				010F42AB2874D8B5006D101E /* SignUpViewController.m */,
 				0167F94D2878F00B0085F4C6 /* CarRequirmentsViewController.m */,
+				0167F961288B10250085F4C6 /* DisplayResultsViewController.h */,
+				0167F962288B10250085F4C6 /* DisplayResultsViewController.m */,
 				0167F94F2878F00E0085F4C6 /* CarRequirmentsViewController.h */,
 			);
 			name = "View Controllers";
@@ -502,6 +507,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0167F9452878A1A80085F4C6 /* FlightRequirmentsViewController.m in Sources */,
+				0167F963288B10250085F4C6 /* DisplayResultsViewController.m in Sources */,
 				0167F952287C976B0085F4C6 /* Flights_Information.m in Sources */,
 				0167F9492878B1F10085F4C6 /* HotelRequirementsViewController.m in Sources */,
 				0167F95B287CC3C20085F4C6 /* ResultsViewController.m in Sources */,

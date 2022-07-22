@@ -66,8 +66,6 @@
             NSDateFormatter *formatter2 = [[NSDateFormatter alloc] init];
             [formatter2 setDateFormat:@"yyyy-MM-dd"];
             flightsInfo.returnDate = [formatter2 stringFromDate:tempDeparture];
-            NSLog(@"%@", flightsInfo.departureDate);
-            NSLog(@"%@", flightsInfo.returnDate);
         }
         
         if(self.numberOfTravelers.text){
