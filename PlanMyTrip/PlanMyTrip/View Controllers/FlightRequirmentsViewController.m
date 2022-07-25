@@ -7,7 +7,10 @@
 
 #import "FlightRequirmentsViewController.h"
 #import "HotelRequirementsViewController.h"
+#import "CarRequirmentsViewController.h"
+#import "ResultsViewController.h"
 #import "Flights_Information.h"
+
 @interface FlightRequirmentsViewController ()
 @property (strong, nonatomic) IBOutlet UITextField *departureCity;
 @property (strong, nonatomic) IBOutlet UITextField *arrivalCity;
@@ -29,6 +32,15 @@
 
 
 - (IBAction)saveInfo:(id)sender {
+    if(self.hotelStatus == 1){
+        [self performSegueWithIdentifier:@"flightsToHotel" sender:sender];
+    }
+    if(self.hotelStatus == 0 && self.carStatus == 1){
+        [self performSegueWithIdentifier:@"flightToCar" sender:sender];
+    }
+    if(self.hotelStatus == 0 && self.carStatus == 0){
+        [self performSegueWithIdentifier:@"flightToResults" sender:sender];
+    }
 }
 
 -(void)showAlert{
@@ -40,7 +52,7 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if([segue.identifier isEqualToString:@"flightToHotel"]){
+    if(self.hotelStatus == 1){
         HotelRequirementsViewController *hotelsView = [segue destinationViewController];
         Flights_Information *flightsInfo = [[Flights_Information alloc] init];
         if(self.departureCity.text){
@@ -74,6 +86,85 @@
             [self showAlert];
         }
         hotelsView.flightInfoSaved2 = flightsInfo;
+        hotelsView.flightStatus = self.flightStatus;
+        hotelsView.hotelStatus = self.hotelStatus;
+        hotelsView.carStatus = self.carStatus;
+    }
+    if(self.hotelStatus == 0 && self.carStatus == 1){
+        CarRequirmentsViewController *carReq = [segue destinationViewController];
+        Flights_Information *flightsInfo = [[Flights_Information alloc] init];
+        if(self.departureCity.text){
+            flightsInfo.departureCity = self.departureCity.text;
+        } else {
+            [self showAlert];
+        }
+        
+        if(self.arrivalCity.text){
+            flightsInfo.arrivalCity = self.arrivalCity.text;
+        } else {
+            [self showAlert];
+        }
+        
+        if(self.departingDate.date == self.returnDate.date){
+            [self showAlert];
+        } else {
+            NSDate *tempArrival = self.departingDate.date;
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            [formatter setDateFormat:@"yyyy-MM-dd"];
+            flightsInfo.departureDate = [formatter stringFromDate:tempArrival];
+            NSDate *tempDeparture = self.returnDate.date;
+            NSDateFormatter *formatter2 = [[NSDateFormatter alloc] init];
+            [formatter2 setDateFormat:@"yyyy-MM-dd"];
+            flightsInfo.returnDate = [formatter2 stringFromDate:tempDeparture];
+        }
+        
+        if(self.numberOfTravelers.text){
+            flightsInfo.numberOfTravelers = self.numberOfTravelers.text;
+        } else {
+            [self showAlert];
+        }
+        carReq.flightInfoSaved = flightsInfo;
+        carReq.flightStatus = self.flightStatus;
+        carReq.hotelStatus = self.hotelStatus;
+        carReq.carStatus = self.carStatus;
+    }
+    if(self.hotelStatus == 0 && self.carStatus == 0){
+        ResultsViewController *resultsView = [segue destinationViewController];
+        Flights_Information *flightsInfo = [[Flights_Information alloc] init];
+        if(self.departureCity.text){
+            flightsInfo.departureCity = self.departureCity.text;
+        } else {
+            [self showAlert];
+        }
+        
+        if(self.arrivalCity.text){
+            flightsInfo.arrivalCity = self.arrivalCity.text;
+        } else {
+            [self showAlert];
+        }
+        
+        if(self.departingDate.date == self.returnDate.date){
+            [self showAlert];
+        } else {
+            NSDate *tempArrival = self.departingDate.date;
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            [formatter setDateFormat:@"yyyy-MM-dd"];
+            flightsInfo.departureDate = [formatter stringFromDate:tempArrival];
+            NSDate *tempDeparture = self.returnDate.date;
+            NSDateFormatter *formatter2 = [[NSDateFormatter alloc] init];
+            [formatter2 setDateFormat:@"yyyy-MM-dd"];
+            flightsInfo.returnDate = [formatter2 stringFromDate:tempDeparture];
+        }
+        
+        if(self.numberOfTravelers.text){
+            flightsInfo.numberOfTravelers = self.numberOfTravelers.text;
+        } else {
+            [self showAlert];
+        }
+        resultsView.flightUserInfo = flightsInfo;
+        resultsView.flightStatus = self.flightStatus;
+        resultsView.carStatus = self.carStatus;
+        resultsView.hotelStatus = self.hotelStatus;
     }
 }
 @end

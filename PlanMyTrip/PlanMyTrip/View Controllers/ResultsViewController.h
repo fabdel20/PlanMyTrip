@@ -22,6 +22,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonnull) NSDictionary *flightSearchInformation;
 @property (strong, nonatomic) NSMutableArray *flightResults;
 @property (strong, nonnull) NSString *locationID;
+@property (nonatomic, assign) BOOL flightStatus;
+@property (nonatomic, assign) BOOL hotelStatus;
+@property (nonatomic, assign) BOOL carStatus;
 @end
 
 NS_ASSUME_NONNULL_END

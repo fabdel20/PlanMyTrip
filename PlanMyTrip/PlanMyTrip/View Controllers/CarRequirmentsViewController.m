@@ -27,29 +27,30 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSDictionary *headers = @{ @"X-RapidAPI-Key": @"c151066f31mshf429fe6db920209p199187jsnaf96ca6dffe5",
-                               @"X-RapidAPI-Host": @"priceline-com-provider.p.rapidapi.com" };
-    
-    NSString *urlT = [NSString stringWithFormat:@"https://priceline-com-provider.p.rapidapi.com/v1/hotels/locations?name=%@&search_type=ALL", self.hotelInfoSaved.destination];
-    
-    NSString* url = [urlT stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0];
-    [request setHTTPMethod:@"GET"];
-    [request setAllHTTPHeaderFields:headers];
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
-                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                                    if (error) {
-                                                        NSLog(@"%@", error);
-                                                    } else {
-                                                        NSMutableArray *resDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-                                                        NSMutableDictionary *firstElem = [resDict firstObject];
-                                                        self.hotelInfoSaved.destination = [firstElem objectForKey:@"id"];
-                                                    }
-                                                }];
-    [dataTask resume];
-    
+    if(self.hotelStatus == 1){
+        NSDictionary *headers = @{ @"X-RapidAPI-Key": @"c151066f31mshf429fe6db920209p199187jsnaf96ca6dffe5",
+                                   @"X-RapidAPI-Host": @"priceline-com-provider.p.rapidapi.com" };
+        
+        NSString *urlT = [NSString stringWithFormat:@"https://priceline-com-provider.p.rapidapi.com/v1/hotels/locations?name=%@&search_type=ALL", self.hotelInfoSaved.destination];
+        
+        NSString* url = [urlT stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0];
+        [request setHTTPMethod:@"GET"];
+        [request setAllHTTPHeaderFields:headers];
+        NSURLSession *session = [NSURLSession sharedSession];
+        NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
+                                                    completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                        if (error) {
+                                                            NSLog(@"%@", error);
+                                                        } else {
+                                                            NSMutableArray *resDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+                                                            NSMutableDictionary *firstElem = [resDict firstObject];
+                                                            self.hotelInfoSaved.destination = [firstElem objectForKey:@"id"];
+                                                        }
+                                                    }];
+        [dataTask resume];
+    }
 }
 
 

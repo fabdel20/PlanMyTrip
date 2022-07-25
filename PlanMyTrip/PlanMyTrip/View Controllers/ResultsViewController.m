@@ -49,9 +49,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self callHotelAPI];
-    //[self callCarsAPI];
-    [self callFlightsAPI];
+    if(self.flightStatus == 1){
+        //[self callFlightsAPI];
+    }
+    if(self.hotelStatus == 1){
+        //[self callHotelAPI];
+    }
+    if(self.carStatus == 1){
+        //[self callCarsAPI];
+    }
     
 }
 

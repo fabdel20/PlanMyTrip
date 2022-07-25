@@ -437,8 +437,7 @@
                                     <color key="baseForegroundColor" systemColor="systemBlueColor"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="signUpButton:" destination="Bly-Jr-e6L" eventType="touchUpInside" id="4C9-0q-XCh"/>
-                                    <segue destination="uax-zJ-ikm" kind="show" id="Yix-6U-hAY"/>
+                                    <action selector="nextButton:" destination="v0W-K0-wyV" eventType="touchUpInside" id="B6N-lJ-RUg"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -461,11 +460,14 @@
                         <outlet property="carsButton" destination="UED-I4-ffs" id="tk3-OQ-AZU"/>
                         <outlet property="flightsButton" destination="pGr-4X-0bH" id="wgl-6j-pY4"/>
                         <outlet property="hotelsButton" destination="75m-nU-tbH" id="Eeb-tc-8MI"/>
+                        <segue destination="uax-zJ-ikm" kind="show" identifier="servicesToFlightReq" id="nbK-rs-MRB"/>
+                        <segue destination="Fg1-Hc-iZ7" kind="show" identifier="servicesToHotel" id="hRe-Ho-Jx6"/>
+                        <segue destination="Tkp-rf-pKl" kind="show" identifier="servicesToCar" id="ihO-yp-Qz4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WEo-kT-AYh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6489.8550724637689" y="-228.34821428571428"/>
+            <point key="canvasLocation" x="6349" y="-271"/>
         </scene>
         <!--Flight Requirments View Controller-->
         <scene sceneID="H9t-cx-HhH">
@@ -570,8 +572,6 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="saveInfo:" destination="uax-zJ-ikm" eventType="touchUpInside" id="a35-b6-87R"/>
-                                    <action selector="signUpButton:" destination="Bly-Jr-e6L" eventType="touchUpInside" id="WdF-Tf-bDa"/>
-                                    <segue destination="Fg1-Hc-iZ7" kind="show" identifier="flightToHotel" id="dgz-3d-cZN"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -586,6 +586,9 @@
                         <outlet property="departureCity" destination="qBg-mt-Z94" id="F6j-wZ-gEa"/>
                         <outlet property="numberOfTravelers" destination="WQh-fM-LdZ" id="NwS-YM-Epc"/>
                         <outlet property="returnDate" destination="gNd-P8-Z6O" id="hyG-D8-EyT"/>
+                        <segue destination="Fg1-Hc-iZ7" kind="show" identifier="flightsToHotel" id="aUR-AM-GPt"/>
+                        <segue destination="Tkp-rf-pKl" kind="show" identifier="flightToCar" id="CRx-HP-yUh"/>
+                        <segue destination="vlm-xR-d5v" kind="show" identifier="flightToResults" id="Jdw-s9-FJb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qw5-d0-Vd0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -669,8 +672,6 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="saveData:" destination="Fg1-Hc-iZ7" eventType="touchUpInside" id="kls-dq-g7V"/>
-                                    <action selector="signUpButton:" destination="Bly-Jr-e6L" eventType="touchUpInside" id="ItQ-Sc-8kP"/>
-                                    <segue destination="Tkp-rf-pKl" kind="show" identifier="hotelToCars" id="wmp-2p-A34"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -683,11 +684,13 @@
                         <outlet property="departureDate" destination="Rhh-QN-KS9" id="9ft-cg-9QG"/>
                         <outlet property="destination" destination="tso-tb-6fT" id="eZt-eP-kRk"/>
                         <outlet property="numberOfGuests" destination="unX-mn-0BY" id="tbS-kb-N8J"/>
+                        <segue destination="Tkp-rf-pKl" kind="show" identifier="hotelToCars" id="1gz-PC-icS"/>
+                        <segue destination="vlm-xR-d5v" kind="show" identifier="hotelToResults" id="smS-9w-Oi9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P0p-4p-Igm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8599" y="-228"/>
+            <point key="canvasLocation" x="8561" y="-199"/>
         </scene>
         <!--Car Requirments View Controller-->
         <scene sceneID="FjR-aV-Qiv">
@@ -903,6 +906,9 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="fXN-EE-mHw"/>
+        <segue reference="smS-9w-Oi9"/>
+        <segue reference="1gz-PC-icS"/>
+        <segue reference="aUR-AM-GPt"/>
         <segue reference="1bD-lQ-B3c"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.98909138159999999" green="0.98909138159999999" blue="0.98909138159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

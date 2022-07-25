@@ -6,6 +6,9 @@
 //
 
 #import "SelectServicesViewController.h"
+#import "FlightRequirmentsViewController.h"
+#import "CarRequirmentsViewController.h"
+#import "HotelRequirementsViewController.h"
 
 @interface SelectServicesViewController ()
 -(void)changeColorOfButton:(UIButton *) Button checkState:(BOOL)state;
@@ -18,6 +21,7 @@
 - (IBAction)carsButtonTapped:(id)sender;
 - (IBAction)flightsButtonTapped:(id)sender;
 - (IBAction)hotelsButtonTapped:(id)sender;
+- (IBAction)nextButton:(id)sender;
 
 @end
 
@@ -25,8 +29,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    // new branch
     _hotelsButton.backgroundColor = [UIColor whiteColor];
     _flightsButton.backgroundColor = [UIColor whiteColor];
     _carsButton.backgroundColor = [UIColor whiteColor];
@@ -37,15 +39,41 @@
     state = !state;
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if(_isFlightSelected == 1){
+        FlightRequirmentsViewController *flightReqsView = [segue destinationViewController];
+        flightReqsView.flightStatus = _isFlightSelected;
+        flightReqsView.hotelStatus = _isHotelSelected;
+        flightReqsView.carStatus = _isCarSelected;
+    }
+    if(_isFlightSelected == 0 && _isHotelSelected == 1){
+        HotelRequirementsViewController *hotelReq = [segue destinationViewController];
+        hotelReq.flightStatus = _isFlightSelected;
+        hotelReq.hotelStatus = _isHotelSelected;
+        hotelReq.carStatus = _isCarSelected;
+    }
+    if(_isFlightSelected == 0 && _isCarSelected == 1 && _isHotelSelected == 0){
+        CarRequirmentsViewController *carReqsView = [segue destinationViewController];
+        carReqsView.flightStatus = _isFlightSelected;
+        carReqsView.hotelStatus = _isHotelSelected;
+        carReqsView.carStatus = _isCarSelected;
+    }
 }
-*/
+
+
+- (IBAction)nextButton:(id)sender {
+    if(_isFlightSelected == 1){
+        [self performSegueWithIdentifier:@"servicesToFlightReq" sender:sender];
+    }
+    if(_isFlightSelected == 0 && _isHotelSelected == 1){
+        [self performSegueWithIdentifier:@"servicesToHotel" sender:sender];
+    }
+    if(_isFlightSelected == 0 && _isHotelSelected == 0 && _isCarSelected == 1){
+        [self performSegueWithIdentifier:@"servicesToCar" sender:sender];
+    }
+}
 
 - (IBAction)hotelsButtonTapped:(id)sender {
     //[changeColorOfButton Button:_hotelsButton checkState: _isHotelSelected];

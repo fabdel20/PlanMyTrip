@@ -13,7 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface FlightRequirmentsViewController : UIViewController
 
 @property (nonatomic)Flights_Information *flightsInfoSaved;
-
+@property (nonatomic, assign) BOOL flightStatus;
+@property (nonatomic, assign) BOOL hotelStatus;
+@property (nonatomic, assign) BOOL carStatus;
 @end
 
 NS_ASSUME_NONNULL_END
