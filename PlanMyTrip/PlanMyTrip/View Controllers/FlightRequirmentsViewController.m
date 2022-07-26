@@ -89,6 +89,8 @@
         hotelsView.flightStatus = self.flightStatus;
         hotelsView.hotelStatus = self.hotelStatus;
         hotelsView.carStatus = self.carStatus;
+        hotelsView.itinCount = self.itinCount;
+        hotelsView.savedItineraries = self.savedItineraries;
     }
     if(self.hotelStatus == 0 && self.carStatus == 1){
         CarRequirmentsViewController *carReq = [segue destinationViewController];
@@ -127,6 +129,8 @@
         carReq.flightStatus = self.flightStatus;
         carReq.hotelStatus = self.hotelStatus;
         carReq.carStatus = self.carStatus;
+        carReq.itinCount = self.itinCount;
+        carReq.savedItineraries = self.savedItineraries;
     }
     if(self.hotelStatus == 0 && self.carStatus == 0){
         ResultsViewController *resultsView = [segue destinationViewController];
@@ -165,6 +169,9 @@
         resultsView.flightStatus = self.flightStatus;
         resultsView.carStatus = self.carStatus;
         resultsView.hotelStatus = self.hotelStatus;
+        resultsView.itinCount = self.itinCount;
+        resultsView.savedItineraries = self.savedItineraries; 
+        
     }
 }
 @end

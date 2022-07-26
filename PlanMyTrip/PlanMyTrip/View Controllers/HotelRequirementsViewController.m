@@ -130,6 +130,8 @@
         carsView.flightStatus = self.flightStatus;
         carsView.hotelStatus = self.hotelStatus;
         carsView.carStatus = self.carStatus;
+        carsView.itinCount = self.itinCount;
+        carsView.savedItineraries = self.savedItineraries;
         
     } else {
         ResultsViewController *resView = [segue destinationViewController];
@@ -167,6 +169,8 @@
         resView.flightStatus = self.flightStatus;
         resView.hotelStatus = self.hotelStatus;
         resView.carStatus = self.carStatus;
+        resView.itinCount = self.itinCount;
+        resView.savedItineraries = self.savedItineraries; 
     }
 }
 

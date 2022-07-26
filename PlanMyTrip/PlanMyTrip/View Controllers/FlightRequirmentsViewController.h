@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface FlightRequirmentsViewController : UIViewController
 
 @property (nonatomic)Flights_Information *flightsInfoSaved;
+@property (nonatomic, strong) NSMutableDictionary *savedItineraries;
+@property (nonatomic, strong) NSString *itinCount;
 @property (nonatomic, assign) BOOL flightStatus;
 @property (nonatomic, assign) BOOL hotelStatus;
 @property (nonatomic, assign) BOOL carStatus;

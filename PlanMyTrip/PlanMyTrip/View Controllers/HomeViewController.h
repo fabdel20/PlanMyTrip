@@ -10,7 +10,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HomeViewController : UIViewController
-
+@property (nonatomic, strong) NSMutableDictionary *savedItineraries;
+@property (nonatomic, strong) NSString *itinCount;
 @end
 
 NS_ASSUME_NONNULL_END

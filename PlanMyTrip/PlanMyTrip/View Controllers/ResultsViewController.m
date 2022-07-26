@@ -50,10 +50,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     if(self.flightStatus == 1){
-        //[self callFlightsAPI];
+        [self callFlightsAPI];
     }
     if(self.hotelStatus == 1){
-        //[self callHotelAPI];
+        [self callHotelAPI];
     }
     if(self.carStatus == 1){
         //[self callCarsAPI];
@@ -324,9 +324,14 @@
     if([segue.identifier isEqualToString:@"confToDisplay"]){
         
         DisplayResultsViewController *resultsView = [segue destinationViewController];
+        resultsView.flightStatus = self.flightStatus;
+        resultsView.hotelStatus = self.hotelStatus;
+        resultsView.carStatus = self.carStatus; 
         resultsView.flightResults = self.flightResults;
         resultsView.hotelResults = self.hotelResults;
-        //resultsView.carResults = (NSString *)self.carResults;
+        resultsView.itinCount = self.itinCount;
+        resultsView.savedItineraries = self.savedItineraries; 
+        //resultsView.carResults = self.carResults;
         
     }
 }

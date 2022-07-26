@@ -151,6 +151,8 @@
         resultsView.flightUserInfo = self.flightInfoSaved;
         resultsView.hotelUserInfo = self.hotelInfoSaved;
         resultsView.carUserInfo = carInfo;
+        resultsView.itinCount = self.itinCount; 
+        resultsView.savedItineraries = self.savedItineraries;
         
     }
 }

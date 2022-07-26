@@ -25,6 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL flightStatus;
 @property (nonatomic, assign) BOOL hotelStatus;
 @property (nonatomic, assign) BOOL carStatus;
+@property (nonatomic, strong) NSMutableDictionary *savedItineraries;
+@property (nonatomic, strong) NSString *itinCount;
 @end
 
 NS_ASSUME_NONNULL_END

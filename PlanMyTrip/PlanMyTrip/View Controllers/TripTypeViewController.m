@@ -6,8 +6,11 @@
 //
 
 #import "TripTypeViewController.h"
+#import "SelectServicesViewController.h"
 
 @interface TripTypeViewController ()
+- (IBAction)buisnessTripButton:(id)sender;
+- (IBAction)personalTripButton:(id)sender;
 
 @end
 
@@ -15,17 +18,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    SelectServicesViewController *newView = [segue destinationViewController];
+    newView.itinCount = self.itinCount;
+    newView.savedItineraries = self.savedItineraries; 
 }
-*/
 
+- (IBAction)personalTripButton:(id)sender {
+    [self performSegueWithIdentifier:@"tripTypeToServices" sender:sender];
+}
+
+- (IBAction)buisnessTripButton:(id)sender {
+    [self performSegueWithIdentifier:@"tripTypeToServices" sender:sender];
+}
 @end

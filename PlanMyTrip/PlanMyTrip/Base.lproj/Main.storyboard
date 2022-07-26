@@ -267,7 +267,7 @@
             <objects>
                 <viewController id="e6z-0E-1ro" customClass="HomeViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hjZ-OM-NFq">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Home Page" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GHE-Wz-upM">
@@ -288,8 +288,7 @@
                                     <color key="baseForegroundColor" systemColor="systemBlueColor"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="signUpButton:" destination="Bly-Jr-e6L" eventType="touchUpInside" id="cCn-ek-dfg"/>
-                                    <segue destination="b1t-Pt-bpX" kind="show" id="HYD-cl-bHF"/>
+                                    <action selector="planNewTrip:" destination="e6z-0E-1ro" eventType="touchUpInside" id="wRn-Ie-5me"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -297,6 +296,9 @@
                         <color key="backgroundColor" red="0.31691095969999999" green="0.6362713404" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
                     <navigationItem key="navigationItem" id="NNG-a3-08y"/>
+                    <connections>
+                        <segue destination="b1t-Pt-bpX" kind="show" identifier="homeToTripType" id="CX2-Va-vtu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gOS-6S-rdQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -307,7 +309,7 @@
             <objects>
                 <viewController id="b1t-Pt-bpX" customClass="TripTypeViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uXZ-uN-SXr">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Is this a work or personal trip?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FaB-bV-23K">
@@ -328,8 +330,7 @@
                                     <color key="baseForegroundColor" systemColor="systemBlueColor"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="signUpButton:" destination="Bly-Jr-e6L" eventType="touchUpInside" id="ufR-54-Wua"/>
-                                    <segue destination="v0W-K0-wyV" kind="show" id="ncb-qB-Ak4"/>
+                                    <action selector="buisnessTripButton:" destination="b1t-Pt-bpX" eventType="touchUpInside" id="fZR-ch-XZb"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fuC-Mh-Y5t">
@@ -343,8 +344,7 @@
                                     <color key="baseForegroundColor" systemColor="systemBlueColor"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="signUpButton:" destination="Bly-Jr-e6L" eventType="touchUpInside" id="wjF-pc-VmA"/>
-                                    <segue destination="v0W-K0-wyV" kind="show" id="1bD-lQ-B3c"/>
+                                    <action selector="personalTripButton:" destination="b1t-Pt-bpX" eventType="touchUpInside" id="l7Q-8z-gZt"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -352,17 +352,20 @@
                         <color key="backgroundColor" red="0.31691095969999999" green="0.6362713404" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
                     <navigationItem key="navigationItem" id="oo3-Eq-2FE"/>
+                    <connections>
+                        <segue destination="v0W-K0-wyV" kind="show" identifier="tripTypeToServices" id="57O-zU-amu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mt9-Iq-aHs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5231.884057971015" y="-228.34821428571428"/>
+            <point key="canvasLocation" x="5320" y="-271"/>
         </scene>
         <!--Select Services View Controller-->
         <scene sceneID="amY-0C-LLQ">
             <objects>
                 <viewController id="v0W-K0-wyV" customClass="SelectServicesViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vqZ-cw-euZ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="What services would you like?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EL1-zE-xpO">
@@ -474,7 +477,7 @@
             <objects>
                 <viewController id="uax-zJ-ikm" customClass="FlightRequirmentsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0qb-nB-Zca">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Book your Flight" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PXP-YD-qhv">
@@ -600,7 +603,7 @@
             <objects>
                 <viewController id="Fg1-Hc-iZ7" customClass="HotelRequirementsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zTF-6U-OpQ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Book your Hotel" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KQ7-yp-dIJ">
@@ -697,7 +700,7 @@
             <objects>
                 <viewController id="Tkp-rf-pKl" customClass="CarRequirmentsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LsJ-IM-ovZ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Book your Car" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rdx-KC-15h">
@@ -780,7 +783,7 @@
             <objects>
                 <viewController id="vlm-xR-d5v" customClass="ResultsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="T3t-8q-L5p">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" Please review your Input, if satisfied press continue." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHU-0o-YFS">
@@ -821,50 +824,242 @@
             <objects>
                 <viewController id="Ngl-Wz-2ZY" customClass="DisplayResultsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vmv-jP-ccc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Flight Recomendations" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wXl-zQ-02t">
-                                <rect key="frame" x="20" y="88" width="374" height="70"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wXl-zQ-02t">
+                                <rect key="frame" x="20" y="44" width="374" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="24"/>
                                 <color key="textColor" red="0.98909138159999999" green="0.98909138159999999" blue="0.98909138159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e3Y-dJ-Wco">
-                                <rect key="frame" x="20" y="152" width="374" height="266"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ca2-VL-Sjb">
+                                <rect key="frame" x="70" y="745" width="324" height="63"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="17"/>
                                 <color key="textColor" red="0.98909138159999999" green="0.98909138159999999" blue="0.98909138159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hotel Recomendations" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efZ-sM-lic">
-                                <rect key="frame" x="20" y="413" width="374" height="70"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m16-UH-rVg">
+                                <rect key="frame" x="70" y="682" width="324" height="66"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="17"/>
+                                <color key="textColor" red="0.98909138159999999" green="0.98909138159999999" blue="0.98909138159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NU4-Tz-cda">
+                                <rect key="frame" x="70" y="616" width="324" height="66"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="17"/>
+                                <color key="textColor" red="0.98909138159999999" green="0.98909138159999999" blue="0.98909138159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBq-sS-4sc">
+                                <rect key="frame" x="20" y="569" width="374" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="24"/>
                                 <color key="textColor" red="0.98909138159999999" green="0.98909138159999999" blue="0.98909138159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="337-yz-eQA">
-                                <rect key="frame" x="20" y="476" width="374" height="386"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4YF-cc-GPP">
+                                <rect key="frame" x="70" y="497" width="324" height="77"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="17"/>
                                 <color key="textColor" red="0.98909138159999999" green="0.98909138159999999" blue="0.98909138159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07D-rL-2mw">
+                                <rect key="frame" x="70" y="431" width="324" height="67"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="17"/>
+                                <color key="textColor" red="0.98909138159999999" green="0.98909138159999999" blue="0.98909138159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iz3-Yv-9HY">
+                                <rect key="frame" x="70" y="352" width="324" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="17"/>
+                                <color key="textColor" red="0.98909138159999999" green="0.98909138159999999" blue="0.98909138159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efZ-sM-lic">
+                                <rect key="frame" x="20" y="318" width="374" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="24"/>
+                                <color key="textColor" red="0.98909138159999999" green="0.98909138159999999" blue="0.98909138159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wAb-fc-tA5">
+                                <rect key="frame" x="70" y="244" width="324" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="17"/>
+                                <color key="textColor" red="0.98909138159999999" green="0.98909138159999999" blue="0.98909138159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8UI-OA-ymc">
+                                <rect key="frame" x="70" y="161" width="324" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="17"/>
+                                <color key="textColor" red="0.98909138159999999" green="0.98909138159999999" blue="0.98909138159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4If-MT-KbM">
+                                <rect key="frame" x="70" y="87" width="324" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="17"/>
+                                <color key="textColor" red="0.98909138159999999" green="0.98909138159999999" blue="0.98909138159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jOa-MW-EpW">
+                                <rect key="frame" x="20" y="87" width="51" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title=" ">
+                                    <backgroundConfiguration key="background"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="firstButtonTapped:" destination="Ngl-Wz-2ZY" eventType="touchUpInside" id="KQO-d8-zfZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Sx-xF-j2E">
+                                <rect key="frame" x="20" y="175" width="51" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title=" ">
+                                    <backgroundConfiguration key="background"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="secondButtonTapped:" destination="Ngl-Wz-2ZY" eventType="touchUpInside" id="8yf-lM-KFP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="geX-Hl-Vds">
+                                <rect key="frame" x="20" y="259" width="51" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title=" ">
+                                    <backgroundConfiguration key="background"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="thirdButtonTapped:" destination="Ngl-Wz-2ZY" eventType="touchUpInside" id="VBz-Ad-okN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gCr-QW-k4e">
+                                <rect key="frame" x="20" y="367" width="51" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title=" ">
+                                    <backgroundConfiguration key="background"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="fourthButtonTapped:" destination="Ngl-Wz-2ZY" eventType="touchUpInside" id="rul-ZR-Kms"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vhW-N0-vhY">
+                                <rect key="frame" x="20" y="439" width="51" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title=" ">
+                                    <backgroundConfiguration key="background"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="fifthButtonTapped:" destination="Ngl-Wz-2ZY" eventType="touchUpInside" id="7UY-9Q-xZE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ukK-y4-bPw">
+                                <rect key="frame" x="20" y="510" width="51" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title=" ">
+                                    <backgroundConfiguration key="background"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="sixthButtonTapped:" destination="Ngl-Wz-2ZY" eventType="touchUpInside" id="DJI-w8-jfQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ayv-AL-we5">
+                                <rect key="frame" x="20" y="616" width="51" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title=" ">
+                                    <backgroundConfiguration key="background"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="seventhButtonTapped:" destination="Ngl-Wz-2ZY" eventType="touchUpInside" id="86H-uZ-akt"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8fP-2r-CaK">
+                                <rect key="frame" x="20" y="690" width="51" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title=" ">
+                                    <backgroundConfiguration key="background"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="eigthButtonTapped:" destination="Ngl-Wz-2ZY" eventType="touchUpInside" id="qXu-GH-fTS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OEN-PV-t7c">
+                                <rect key="frame" x="20" y="749" width="51" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title=" ">
+                                    <backgroundConfiguration key="background"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="ninthButtonTapped:" destination="Ngl-Wz-2ZY" eventType="touchUpInside" id="tsc-Tn-rhf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WAY-3V-0OY"/>
                         <color key="backgroundColor" red="0.31691095969999999" green="0.6362713404" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Zza-JW-JNh"/>
+                    <navigationItem key="navigationItem" id="Zza-JW-JNh">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="p7C-c0-vVo">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="oEi-2W-hcz">
+                                <rect key="frame" x="285" y="0.0" width="109" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Save " cornerStyle="medium">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" red="0.98909138159999999" green="0.98909138159999999" blue="0.98909138159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </backgroundConfiguration>
+                                    <color key="baseForegroundColor" systemColor="systemBlueColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="saveItinerary:" destination="Ngl-Wz-2ZY" eventType="touchUpInside" id="8mu-xW-nG2"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="flightRSOutput" destination="e3Y-dJ-Wco" id="vr1-fg-KaF"/>
-                        <outlet property="hotelRSOutput" destination="337-yz-eQA" id="LUj-KU-agz"/>
+                        <outlet property="FirstTitle" destination="wXl-zQ-02t" id="RY3-PN-vPI"/>
+                        <outlet property="SecondTitle" destination="efZ-sM-lic" id="SHC-Xt-D16"/>
+                        <outlet property="ThirdTitle" destination="sBq-sS-4sc" id="7tf-iQ-7VM"/>
+                        <outlet property="eighthButton" destination="8fP-2r-CaK" id="cUu-4r-Bxh"/>
+                        <outlet property="eighthOutput" destination="m16-UH-rVg" id="82M-Cn-6xb"/>
+                        <outlet property="fifthButton" destination="vhW-N0-vhY" id="3gM-Eb-gpb"/>
+                        <outlet property="fifthOutput" destination="07D-rL-2mw" id="wxk-Pf-yDw"/>
+                        <outlet property="firstButton" destination="jOa-MW-EpW" id="wLt-9C-ejv"/>
+                        <outlet property="firstOutput" destination="4If-MT-KbM" id="Kwm-jD-w8P"/>
+                        <outlet property="fourthButton" destination="gCr-QW-k4e" id="y68-Li-Bxd"/>
+                        <outlet property="fourthOutput" destination="iz3-Yv-9HY" id="yvV-6c-k7r"/>
+                        <outlet property="ninthButton" destination="OEN-PV-t7c" id="jLg-c0-33S"/>
+                        <outlet property="ninthOutput" destination="ca2-VL-Sjb" id="VHa-pd-KHM"/>
+                        <outlet property="secondButton" destination="7Sx-xF-j2E" id="cyJ-6m-dIw"/>
+                        <outlet property="secondOutput" destination="8UI-OA-ymc" id="OPC-vr-SQ5"/>
+                        <outlet property="seventhButton" destination="Ayv-AL-we5" id="h8Q-pb-0as"/>
+                        <outlet property="seventhOutput" destination="NU4-Tz-cda" id="lX0-Wv-iKb"/>
+                        <outlet property="sixthButton" destination="ukK-y4-bPw" id="Crb-7c-ayx"/>
+                        <outlet property="sixthOutput" destination="4YF-cc-GPP" id="fUf-sf-Ds1"/>
+                        <outlet property="thirdButton" destination="geX-Hl-Vds" id="rwF-Ni-Vup"/>
+                        <outlet property="thirdOutput" destination="wAb-fc-tA5" id="RPO-gi-81U"/>
+                        <segue destination="e6z-0E-1ro" kind="show" identifier="saveToHomePage" id="YQj-o0-ACi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kRt-2J-eow" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="11831.884057971016" y="-228.34821428571428"/>
+            <point key="canvasLocation" x="4057.971014492754" y="615.40178571428567"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XyY-kI-4Ur">
@@ -906,10 +1101,10 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="fXN-EE-mHw"/>
-        <segue reference="Jdw-s9-FJb"/>
+        <segue reference="wDg-lI-TSu"/>
         <segue reference="1gz-PC-icS"/>
         <segue reference="aUR-AM-GPt"/>
-        <segue reference="1bD-lQ-B3c"/>
+        <segue reference="YQj-o0-ACi"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.98909138159999999" green="0.98909138159999999" blue="0.98909138159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
     <resources>

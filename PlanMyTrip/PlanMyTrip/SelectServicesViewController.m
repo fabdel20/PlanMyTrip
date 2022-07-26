@@ -47,18 +47,24 @@
         flightReqsView.flightStatus = _isFlightSelected;
         flightReqsView.hotelStatus = _isHotelSelected;
         flightReqsView.carStatus = _isCarSelected;
+        flightReqsView.itinCount = self.itinCount;
+        flightReqsView.savedItineraries = self.savedItineraries;
     }
     if(_isFlightSelected == 0 && _isHotelSelected == 1){
         HotelRequirementsViewController *hotelReq = [segue destinationViewController];
         hotelReq.flightStatus = _isFlightSelected;
         hotelReq.hotelStatus = _isHotelSelected;
         hotelReq.carStatus = _isCarSelected;
+        hotelReq.itinCount = self.itinCount;
+        hotelReq.savedItineraries = self.savedItineraries;
     }
     if(_isFlightSelected == 0 && _isCarSelected == 1 && _isHotelSelected == 0){
         CarRequirmentsViewController *carReqsView = [segue destinationViewController];
         carReqsView.flightStatus = _isFlightSelected;
         carReqsView.hotelStatus = _isHotelSelected;
         carReqsView.carStatus = _isCarSelected;
+        carReqsView.itinCount = self.itinCount;
+        carReqsView.savedItineraries = self.savedItineraries; 
     }
 }
 

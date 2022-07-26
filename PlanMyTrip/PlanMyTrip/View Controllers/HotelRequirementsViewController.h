@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface HotelRequirementsViewController : UIViewController
 @property (strong, nonatomic) Hotels_Information *hotelsInfoSaved;
 @property (strong, nonatomic) Flights_Information *flightInfoSaved2;
+@property (nonatomic, strong) NSMutableDictionary *savedItineraries;
+@property (nonatomic, strong) NSString *itinCount;
 @property (nonatomic, assign) BOOL flightStatus;
 @property (nonatomic, assign) BOOL hotelStatus;
 @property (nonatomic, assign) BOOL carStatus;

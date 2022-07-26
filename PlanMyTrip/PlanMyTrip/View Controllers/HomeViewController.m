@@ -6,26 +6,28 @@
 //
 
 #import "HomeViewController.h"
-
+#import "TripTypeViewController.h"
 @interface HomeViewController ()
+- (IBAction)planNewTrip:(id)sender;
 
 @end
 
 @implementation HomeViewController
-
+//homeToTripType
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    NSLog(@"%@", self.savedItineraries);
+    NSLog(@"%@", self.itinCount);
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    TripTypeViewController *newView = [segue destinationViewController];
+    newView.itinCount = self.itinCount;
+    newView.savedItineraries = self.savedItineraries;
 }
-*/
 
+- (IBAction)planNewTrip:(id)sender {
+    [self performSegueWithIdentifier:@"homeToTripType" sender:sender];
+}
 @end
