@@ -29,6 +29,7 @@
 		0167F955287C9C320085F4C6 /* Hotels_Information.m in Sources */ = {isa = PBXBuildFile; fileRef = 0167F954287C9C320085F4C6 /* Hotels_Information.m */; };
 		0167F958287C9D370085F4C6 /* Cars_Information.m in Sources */ = {isa = PBXBuildFile; fileRef = 0167F957287C9D370085F4C6 /* Cars_Information.m */; };
 		0167F95B287CC3C20085F4C6 /* ResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0167F95A287CC3C20085F4C6 /* ResultsViewController.m */; };
+		0167F963288B10250085F4C6 /* DisplayResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0167F962288B10250085F4C6 /* DisplayResultsViewController.m */; };
 		380D04BE09E776D66DD1A6DE /* Pods_PlanMyTrip_PlanMyTripUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 899E7F247C96E1C51F6ECB98 /* Pods_PlanMyTrip_PlanMyTripUITests.framework */; };
 		A0B4AE45AB6D3D4DEDD64F83 /* Pods_PlanMyTripTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBBADCC2173EEE170DD9E2BD /* Pods_PlanMyTripTests.framework */; };
 		A7FF21666711CF69270204EB /* Pods_PlanMyTrip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F1811EA646716ED1A1995A /* Pods_PlanMyTrip.framework */; };
@@ -94,15 +95,17 @@
 		0167F959287CC3C20085F4C6 /* ResultsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResultsViewController.h; sourceTree = "<group>"; };
 		0167F95A287CC3C20085F4C6 /* ResultsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResultsViewController.m; sourceTree = "<group>"; };
 		0167F95D287CE9950085F4C6 /* Property List.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Property List.plist"; sourceTree = "<group>"; };
-		2834C760C584EF20B97EF4CF /* Pods-PlanMyTrip-PlanMyTripUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlanMyTrip-PlanMyTripUITests.release.xcconfig"; path = "Target Support Files/Pods-PlanMyTrip-PlanMyTripUITests/Pods-PlanMyTrip-PlanMyTripUITests.release.xcconfig"; sourceTree = "<group>"; };
+		0167F961288B10250085F4C6 /* DisplayResultsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DisplayResultsViewController.h; sourceTree = "<group>"; };
+		0167F962288B10250085F4C6 /* DisplayResultsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DisplayResultsViewController.m; sourceTree = "<group>"; };
+		1018D1E939FBA7E9CEA4BBE6 /* Pods-PlanMyTripTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlanMyTripTests.release.xcconfig"; path = "Target Support Files/Pods-PlanMyTripTests/Pods-PlanMyTripTests.release.xcconfig"; sourceTree = "<group>"; };
 		30F1811EA646716ED1A1995A /* Pods_PlanMyTrip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlanMyTrip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4BE145F0E6B2785A2928D897 /* Pods-PlanMyTrip-PlanMyTripUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlanMyTrip-PlanMyTripUITests.debug.xcconfig"; path = "Target Support Files/Pods-PlanMyTrip-PlanMyTripUITests/Pods-PlanMyTrip-PlanMyTripUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		60F88D84D371100B8DC4ABDD /* Pods-PlanMyTripTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlanMyTripTests.release.xcconfig"; path = "Target Support Files/Pods-PlanMyTripTests/Pods-PlanMyTripTests.release.xcconfig"; sourceTree = "<group>"; };
-		79A267F9D83EAAFB8FD280E4 /* Pods-PlanMyTrip.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlanMyTrip.debug.xcconfig"; path = "Target Support Files/Pods-PlanMyTrip/Pods-PlanMyTrip.debug.xcconfig"; sourceTree = "<group>"; };
+		36CCE5AED5E7F0A110402D2C /* Pods-PlanMyTripTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlanMyTripTests.debug.xcconfig"; path = "Target Support Files/Pods-PlanMyTripTests/Pods-PlanMyTripTests.debug.xcconfig"; sourceTree = "<group>"; };
 		899E7F247C96E1C51F6ECB98 /* Pods_PlanMyTrip_PlanMyTripUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlanMyTrip_PlanMyTripUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AFA5C4CC0925A04D81A9D107 /* Pods-PlanMyTripTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlanMyTripTests.debug.xcconfig"; path = "Target Support Files/Pods-PlanMyTripTests/Pods-PlanMyTripTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AB552E10AB8EAC00A46C132E /* Pods-PlanMyTrip.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlanMyTrip.release.xcconfig"; path = "Target Support Files/Pods-PlanMyTrip/Pods-PlanMyTrip.release.xcconfig"; sourceTree = "<group>"; };
+		AD8EFC1BCA707BBDB017BB80 /* Pods-PlanMyTrip-PlanMyTripUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlanMyTrip-PlanMyTripUITests.release.xcconfig"; path = "Target Support Files/Pods-PlanMyTrip-PlanMyTripUITests/Pods-PlanMyTrip-PlanMyTripUITests.release.xcconfig"; sourceTree = "<group>"; };
+		C215123C3FF651608DE683F0 /* Pods-PlanMyTrip-PlanMyTripUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlanMyTrip-PlanMyTripUITests.debug.xcconfig"; path = "Target Support Files/Pods-PlanMyTrip-PlanMyTripUITests/Pods-PlanMyTrip-PlanMyTripUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		CBBADCC2173EEE170DD9E2BD /* Pods_PlanMyTripTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlanMyTripTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA2DF592DA8396A4AC1ADFA0 /* Pods-PlanMyTrip.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlanMyTrip.release.xcconfig"; path = "Target Support Files/Pods-PlanMyTrip/Pods-PlanMyTrip.release.xcconfig"; sourceTree = "<group>"; };
+		D64486A48C05EEC853A5C601 /* Pods-PlanMyTrip.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlanMyTrip.debug.xcconfig"; path = "Target Support Files/Pods-PlanMyTrip/Pods-PlanMyTrip.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,37 +161,10 @@
 		010F42742874BD29006D101E /* PlanMyTrip */ = {
 			isa = PBXGroup;
 			children = (
-				010F42B928760E4F006D101E /* TripTypeViewController.h */,
-				010F42BA28760E4F006D101E /* TripTypeViewController.m */,
-				010F42B628760272006D101E /* HomeViewController.h */,
-				010F42B728760272006D101E /* HomeViewController.m */,
-				010F42752874BD29006D101E /* AppDelegate.h */,
-				010F42CA287764C7006D101E /* SelectServicesViewController.m */,
-				010F42C9287764C4006D101E /* SelectServicesViewController.h */,
-				010F42762874BD29006D101E /* AppDelegate.m */,
-				010F42782874BD29006D101E /* SceneDelegate.h */,
-				010F42792874BD29006D101E /* SceneDelegate.m */,
-				010F427B2874BD29006D101E /* ViewController.h */,
-				010F427C2874BD2A006D101E /* ViewController.m */,
+				0167F95E2880A0540085F4C6 /* View Controllers */,
+				0167F95F2880A1760085F4C6 /* Delegate */,
 				010F427E2874BD2A006D101E /* Main.storyboard */,
-				0167F959287CC3C20085F4C6 /* ResultsViewController.h */,
-				0167F95A287CC3C20085F4C6 /* ResultsViewController.m */,
-				0167F956287C9D370085F4C6 /* Cars_Information.h */,
-				0167F957287C9D370085F4C6 /* Cars_Information.m */,
-				0167F953287C9C320085F4C6 /* Hotels_Information.h */,
-				0167F954287C9C320085F4C6 /* Hotels_Information.m */,
-				0167F9432878A1A80085F4C6 /* FlightRequirmentsViewController.h */,
-				0167F9442878A1A80085F4C6 /* FlightRequirmentsViewController.m */,
-				0167F950287C976B0085F4C6 /* Flights_Information.h */,
-				0167F951287C976B0085F4C6 /* Flights_Information.m */,
-				010F42AD2874D905006D101E /* SignInViewController.h */,
-				010F42AE2874D905006D101E /* SignInViewController.m */,
-				0167F9482878B1F10085F4C6 /* HotelRequirementsViewController.m */,
-				0167F94A2878B1F80085F4C6 /* HotelRequirementsViewController.h */,
-				010F42AA2874D8B5006D101E /* SignUpViewController.h */,
-				0167F94F2878F00E0085F4C6 /* CarRequirmentsViewController.h */,
-				0167F94D2878F00B0085F4C6 /* CarRequirmentsViewController.m */,
-				010F42AB2874D8B5006D101E /* SignUpViewController.m */,
+				0167F9602880A1AD0085F4C6 /* Models */,
 				010F42812874BD2B006D101E /* Assets.xcassets */,
 				0167F95D287CE9950085F4C6 /* Property List.plist */,
 				010F42832874BD2B006D101E /* LaunchScreen.storyboard */,
@@ -215,15 +191,69 @@
 			path = PlanMyTripUITests;
 			sourceTree = "<group>";
 		};
+		0167F95E2880A0540085F4C6 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				010F42CA287764C7006D101E /* SelectServicesViewController.m */,
+				010F42C9287764C4006D101E /* SelectServicesViewController.h */,
+				010F42B728760272006D101E /* HomeViewController.m */,
+				010F42B628760272006D101E /* HomeViewController.h */,
+				010F42B928760E4F006D101E /* TripTypeViewController.h */,
+				010F42BA28760E4F006D101E /* TripTypeViewController.m */,
+				010F427B2874BD29006D101E /* ViewController.h */,
+				0167F959287CC3C20085F4C6 /* ResultsViewController.h */,
+				0167F95A287CC3C20085F4C6 /* ResultsViewController.m */,
+				010F427C2874BD2A006D101E /* ViewController.m */,
+				0167F9442878A1A80085F4C6 /* FlightRequirmentsViewController.m */,
+				0167F9432878A1A80085F4C6 /* FlightRequirmentsViewController.h */,
+				010F42AD2874D905006D101E /* SignInViewController.h */,
+				010F42AE2874D905006D101E /* SignInViewController.m */,
+				0167F9482878B1F10085F4C6 /* HotelRequirementsViewController.m */,
+				0167F94A2878B1F80085F4C6 /* HotelRequirementsViewController.h */,
+				010F42AA2874D8B5006D101E /* SignUpViewController.h */,
+				010F42AB2874D8B5006D101E /* SignUpViewController.m */,
+				0167F94D2878F00B0085F4C6 /* CarRequirmentsViewController.m */,
+				0167F961288B10250085F4C6 /* DisplayResultsViewController.h */,
+				0167F962288B10250085F4C6 /* DisplayResultsViewController.m */,
+				0167F94F2878F00E0085F4C6 /* CarRequirmentsViewController.h */,
+			);
+			name = "View Controllers";
+			path = "PlanMyTrip/View Controllers";
+			sourceTree = SOURCE_ROOT;
+		};
+		0167F95F2880A1760085F4C6 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				010F42762874BD29006D101E /* AppDelegate.m */,
+				010F42782874BD29006D101E /* SceneDelegate.h */,
+				010F42792874BD29006D101E /* SceneDelegate.m */,
+				010F42752874BD29006D101E /* AppDelegate.h */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		0167F9602880A1AD0085F4C6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0167F951287C976B0085F4C6 /* Flights_Information.m */,
+				0167F950287C976B0085F4C6 /* Flights_Information.h */,
+				0167F954287C9C320085F4C6 /* Hotels_Information.m */,
+				0167F953287C9C320085F4C6 /* Hotels_Information.h */,
+				0167F957287C9D370085F4C6 /* Cars_Information.m */,
+				0167F956287C9D370085F4C6 /* Cars_Information.h */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		5080A95AB6B9AA6F93162B5F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				79A267F9D83EAAFB8FD280E4 /* Pods-PlanMyTrip.debug.xcconfig */,
-				EA2DF592DA8396A4AC1ADFA0 /* Pods-PlanMyTrip.release.xcconfig */,
-				4BE145F0E6B2785A2928D897 /* Pods-PlanMyTrip-PlanMyTripUITests.debug.xcconfig */,
-				2834C760C584EF20B97EF4CF /* Pods-PlanMyTrip-PlanMyTripUITests.release.xcconfig */,
-				AFA5C4CC0925A04D81A9D107 /* Pods-PlanMyTripTests.debug.xcconfig */,
-				60F88D84D371100B8DC4ABDD /* Pods-PlanMyTripTests.release.xcconfig */,
+				D64486A48C05EEC853A5C601 /* Pods-PlanMyTrip.debug.xcconfig */,
+				AB552E10AB8EAC00A46C132E /* Pods-PlanMyTrip.release.xcconfig */,
+				C215123C3FF651608DE683F0 /* Pods-PlanMyTrip-PlanMyTripUITests.debug.xcconfig */,
+				AD8EFC1BCA707BBDB017BB80 /* Pods-PlanMyTrip-PlanMyTripUITests.release.xcconfig */,
+				36CCE5AED5E7F0A110402D2C /* Pods-PlanMyTripTests.debug.xcconfig */,
+				1018D1E939FBA7E9CEA4BBE6 /* Pods-PlanMyTripTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -477,6 +507,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0167F9452878A1A80085F4C6 /* FlightRequirmentsViewController.m in Sources */,
+				0167F963288B10250085F4C6 /* DisplayResultsViewController.m in Sources */,
 				0167F952287C976B0085F4C6 /* Flights_Information.m in Sources */,
 				0167F9492878B1F10085F4C6 /* HotelRequirementsViewController.m in Sources */,
 				0167F95B287CC3C20085F4C6 /* ResultsViewController.m in Sources */,
@@ -659,7 +690,7 @@
 		};
 		010F42A22874BD2C006D101E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 79A267F9D83EAAFB8FD280E4 /* Pods-PlanMyTrip.debug.xcconfig */;
+			baseConfigurationReference = D64486A48C05EEC853A5C601 /* Pods-PlanMyTrip.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -686,7 +717,7 @@
 		};
 		010F42A32874BD2C006D101E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EA2DF592DA8396A4AC1ADFA0 /* Pods-PlanMyTrip.release.xcconfig */;
+			baseConfigurationReference = AB552E10AB8EAC00A46C132E /* Pods-PlanMyTrip.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -713,7 +744,7 @@
 		};
 		010F42A52874BD2C006D101E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AFA5C4CC0925A04D81A9D107 /* Pods-PlanMyTripTests.debug.xcconfig */;
+			baseConfigurationReference = 36CCE5AED5E7F0A110402D2C /* Pods-PlanMyTripTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -731,7 +762,7 @@
 		};
 		010F42A62874BD2C006D101E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 60F88D84D371100B8DC4ABDD /* Pods-PlanMyTripTests.release.xcconfig */;
+			baseConfigurationReference = 1018D1E939FBA7E9CEA4BBE6 /* Pods-PlanMyTripTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -749,7 +780,7 @@
 		};
 		010F42A82874BD2C006D101E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4BE145F0E6B2785A2928D897 /* Pods-PlanMyTrip-PlanMyTripUITests.debug.xcconfig */;
+			baseConfigurationReference = C215123C3FF651608DE683F0 /* Pods-PlanMyTrip-PlanMyTripUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -765,7 +796,7 @@
 		};
 		010F42A92874BD2C006D101E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2834C760C584EF20B97EF4CF /* Pods-PlanMyTrip-PlanMyTripUITests.release.xcconfig */;
+			baseConfigurationReference = AD8EFC1BCA707BBDB017BB80 /* Pods-PlanMyTrip-PlanMyTripUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

@@ -689,7 +689,7 @@
 		72809607243BFFDA147C95C5ACEAC27A /* PFSessionController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PFSessionController.m; path = Parse/Parse/Internal/Session/Controller/PFSessionController.m; sourceTree = "<group>"; };
 		72F2C74BAB455FD26B398D0FF7ED7785 /* Pods-PlanMyTripTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-PlanMyTripTests-dummy.m"; sourceTree = "<group>"; };
 		731C937DA645F3EEA4EA45F0F7615536 /* Parse-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Parse-prefix.pch"; sourceTree = "<group>"; };
-		73DF818268225C66CDF3625E92753E7D /* Pods-PlanMyTrip */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-PlanMyTrip"; path = Pods_PlanMyTrip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		73DF818268225C66CDF3625E92753E7D /* Pods_PlanMyTrip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlanMyTrip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		743ADFA875E61326F7A81A5656CBC2FB /* PFObjectFileCodingLogic.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PFObjectFileCodingLogic.m; path = Parse/Parse/Internal/Object/Coder/File/PFObjectFileCodingLogic.m; sourceTree = "<group>"; };
 		748D4289005E811CAFC3456CEABD62D1 /* Pods-PlanMyTrip-PlanMyTripUITests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-PlanMyTrip-PlanMyTripUITests"; path = Pods_PlanMyTrip_PlanMyTripUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		74A22425A8EE48CE50F4B846B9B832E4 /* PFKeyValueCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PFKeyValueCache.m; path = Parse/Parse/Internal/KeyValueCache/PFKeyValueCache.m; sourceTree = "<group>"; };
@@ -1446,7 +1446,7 @@
 				F84B331B5D6AAF1548DD1BB004AE5C2A /* Bolts.framework */,
 				0652F2476C7C87C6C0F6CB68072EA25F /* Parse.framework */,
 				ED7ADA84A7005589821D254428CD2D26 /* Parse.bundle */,
-				73DF818268225C66CDF3625E92753E7D /* Pods-PlanMyTrip */,
+				73DF818268225C66CDF3625E92753E7D /* Pods_PlanMyTrip.framework */,
 				748D4289005E811CAFC3456CEABD62D1 /* Pods-PlanMyTrip-PlanMyTripUITests */,
 				60DC63390FBEDE9F3678325DCB421ECD /* Pods-PlanMyTripTests */,
 			);
@@ -1889,7 +1889,7 @@
 			);
 			name = "Pods-PlanMyTrip";
 			productName = Pods_PlanMyTrip;
-			productReference = 73DF818268225C66CDF3625E92753E7D /* Pods-PlanMyTrip */;
+			productReference = 73DF818268225C66CDF3625E92753E7D /* Pods_PlanMyTrip.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		42465A188431886AB035275F049824D3 /* Bolts */ = {
