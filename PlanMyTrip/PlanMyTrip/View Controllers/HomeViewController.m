@@ -7,17 +7,16 @@
 
 #import "HomeViewController.h"
 #import "TripTypeViewController.h"
+#import "Parse/Parse.h"
+
 @interface HomeViewController ()
 - (IBAction)planNewTrip:(id)sender;
 
 @end
 
 @implementation HomeViewController
-//homeToTripType
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"%@", self.savedItineraries);
-    NSLog(@"%@", self.itinCount);
 }
 
 
@@ -25,6 +24,7 @@
     TripTypeViewController *newView = [segue destinationViewController];
     newView.itinCount = self.itinCount;
     newView.savedItineraries = self.savedItineraries;
+    newView.userLocal = self.userLocal;
 }
 
 - (IBAction)planNewTrip:(id)sender {

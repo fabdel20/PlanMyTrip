@@ -39,8 +39,6 @@
     state = !state;
 }
 
-
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if(_isFlightSelected == 1){
         FlightRequirmentsViewController *flightReqsView = [segue destinationViewController];
@@ -49,6 +47,7 @@
         flightReqsView.carStatus = _isCarSelected;
         flightReqsView.itinCount = self.itinCount;
         flightReqsView.savedItineraries = self.savedItineraries;
+        flightReqsView.userLocal = self.userLocal;
     }
     if(_isFlightSelected == 0 && _isHotelSelected == 1){
         HotelRequirementsViewController *hotelReq = [segue destinationViewController];
@@ -57,14 +56,16 @@
         hotelReq.carStatus = _isCarSelected;
         hotelReq.itinCount = self.itinCount;
         hotelReq.savedItineraries = self.savedItineraries;
+        hotelReq.userLocal = self.userLocal;
     }
-    if(_isFlightSelected == 0 && _isCarSelected == 1 && _isHotelSelected == 0){
+    if(_isFlightSelected == 0 && _isHotelSelected == 0 && _isCarSelected == 1){
         CarRequirmentsViewController *carReqsView = [segue destinationViewController];
         carReqsView.flightStatus = _isFlightSelected;
         carReqsView.hotelStatus = _isHotelSelected;
         carReqsView.carStatus = _isCarSelected;
         carReqsView.itinCount = self.itinCount;
-        carReqsView.savedItineraries = self.savedItineraries; 
+        carReqsView.savedItineraries = self.savedItineraries;
+        carReqsView.userLocal = self.userLocal; 
     }
 }
 
@@ -82,7 +83,6 @@
 }
 
 - (IBAction)hotelsButtonTapped:(id)sender {
-    //[changeColorOfButton Button:_hotelsButton checkState: _isHotelSelected];
     _hotelsButton.backgroundColor = _isHotelSelected ? UIColor.whiteColor : UIColor.redColor;
     _isHotelSelected = !_isHotelSelected;
 }

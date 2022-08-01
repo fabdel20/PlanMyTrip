@@ -23,7 +23,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     SelectServicesViewController *newView = [segue destinationViewController];
     newView.itinCount = self.itinCount;
-    newView.savedItineraries = self.savedItineraries; 
+    newView.savedItineraries = self.savedItineraries;
+    newView.userLocal = self.userLocal;
 }
 
 - (IBAction)personalTripButton:(id)sender {

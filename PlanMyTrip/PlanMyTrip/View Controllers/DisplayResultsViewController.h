@@ -6,19 +6,20 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Parse/Parse.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DisplayResultsViewController : UIViewController
-@property (strong, nonatomic) NSArray *flightResults;
-@property (strong, nonatomic) NSArray *carResults;
-@property (strong, nonatomic) NSArray *hotelResults;
+@property (strong, nonatomic) NSMutableArray *flightResults;
+@property (strong, nonatomic) NSMutableArray *carResults;
+@property (strong, nonatomic) NSMutableArray *hotelResults;
 @property (strong, nonatomic) NSArray *ittinObjects;
 @property (nonatomic, assign) BOOL flightStatus;
 @property (nonatomic, assign) BOOL hotelStatus;
 @property (nonatomic, assign) BOOL carStatus;
 @property (nonatomic, strong) NSMutableDictionary *savedItineraries;
 @property (nonatomic, strong) NSString *itinCount;
+@property (nonatomic, strong) PFUser *userLocal;
 @end
 
 NS_ASSUME_NONNULL_END

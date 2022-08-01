@@ -21,49 +21,19 @@
 @property (strong, nonatomic) NSMutableDictionary *hotelUserInformation;
 @property (strong, nonnull) NSHTTPURLResponse *hotelsAPIOutpt;
 @property (strong, nonnull) NSHTTPURLResponse *flightsAPIOutpt;
+- (IBAction)saveInfo:(id)sender;
 @property (strong, nonnull) NSHTTPURLResponse *carsAPIOutpt;
 @end
 
 @implementation ResultsViewController
 
--(void) fillFlightUserInformation: (Flights_Information *) flightInfo fillDict: (NSMutableDictionary *)flightUserInfo{
-    [flightUserInfo setObject:@"departure_date" forKey: flightInfo.departureDate];
-    [flightUserInfo setObject:@"return_date" forKey: flightInfo.returnDate];
-    [flightUserInfo setObject:@"arrival_city" forKey: flightInfo.arrivalCity];
-    [flightUserInfo setObject:@"departure_city" forKey: flightInfo.departureCity];
-    [flightUserInfo setObject:@"cabin" forKey: flightInfo.cabin];
-}
-
-
--(void) fillHotelUserInformation: (Hotels_Information *) hotelInfo fillDict: (NSMutableDictionary *)hotelUserInfo{
-    [hotelUserInfo setObject:@"departure_date" forKey: hotelInfo.departureDate];
-    [hotelUserInfo setObject:@"destination" forKey: hotelInfo.destination];
-    [hotelUserInfo setObject:@"arrival_date" forKey: hotelInfo.arrivalDate];
-}
-
--(void) fillCarUserInformation: (Cars_Information *) carInfo fillDict: (NSMutableDictionary *)carUserInfo{
-    [carUserInfo setObject:@"pickup_date" forKey: carInfo.pickUpDate];
-    [carUserInfo setObject:@"drop_of_date" forKey: carInfo.dropOffDate];
-    [carUserInfo setObject:@"location" forKey: carInfo.location];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    if(self.flightStatus == 1){
-        [self callFlightsAPI];
-    }
-    if(self.hotelStatus == 1){
-        [self callHotelAPI];
-    }
-    if(self.carStatus == 1){
-        //[self callCarsAPI];
-    }
-    
 }
 
 
 
--(void)callHotelAPI{
+-(void)callHotelAPI:(id)sender{
     NSDictionary *headers = @{ @"X-RapidAPI-Key": @"2ebe338c7fmsha84e37a2c76338dp16b94djsn34264f5722a0",
                                @"X-RapidAPI-Host": @"priceline-com-provider.p.rapidapi.com" };
     
@@ -84,15 +54,21 @@
                                                         NSLog(@"%@", error);
                                                     } else {
                                                         self.hotelSearchInformation = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-                                                        self.hotelResults = [[NSMutableArray alloc] init];
-                                                        [self searchHotelResultsDictionary:self.hotelSearchInformation returnArray: self.hotelResults];
-                                                        NSLog(@"%@", self.hotelResults);
+                                                        dispatch_async(dispatch_get_main_queue(), ^{
+                                                            self.hotelResults = [[NSMutableArray alloc] init];
+                                                            [self searchHotelResultsDictionary:self.hotelSearchInformation returnArray: self.hotelResults];
+                                                            if(self.carStatus == 1){
+                                                                [self callCarsAPI:sender];
+                                                            } else {
+                                                                [self performSegueWithIdentifier:@"resultsToDisplay" sender:sender];
+                                                            }
+                                                        });
                                                     }
                                                 }];
     [dataTask resume];
 }
 
--(void)callFlightsAPI{
+-(void)callFlightsAPI:(id)sender{
     NSDictionary *headers = @{ @"X-RapidAPI-Key": @"2ebe338c7fmsha84e37a2c76338dp16b94djsn34264f5722a0",
                                @"X-RapidAPI-Host": @"priceline-com-provider.p.rapidapi.com" };
     
@@ -115,27 +91,37 @@
                                                         NSLog(@"%@", error);
                                                     } else {
                                                         self.flightSearchInformation = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-                                                        self.flightResults = [[NSMutableArray alloc] init];
-                                                        [self searchFlightResultsDictionary:self.flightSearchInformation returnArray:self.flightResults];
-                                                        NSLog(@"%@", self.flightResults);
+                                                        dispatch_async(dispatch_get_main_queue(), ^{
+                                                            self.flightResults = [[NSMutableArray alloc] init];
+                                                            [self searchFlightResultsDictionary:self.flightSearchInformation returnArray:self.flightResults];
+                                                            if(self.hotelStatus == 1){
+                                                                [self callHotelAPI:sender];
+                                                            }
+                                                            if(self.hotelStatus == 0 && self.carStatus == 1){
+                                                                [self callCarsAPI:sender];
+                                                            }
+                                                            if(self.hotelStatus == 0 && self.carStatus == 0){
+                                                                [self performSegueWithIdentifier:@"resultsToDisplay" sender:sender];
+                                                            }
+                                                        });
                                                     }
                                                 }];
     [dataTask resume];
     
 }
 
--(void)callCarsAPI{
+-(void)callCarsAPI:(id)sender{
     NSDictionary *headers = @{ @"X-RapidAPI-Key": @"2ebe338c7fmsha84e37a2c76338dp16b94djsn34264f5722a0",
                                @"X-RapidAPI-Host": @"priceline-com-provider.p.rapidapi.com" };
-    NSString *dateAndTimePickUp = [NSString stringWithFormat:@"%@ 013:00:00", self.carUserInfo.pickUpDate];
-    NSString *dateAndTimeDroppOff = [NSString stringWithFormat:@"%@ 013:00:00", self.carUserInfo.dropOffDate];
+    NSString *dateAndTimePickUp = [NSString stringWithFormat:@"%@ 13:00:00", self.carUserInfo.pickUpDate];
+    NSString *dateAndTimeDroppOff = [NSString stringWithFormat:@"%@ 13:00:00", self.carUserInfo.dropOffDate];
+    
     
     NSString *urlCar = [NSString stringWithFormat:@"https://priceline-com-provider.p.rapidapi.com/v1/cars-rentals/search?location_pickup=%@&date_time_return=%@&date_time_pickup=%@&location_return=%@", self.carUserInfo.location,dateAndTimeDroppOff, dateAndTimePickUp,self.carUserInfo.location];
     
     NSString* webStringURL = [urlCar stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
-    NSLog(@"%@", urlCar);
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlCar] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:webStringURL] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0];
     [request setHTTPMethod:@"GET"];
     [request setAllHTTPHeaderFields:headers];
 
@@ -146,9 +132,11 @@
                                                         NSLog(@"%@", error);
                                                     } else {
                                                         self.carSearchInformation = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-                                                        self.carResults = [[NSMutableArray alloc] init];
-                                                        [self searchCarResultsDictionary:self.carSearchInformation returnArray:self.carResults];
-                                                        NSLog(@"%@", self.carResults);
+                                                        dispatch_async(dispatch_get_main_queue(), ^{
+                                                            self.carResults = [[NSMutableArray alloc] init];
+                                                            [self searchCarResultsDictionary:self.carSearchInformation returnArray:self.carResults];
+                                                            [self performSegueWithIdentifier:@"resultsToDisplay" sender:sender];
+                                                        });
                                                     }
                                                 }];
     [dataTask resume];
@@ -171,7 +159,7 @@
         if(count < 5){
             NSString *hotelName = [hotel objectForKey:@"name"];
             NSString *rating = [hotel objectForKey:@"starRating"];
-            if([rating intValue] >= 4.0){
+            if([rating intValue] >= 3.0){
                 NSMutableDictionary *rateSummary = [hotel objectForKey:@"ratesSummary"];
                 NSString *price = [rateSummary objectForKey:@"minPrice"];
                 if((minPrice = [price intValue]) || ([price intValue] <= minPrice + 200)){
@@ -199,7 +187,6 @@
     NSString *maxDuration = [importantResultInfo objectForKey:@"maxDuration"];
     
     NSDictionary *priced_itinerary = [spec objectForKey:@"priced_itinerary"];
-    //NSLog(@"%@", priced_itinerary);
     int count = 0;
     
     for(id itinerary in priced_itinerary){
@@ -267,12 +254,12 @@
             NSString *numPeople = [carInfo objectForKey:@"peopleCapacity"];
             NSString *description = [carInfo objectForKey:@"description"];
             NSString *idName = [currCar objectForKey:@"id"];
-                        
+             
+            
             if(minPrice <= [price intValue] && [price intValue] <= minPrice+100){
                 if([cancelation intValue] == 1 || [cancelationFee intValue] == 1){
                     if([automatic intValue] == 1){
-                        if([numPeople intValue] >= 5.0) {
-                            NSLog(@"pass");
+                        if([numPeople intValue] >= 4.0) {
                             NSMutableDictionary *newAdd = [[NSMutableDictionary alloc]init];
                             if(idName){
                                 [newAdd setObject:idName forKey:@"id"];
@@ -321,7 +308,7 @@
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if([segue.identifier isEqualToString:@"confToDisplay"]){
+    if([segue.identifier isEqualToString:@"resultsToDisplay"]){
         
         DisplayResultsViewController *resultsView = [segue destinationViewController];
         resultsView.flightStatus = self.flightStatus;
@@ -331,9 +318,22 @@
         resultsView.hotelResults = self.hotelResults;
         resultsView.itinCount = self.itinCount;
         resultsView.savedItineraries = self.savedItineraries; 
-        //resultsView.carResults = self.carResults;
+        resultsView.carResults = self.carResults;
+        resultsView.userLocal = self.userLocal; 
         
     }
 }
 
+
+- (IBAction)saveInfo:(id)sender {
+    if(self.flightStatus == 1){
+        [self callFlightsAPI:sender];
+    }
+    if(self.flightStatus == 0 && self.hotelStatus == 1){
+        [self callHotelAPI:sender];
+    }
+    if(self.flightStatus == 0 && self.hotelStatus == 0 && self.carStatus == 1){
+        [self callCarsAPI:sender];
+    }
+}
 @end
