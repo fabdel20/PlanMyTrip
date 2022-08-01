@@ -21,31 +21,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (IBAction)signUpButton:(id)sender {
     if([self.email.text isEqual:@""] || [self.password.text isEqual:@""] || [self.firstName.text isEqual:@""]|| [self.lastName.text isEqual:@""]){
             [self showAlert];
         }else{
             PFUser *newUser = [PFUser user];
-            
             newUser.username = self.email.text;
             newUser.password = self.password.text;
             newUser.firstName = self.firstName.text;
             newUser.lastName = self.lastName.text;
-            newUser.birthDay = self.BirthDate.date; 
-            
+            newUser.birthDay = self.BirthDate.date;
+            newUser.savedItineraries = nil;
             [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
                 if(error != nil){
                 }else{

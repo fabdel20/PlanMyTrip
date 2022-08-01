@@ -6,6 +6,7 @@
 //
 
 #import "SignInViewController.h"
+#import "HomeViewController.h"
 #import "Parse/Parse.h"
 @import Foundation;
 
@@ -14,13 +15,14 @@
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (strong, nonatomic) IBOutlet UITextField *passwordOutput;
 - (IBAction)logInButton:(id)sender;
+@property (strong, nonatomic) NSMutableDictionary *savedItins;
+@property (strong, nonatomic) PFUser *localUser;
 @end
 
 @implementation SignInViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (IBAction)forgotPassword:(id)sender {
@@ -30,7 +32,6 @@
     }];
     
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        // handle response here.
     }];
     [alertBox addAction:cancelAction];
     [alertBox addAction:[UIAlertAction actionWithTitle:@"Reset" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action){
@@ -75,18 +76,12 @@
 //Method to create an alert on the login screen.
 - (void) alertWithTitle: (NSString *)title message:(NSString *)text {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:text preferredStyle:(UIAlertControllerStyleAlert)];
-    // create an OK action
     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        // handle response here.
     }];
-    
-    // add the OK action to the alert controller
     [alert addAction:ok];
     [self presentViewController:alert animated:YES completion:^{
-        // optional code for what happens after the alert controller has finished presenting
     }];
 }
-
 
 - (IBAction)logInButton:(id)sender {
     NSString *username = self.usernameOutput.text;
@@ -99,9 +94,12 @@
             if(error != nil){
                 [self showAlert];
             }else{
-                [self performSegueWithIdentifier:@"logInSegue" sender:nil];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    self.savedItins = user.savedItineraries;
+                    self.localUser = user;
+                    [self performSegueWithIdentifier:@"logInSegue" sender:nil];
+                });
             }
-            
         }];
         
     }
@@ -113,9 +111,12 @@
     UIAlertAction *tryAgain = [UIAlertAction actionWithTitle:@"Try Again" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}];
     [alert addAction:tryAgain];
     [self presentViewController:alert animated:YES completion:^{}];
-    
 }
 
-
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    HomeViewController *newView = [segue destinationViewController];
+    newView.savedItineraries = self.savedItins;
+    newView.userLocal = self.localUser;
+}
 
 @end
