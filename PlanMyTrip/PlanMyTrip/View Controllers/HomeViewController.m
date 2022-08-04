@@ -17,7 +17,6 @@
 @implementation HomeViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"%@", self.userLocal.savedItineraries);
 }
 
 

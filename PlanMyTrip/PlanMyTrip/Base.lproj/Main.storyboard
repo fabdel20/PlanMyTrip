@@ -1734,11 +1734,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="SMD-Ie-T4b"/>
-        <segue reference="h6v-t8-U8F"/>
-        <segue reference="Jdw-s9-FJb"/>
-        <segue reference="ihO-yp-Qz4"/>
-        <segue reference="hRe-Ho-Jx6"/>
+        <segue reference="PDI-aT-dQY"/>
+        <segue reference="pXe-Iy-3pb"/>
+        <segue reference="1gz-PC-icS"/>
+        <segue reference="aUR-AM-GPt"/>
         <segue reference="YQj-o0-ACi"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.98909138159999999" green="0.98909138159999999" blue="0.98909138159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

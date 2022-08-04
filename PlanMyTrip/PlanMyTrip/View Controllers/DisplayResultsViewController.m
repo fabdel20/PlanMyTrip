@@ -57,9 +57,7 @@
 @property (nonatomic) BOOL seventhButtonState;
 @property (nonatomic) BOOL eigthButtonState;
 @property (nonatomic) BOOL ninthButtonState;
-
 - (IBAction)saveItinerary:(id)sender;
-
 @property (strong, nonatomic) IBOutlet UILabel *firstOutput;
 @property (strong, nonatomic) NSMutableDictionary *selectedServices;
 @property (nonatomic) BOOL firstThird;
@@ -71,13 +69,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    if(self.flightStatus == 1){
+    if(self.flightStatus){
         self.FirstTitle.text = @"Flight Recomendations";
     }
-    if(self.flightStatus == 0 && self.hotelStatus == 1){
+    if(!self.flightStatus&& self.hotelStatus){
         self.FirstTitle.text = @"Hotel Recomendations";
     }
-    if(self.flightStatus == 0 && self.hotelStatus == 0 && self.carStatus == 1){
+    if(!self.flightStatus && !self.hotelStatus && self.carStatus){
         self.FirstTitle.text = @"Car Recomendations";
     }
     self.firstThird = YES;
@@ -87,11 +85,11 @@
     self.firstFilter.backgroundColor = [UIColor whiteColor];
     [self.firstFilter setTitle:@"Filter Results" forState:UIControlStateNormal];
     
-    if((self.flightStatus == 1 && self.hotelStatus == 1) || (self.flightStatus == 1 && self.carStatus == 1) || (self.hotelStatus == 1 && self.carStatus == 1)){
-        if(self.flightStatus == 1 && self.hotelStatus == 1){
+    if((self.flightStatus && self.hotelStatus) || (self.flightStatus && self.carStatus) || (self.hotelStatus && self.carStatus)){
+        if(self.flightStatus && self.hotelStatus){
             self.SecondTitle.text = @"Hotel Recomendations";
         }
-        if((self.flightStatus == 1 && self.hotelStatus == 0 && self.carStatus == 1) || (self.flightStatus == 0 && self.hotelStatus == 1 && self.carStatus == 1)){
+        if((self.flightStatus && !self.hotelStatus && self.carStatus) || (!self.flightStatus && self.hotelStatus && self.carStatus)){
             self.SecondTitle.text = @"Car Recomendations";
         }
         self.secondThird = YES;
@@ -102,7 +100,7 @@
         [self.secondFilter setTitle:@"Filter Results" forState:UIControlStateNormal];
     }
     
-    if(self.flightStatus == 1 && self.carStatus == 1 && self.hotelStatus == 1){
+    if(self.flightStatus && self.carStatus && self.hotelStatus ){
         self.ThirdTitle.text = @"Car Recomendations";
         self.lastThird = YES;
         self.seventhButton.backgroundColor = [UIColor whiteColor];
@@ -112,7 +110,7 @@
         [self.thirdFilter setTitle:@"Filter Results" forState:UIControlStateNormal];
     }
     
-    if(self.hotelStatus == 1){
+    if(self.hotelStatus){
         int count = 1;
         NSMutableDictionary *newItem =[[NSMutableDictionary alloc] init];
         for(id item in self.hotelResults){
@@ -123,10 +121,10 @@
                 
                 if(count == 1){
                     NSString *sentence1 = [NSString stringWithFormat:@"The first hotel recomendation is the %@. It costs %@ per night and is rated %@ stars.", name, price, rating];
-                    if(self.flightStatus == 0){
+                    if(!self.flightStatus){
                         self.firstOutput.text = sentence1;
                     }
-                    if(self.flightStatus == 1) {
+                    if(self.flightStatus) {
                         self.fourthOutput.text = sentence1;
                     }
                     NSMutableDictionary *sub = [[NSMutableDictionary alloc] init];
@@ -137,10 +135,10 @@
                 }
                 if(count == 2){
                     NSString *sentence2 = [NSString stringWithFormat:@"The second hotel recomendation is the %@. It costs %@ per night and is rated %@ stars.", name, price, rating];
-                    if(self.flightStatus == 0){
+                    if(!self.flightStatus){
                         self.secondOutput.text = sentence2;
                     }
-                    if(self.flightStatus == 1){
+                    if(self.flightStatus){
                         self.fifthOutput.text = sentence2;
                     }
                     NSMutableDictionary *sub = [[NSMutableDictionary alloc] init];
@@ -151,10 +149,10 @@
                 }
                 if(count == 3){
                     NSString *sentence3 = [NSString stringWithFormat:@"The third hotel recomendation is the %@. It costs %@ per night and is rated %@ stars.", name, price, rating];
-                    if(self.flightStatus == 0){
+                    if(!self.flightStatus){
                         self.thirdOutput.text = sentence3;
                     }
-                    if(self.flightStatus == 1){
+                    if(self.flightStatus){
                         self.sixthOutput.text = sentence3;
                     }
                     NSMutableDictionary *sub = [[NSMutableDictionary alloc] init];
@@ -162,7 +160,6 @@
                     [sub setObject:price forKey:@"price"];
                     [sub setObject:rating forKey:@"rating"];
                     [newItem setObject:sub forKey:@"thirdHotel"];
-                    
                     NSMutableDictionary *temp = [[NSMutableDictionary alloc]init];
                     [temp setObject:newItem forKey:@"hotels"];
                     if(_selectedServices != nil){
@@ -178,7 +175,7 @@
         }
     }
     
-    if(self.flightStatus == 1){
+    if(self.flightStatus){
         int count2 = 1;
         NSMutableDictionary *newItem =[[NSMutableDictionary alloc] init];
         for(id flight in self.flightResults){
@@ -248,19 +245,17 @@
             NSString *capacity = [car objectForKey:@"number_of_passengers"];
             if(count3 == 1){
                 [newItem setObject:car forKey:@"firstCar"];
-                if(self.flightStatus == 0 && self.hotelStatus == 0){
-                    // first position
+                if(!self.flightStatus && !self.hotelStatus){
                     NSString *textOuput = [NSString stringWithFormat:@"The first car is a %@. %@. It costs %@ and can take up to %@ people.", name, description, price, capacity];
                     self.firstOutput.text = textOuput;
                 }
                 
-                if((self.flightStatus == 1 && self.hotelStatus == 0) || (self.flightStatus == 0 && self.hotelStatus == 1)){
-                    //second position
+                if((self.flightStatus && !self.hotelStatus) || (!self.flightStatus && self.hotelStatus)){
                     NSString *textOuput = [NSString stringWithFormat:@"The first car is a %@. %@. It costs %@ and can take up to %@ people.", name, description, price, capacity];
                     self.fourthOutput.text = textOuput;
                 }
                 
-                if(self.flightStatus == 1 && self.hotelStatus == 1){
+                if(self.flightStatus && self.hotelStatus){
                     // last position
                     NSString *textOuput = [NSString stringWithFormat:@"The first car is a %@. %@. It costs %@ and can take up to %@ people.", name, description, price, capacity];
                     self.seventhOutput.text = textOuput;
@@ -268,19 +263,19 @@
             }
             if(count3 == 2){
                 [newItem setObject:car forKey:@"secondCar"];
-                if(self.flightStatus == 0 && self.hotelStatus == 0){
+                if(!self.flightStatus && !self.hotelStatus){
                     // first position
                     NSString *textOuput = [NSString stringWithFormat:@"The first car is a %@. %@. It costs %@ and can take up to %@ people.", name, description, price, capacity];
                     self.secondOutput.text = textOuput;
                 }
                 
-                if((self.flightStatus == 1 && self.hotelStatus == 0) || (self.flightStatus == 0 && self.hotelStatus == 1)){
+                if((self.flightStatus && !self.hotelStatus) || (!self.flightStatus && self.hotelStatus)){
                     //second position
                     NSString *textOuput = [NSString stringWithFormat:@"The first car is a %@. %@. It costs %@ and can take up to %@ people.", name, description, price, capacity];
                     self.fifthOutput.text = textOuput;
                 }
                 
-                if(self.flightStatus == 1 && self.hotelStatus == 1){
+                if(self.flightStatus && self.hotelStatus){
                     // last position
                     NSString *textOuput = [NSString stringWithFormat:@"The first car is a %@. %@. It costs %@ and can take up to %@ people.", name, description, price, capacity];
                     self.eighthOutput.text = textOuput;
@@ -288,19 +283,19 @@
             }
             if(count3 == 3){
                 [newItem setObject:car forKey:@"thirdCar"];
-                if(self.flightStatus == 0 && self.hotelStatus == 0){
+                if(!self.flightStatus && !self.hotelStatus){
                     // first position
                     NSString *textOuput = [NSString stringWithFormat:@"The first car is a %@. %@. It costs %@ and can take up to %@ people.", name, description, price, capacity];
                     self.thirdOutput.text = textOuput;
                 }
                 
-                if((self.flightStatus == 1 && self.hotelStatus == 0) || (self.flightStatus == 0 && self.hotelStatus == 1)){
+                if((self.flightStatus && !self.hotelStatus) || (!self.flightStatus && self.hotelStatus)){
                     //second position
                     NSString *textOuput = [NSString stringWithFormat:@"The first car is a %@. %@. It costs %@ and can take up to %@ people.", name, description, price, capacity];
                     self.fourthOutput.text = textOuput;
                 }
                 
-                if(self.flightStatus == 1 && self.hotelStatus == 1){
+                if(self.flightStatus && self.hotelStatus){
                     // last position
                     NSString *textOuput = [NSString stringWithFormat:@"The first car is a %@. %@. It costs %@ and can take up to %@ people.", name, description, price, capacity];
                     self.fifthOutput.text = textOuput;
@@ -326,10 +321,10 @@
 }
 
 - (IBAction)ninthButtonTapped:(id)sender {
-    if(self.lastThird == 1){
+    if(self.lastThird){
         self.ninthButton.backgroundColor = self.ninthButtonState ? UIColor.whiteColor : UIColor.redColor;
         self.ninthButtonState = !self.ninthButtonState;
-        if(self.eigthButtonState == 1 || self.seventhButtonState == 1){
+        if(self.eigthButtonState || self.seventhButtonState){
             self.eighthButton.backgroundColor = [UIColor whiteColor];
             self.eigthButtonState = 0;
             self.seventhButton.backgroundColor = [UIColor whiteColor];
@@ -339,10 +334,10 @@
 }
 
 - (IBAction)eigthButtonTapped:(id)sender {
-    if(self.lastThird == 1){
+    if(self.lastThird){
         self.eighthButton.backgroundColor = self.eigthButtonState ? UIColor.whiteColor : UIColor.redColor;
         self.eigthButtonState = !self.eigthButtonState;
-        if(self.ninthButtonState == 1 || self.seventhButtonState == 1){
+        if(self.ninthButtonState || self.seventhButtonState){
             self.ninthButton.backgroundColor = [UIColor whiteColor];
             self.ninthButtonState = 0;
             self.seventhButton.backgroundColor = [UIColor whiteColor];
@@ -352,10 +347,10 @@
 }
 
 - (IBAction)seventhButtonTapped:(id)sender {
-    if(self.lastThird == 1){
+    if(self.lastThird){
         self.seventhButton.backgroundColor = self.seventhButtonState ? UIColor.whiteColor : UIColor.redColor;
         self.seventhButtonState = !self.seventhButtonState;
-        if(self.eigthButtonState == 1 || self.ninthButtonState == 1){
+        if(self.eigthButtonState || self.ninthButtonState){
             self.eighthButton.backgroundColor = [UIColor whiteColor];
             self.eigthButtonState = 0;
             self.ninthButton.backgroundColor = [UIColor whiteColor];
@@ -365,10 +360,10 @@
 }
 
 - (IBAction)sixthButtonTapped:(id)sender {
-    if(self.secondThird == 1){
+    if(self.secondThird){
         self.sixthButton.backgroundColor = self.sixthButtonState ? UIColor.whiteColor : UIColor.redColor;
         self.sixthButtonState = !self.sixthButtonState;
-        if(self.fifthButtonState == 1 || self.fourthButtonState == 1){
+        if(self.fifthButtonState || self.fourthButtonState){
             self.fifthButton.backgroundColor = [UIColor whiteColor];
             self.fifthButtonState = 0;
             self.fourthButton.backgroundColor = [UIColor whiteColor];
@@ -378,10 +373,10 @@
 }
 
 - (IBAction)fifthButtonTapped:(id)sender {
-    if(self.secondThird == 1){
+    if(self.secondThird){
         self.fifthButton.backgroundColor = self.fifthButtonState ? UIColor.whiteColor : UIColor.redColor;
         self.fifthButtonState = !self.fifthButtonState;
-        if(self.sixthButtonState == 1 || self.fourthButtonState == 1){
+        if(self.sixthButtonState || self.fourthButtonState){
             self.sixthButton.backgroundColor = [UIColor whiteColor];
             self.sixthButtonState = 0;
             self.fourthButton.backgroundColor = [UIColor whiteColor];
@@ -391,10 +386,10 @@
 }
 
 - (IBAction)fourthButtonTapped:(id)sender {
-    if(self.secondThird == 1){
+    if(self.secondThird){
         self.fourthButton.backgroundColor = self.fourthButtonState ? UIColor.whiteColor : UIColor.redColor;
         self.fourthButtonState = !self.fourthButtonState;
-        if(self.sixthButtonState == 1 || self.fifthButtonState == 1){
+        if(self.sixthButtonState || self.fifthButtonState){
             self.sixthButton.backgroundColor = [UIColor whiteColor];
             self.sixthButtonState = 0;
             self.fifthButton.backgroundColor = [UIColor whiteColor];
@@ -404,10 +399,10 @@
 }
 
 - (IBAction)thirdButtonTapped:(id)sender {
-    if(self.firstThird == 1){
+    if(self.firstThird){
         self.thirdButton.backgroundColor = self.thirdButtonState ? UIColor.whiteColor : UIColor.redColor;
         self.thirdButtonState = !self.thirdButtonState;
-        if(self.firstButtonState == 1 || self.secondButtonState == 1){
+        if(self.firstButtonState || self.secondButtonState){
             self.firstButton.backgroundColor = [UIColor whiteColor];
             self.firstButtonState = 0;
             self.secondButton.backgroundColor = [UIColor whiteColor];
@@ -417,10 +412,10 @@
 }
 
 - (IBAction)secondButtonTapped:(id)sender {
-    if(self.firstThird == 1){
+    if(self.firstThird){
         self.secondButton.backgroundColor = self.secondButtonState ? UIColor.whiteColor : UIColor.redColor;
         self.secondButtonState = !self.secondButtonState;
-        if(self.firstButtonState == 1 || self.thirdButtonState == 1){
+        if(self.firstButtonState || self.thirdButtonState){
             self.firstButton.backgroundColor = [UIColor whiteColor];
             self.firstButtonState = 0;
             self.thirdButton.backgroundColor = [UIColor whiteColor];
@@ -430,10 +425,10 @@
 }
 
 - (IBAction)firstButtonTapped:(id)sender {
-    if(self.firstThird == 1){
+    if(self.firstThird){
         self.firstButton.backgroundColor = self.firstButtonState ? UIColor.whiteColor : UIColor.redColor;
         self.firstButtonState = !self.firstButtonState;
-        if(self.secondButtonState == 1 || self.thirdButtonState == 1){
+        if(self.secondButtonState || self.thirdButtonState){
             self.secondButton.backgroundColor = [UIColor whiteColor];
             self.secondButtonState = 0;
             self.thirdButton.backgroundColor = [UIColor whiteColor];
@@ -451,53 +446,53 @@
         self.itinCount = [NSString stringWithFormat:@"%d", num];
         NSMutableDictionary *newAdd = [[NSMutableDictionary alloc] init];
         newView.itinCount = self.itinCount;
-        if(self.flightStatus == 1){
-            if(self.firstButtonState == 1){
+        if(self.flightStatus){
+            if(self.firstButtonState){
                 NSMutableDictionary *val = [self.selectedServices objectForKey:@"flights"];
                 NSMutableDictionary *selectedFlight = [val objectForKey:@"firstFlight"];
                 [newAdd setObject:selectedFlight forKey:@"flights"];
             }
-            if(self.secondButtonState == 1){
+            if(self.secondButtonState){
                 NSMutableDictionary *val = [self.selectedServices objectForKey:@"flights"];
                 NSMutableDictionary *selectedFlight = [val objectForKey:@"secondFlight"];
                 [newAdd setObject:selectedFlight forKey:@"flights"];
             }
-            if(self.thirdButtonState == 1){
+            if(self.thirdButtonState){
                 NSMutableDictionary *val = [self.selectedServices objectForKey:@"flights"];
                 NSMutableDictionary *selectedFlight = [val objectForKey:@"thirdFlight"];
                 [newAdd setObject:selectedFlight forKey:@"flights"];
             }
         }
         
-        if(self.hotelStatus == 1){
-            if(self.flightStatus == 1){
-                if(self.fourthButtonState == 1){
+        if(self.hotelStatus){
+            if(self.flightStatus){
+                if(self.fourthButtonState){
                     NSMutableDictionary *val = [_selectedServices objectForKey:@"hotels"];
                     NSMutableDictionary *selectedHotel = [val objectForKey:@"firstHotel"];
                     [newAdd setObject:selectedHotel forKey:@"hotels"];
                 }
-                if(self.fifthButtonState == 1){
+                if(self.fifthButtonState){
                     NSMutableDictionary *val = [_selectedServices objectForKey:@"hotels"];
                     NSMutableDictionary *selectedHotel = [val objectForKey:@"secondHotel"];
                     [newAdd setObject:selectedHotel forKey:@"hotels"];
                 }
-                if(self.sixthButtonState == 1){
+                if(self.sixthButtonState){
                     NSMutableDictionary *val = [_selectedServices objectForKey:@"hotels"];
                     NSMutableDictionary *selectedHotel = [val objectForKey:@"thirdHotel"];
                     [newAdd setObject:selectedHotel forKey:@"hotels"];
                 }
             } else {
-                if(self.firstButtonState == 1){
+                if(self.firstButtonState){
                     NSMutableDictionary *val = [_selectedServices objectForKey:@"hotels"];
                     NSMutableDictionary *selectedHotel = [val objectForKey:@"firstHotel"];
                     [newAdd setObject:selectedHotel forKey:@"hotels"];
                 }
-                if(_secondButtonState == 1){
+                if(_secondButtonState){
                     NSMutableDictionary *val = [_selectedServices objectForKey:@"hotels"];
                     NSMutableDictionary *selectedHotel = [val objectForKey:@"secondHotel"];
                     [newAdd setObject:selectedHotel forKey:@"hotels"];
                 }
-                if(self.thirdButtonState == 1){
+                if(self.thirdButtonState){
                     NSMutableDictionary *val = [_selectedServices objectForKey:@"hotels"];
                     NSMutableDictionary *selectedHotel = [val objectForKey:@"thirdHotel"];
                     [newAdd setObject:selectedHotel forKey:@"hotels"];
@@ -505,71 +500,71 @@
             }
         }
         
-        if(self.carStatus == 1){
-            if(self.flightStatus == 1){
-                if(self.hotelStatus == 0){
-                    if(self.fourthButtonState == 1){
+        if(self.carStatus){
+            if(self.flightStatus){
+                if(!self.hotelStatus){
+                    if(self.fourthButtonState){
                         NSMutableDictionary *val = [_selectedServices objectForKey:@"cars"];
                         NSMutableDictionary *selectedCar = [val objectForKey:@"firstCar"];
                         [newAdd setObject:selectedCar forKey:@"cars"];
                     }
-                    if(self.fifthButtonState == 1){
+                    if(self.fifthButtonState){
                         NSMutableDictionary *val = [_selectedServices objectForKey:@"cars"];
                         NSMutableDictionary *selectedCar = [val objectForKey:@"secondCar"];
                         [newAdd setObject:selectedCar forKey:@"cars"];
                     }
-                    if(self.sixthButtonState == 1){
+                    if(self.sixthButtonState){
                         NSMutableDictionary *val = [_selectedServices objectForKey:@"cars"];
                         NSMutableDictionary *selectedCar = [val objectForKey:@"thirdCar"];
                         [newAdd setObject:selectedCar forKey:@"cars"];
                     }
                 }
-                if(self.hotelStatus == 1){
-                    if(self.seventhButtonState == 1){
+                if(self.hotelStatus){
+                    if(self.seventhButtonState){
                         NSMutableDictionary *val = [_selectedServices objectForKey:@"cars"];
                         NSMutableDictionary *selectedCar = [val objectForKey:@"firstCar"];
                         [newAdd setObject:selectedCar forKey:@"cars"];
                     }
-                    if(self.eigthButtonState == 1){
+                    if(self.eigthButtonState){
                         NSMutableDictionary *val = [_selectedServices objectForKey:@"cars"];
                         NSMutableDictionary *selectedCar = [val objectForKey:@"secondCar"];
                         [newAdd setObject:selectedCar forKey:@"cars"];
                     }
-                    if(self.ninthButtonState == 1){
+                    if(self.ninthButtonState){
                         NSMutableDictionary *val = [_selectedServices objectForKey:@"cars"];
                         NSMutableDictionary *selectedCar = [val objectForKey:@"thirdCar"];
                         [newAdd setObject:selectedCar forKey:@"cars"];
                     }
                 }
             } else {
-                if(self.hotelStatus == 0){
-                    if(self.firstButtonState == 1){
+                if(!self.hotelStatus){
+                    if(self.firstButtonState){
                         NSMutableDictionary *val = [_selectedServices objectForKey:@"cars"];
                         NSMutableDictionary *selectedCars = [val objectForKey:@"firstCar"];
                         [newAdd setObject:selectedCars forKey:@"cars"];
                     }
-                    if(self.secondButtonState == 1){
+                    if(self.secondButtonState){
                         NSMutableDictionary *val = [_selectedServices objectForKey:@"cars"];
                         NSMutableDictionary *selectedCar = [val objectForKey:@"secondCar"];
                         [newAdd setObject:selectedCar forKey:@"cars"];
                     }
-                    if(self.thirdButtonState == 1){
+                    if(self.thirdButtonState){
                         NSMutableDictionary *val = [_selectedServices objectForKey:@"cars"];
                         NSMutableDictionary *selectedCar = [val objectForKey:@"thirdCar"];
                         [newAdd setObject:selectedCar forKey:@"cars"];
                     }
                 } else {
-                    if(self.fourthButtonState == 1){
+                    if(self.fourthButtonState){
                         NSMutableDictionary *val = [_selectedServices objectForKey:@"cars"];
                         NSMutableDictionary *selectedCars = [val objectForKey:@"firstCar"];
                         [newAdd setObject:selectedCars forKey:@"cars"];
                     }
-                    if(self.fifthButtonState == 1){
+                    if(self.fifthButtonState){
                         NSMutableDictionary *val = [_selectedServices objectForKey:@"cars"];
                         NSMutableDictionary *selectedCar = [val objectForKey:@"secondCar"];
                         [newAdd setObject:selectedCar forKey:@"cars"];
                     }
-                    if(self.sixthButtonState == 1){
+                    if(self.sixthButtonState){
                         NSMutableDictionary *val = [_selectedServices objectForKey:@"cars"];
                         NSMutableDictionary *selectedCar = [val objectForKey:@"thirdCar"];
                         [newAdd setObject:selectedCar forKey:@"cars"];
@@ -641,28 +636,28 @@
     }
 }
 - (IBAction)firstFilterTapped:(id)sender {
-    if(self.flightStatus == 1){
+    if(self.flightStatus){
         [self performSegueWithIdentifier:@"displayResultsToFlightFilter" sender:sender];
     }
-    if(self.flightStatus == 0 && self.hotelStatus == 1){
+    if(!self.flightStatus && self.hotelStatus){
         [self performSegueWithIdentifier:@"displayResultsToHotelFilter" sender:sender];
     }
     
-    if(self.flightStatus == 0 && self.hotelStatus == 0 && self.carStatus == 1){
+    if(!self.flightStatus && !self.hotelStatus && self.carStatus){
         [self performSegueWithIdentifier:@"displayResultsToCarFilter" sender:sender];
     }
 }
 - (IBAction)secondFilterTapped:(id)sender {
-    if(self.flightStatus == 1 && self.hotelStatus == 1){
+    if(self.flightStatus && self.hotelStatus){
         [self performSegueWithIdentifier:@"displayResultsToHotelFilter" sender:sender];
     }
     
-    if(self.flightStatus == 0 && self.hotelStatus == 1 && self.carStatus == 1){
+    if(!self.flightStatus && self.hotelStatus && self.carStatus){
         [self performSegueWithIdentifier:@"displayResultsToCarFilter" sender:sender];
     }
 }
 - (IBAction)thirdFilterTapped:(id)sender {
-    if(self.flightStatus == 1 && self.hotelStatus == 1 && self.carStatus == 1){
+    if(self.flightStatus && self.hotelStatus && self.carStatus){
         [self performSegueWithIdentifier:@"displayResultsToCarFilter" sender:sender];
     }
 }

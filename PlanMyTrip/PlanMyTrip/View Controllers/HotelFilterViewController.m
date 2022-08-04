@@ -54,7 +54,7 @@
 
 
 -(void)callHotelAPI:(id)sender{
-    NSDictionary *headers = @{ @"X-RapidAPI-Key": @"2ebe338c7fmsha84e37a2c76338dp16b94djsn34264f5722a0",
+    NSDictionary *headers = @{ @"X-RapidAPI-Key": @"c151066f31mshf429fe6db920209p199187jsnaf96ca6dffe5",
                                @"X-RapidAPI-Host": @"priceline-com-provider.p.rapidapi.com" };
     
     if(self.isFitnessCenterButtonTapped == 1 && self.isBreakfastButtonTapped == 1){
@@ -71,6 +71,10 @@
     
     if(self.isFitnessCenterButtonTapped == 0 && self.isBreakfastButtonTapped == 0){
         self.ameneties = @"";
+    }
+    
+    if(self.rating == nil){
+        self.rating = @"3.0,3.5,4.0,4.5,5.0";
     }
     
     NSString *urlHotel = [NSString stringWithFormat:@"https://priceline-com-provider.p.rapidapi.com/v1/hotels/search?sort_order=HDR&location_id=%@&date_checkout=%@&date_checkin=%@&star_rating_ids=%@&rooms_number=1%@",self.hotelUserInfo.destination,self.hotelUserInfo.departureDate,self.hotelUserInfo.arrivalDate,self.rating,self.ameneties];
@@ -102,11 +106,8 @@
 -(void)searchHotelResultsDictionary: (NSDictionary *)hotelSearchInformation returnArray: (NSMutableArray *)hotelResults{
     NSArray *hotelValues = [hotelSearchInformation objectForKey:@"hotels"];
     
-    NSString *ratingReq = @"";
+    NSString *ratingReq = @"1.0";
     
-    if(self.isAnyButtonTapped == 1){
-        ratingReq = @"1";
-    }
     if(self.isFourPointFiveButtonTapped == 1){
         ratingReq = @"4.5";
     }
@@ -119,6 +120,16 @@
     if(self.isThreeButtonTapped == 1){
         ratingReq = @"3.0";
     }
+    
+    int minPrice = INT_MIN;
+    int maxPrice = INT_MAX;
+    
+    if(self.minPrice.text != nil){
+        minPrice = [self.minPrice.text intValue];
+    }
+    if(self.maxPrice.text != nil){
+        maxPrice = [self.maxPrice.text intValue];
+    }
     int count = 0;
     for(NSMutableDictionary *hotel in hotelValues){
         if(count < 5){
@@ -127,7 +138,7 @@
             if([rating intValue] >= [ratingReq intValue]){
                 NSMutableDictionary *rateSummary = [hotel objectForKey:@"ratesSummary"];
                 NSString *price = [rateSummary objectForKey:@"minPrice"];
-                if(([self.minPrice.text intValue] <= [price intValue]) && ([price intValue] <= [self.maxPrice.text intValue])){
+                if((minPrice <= [price intValue]) && ([price intValue] <= maxPrice)){
                     NSMutableDictionary *newAdd = [[NSMutableDictionary alloc]init];
                     if(hotelName && rating && price){
                         [newAdd setObject:hotelName forKey:@"name"];

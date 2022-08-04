@@ -32,7 +32,7 @@
 }
 
 -(void)callFlightsAPI:(id)sender{
-    NSDictionary *headers = @{ @"X-RapidAPI-Key": @"2ebe338c7fmsha84e37a2c76338dp16b94djsn34264f5722a0",
+    NSDictionary *headers = @{ @"X-RapidAPI-Key": @"c151066f31mshf429fe6db920209p199187jsnaf96ca6dffe5",
                                @"X-RapidAPI-Host": @"priceline-com-provider.p.rapidapi.com" };
     
     NSString *dates = [NSString stringWithFormat:@"%@,%@", self.flightUserInfo.departureDate, self.flightUserInfo.returnDate];
@@ -75,6 +75,15 @@
     NSDictionary *priced_itinerary = [spec objectForKey:@"priced_itinerary"];
     int count = 0;
     
+    int minPrice = INT_MIN;
+    int maxPrice = INT_MAX;
+    
+    if(self.minPrice.text != nil){
+        minPrice = [self.minPrice.text intValue];
+    }
+    if(self.maxPrice.text != nil){
+        maxPrice = [self.maxPrice.text intValue];
+    }
     for(id itinerary in priced_itinerary){
         if(count < 5){
             NSDictionary *value = [priced_itinerary objectForKey:itinerary];
@@ -85,7 +94,7 @@
             NSString *cancelStatus = [value objectForKey:@"changes_allowed"];
             if(([minDuration intValue] <= ([duration intValue] * 60))){
                 if(([duration intValue]) <= ([minDuration intValue] + [maxDuration intValue])/2){
-                    if(([self.minPrice.text intValue] <= [price intValue]) && ([price intValue] <= [self.maxPrice.text intValue])){
+                    if((minPrice <= [price intValue]) && ([price intValue] <= maxPrice)){
                         if([cancelStatus intValue] == self.isCancelSelected && ticketingAirline && price && duration){
                             NSMutableDictionary *newAdd = [[NSMutableDictionary alloc]init];
                             [newAdd setObject:ticketingAirline forKey:@"Ticketing_Airline"];

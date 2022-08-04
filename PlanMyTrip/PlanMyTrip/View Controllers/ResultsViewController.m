@@ -31,10 +31,8 @@
     [super viewDidLoad];
 }
 
-
-
 -(void)callHotelAPI:(id)sender{
-    NSDictionary *headers = @{ @"X-RapidAPI-Key": @"2ebe338c7fmsha84e37a2c76338dp16b94djsn34264f5722a0",
+    NSDictionary *headers = @{ @"X-RapidAPI-Key": @"c151066f31mshf429fe6db920209p199187jsnaf96ca6dffe5",
                                @"X-RapidAPI-Host": @"priceline-com-provider.p.rapidapi.com" };
     
     
@@ -69,7 +67,7 @@
 }
 
 -(void)callFlightsAPI:(id)sender{
-    NSDictionary *headers = @{ @"X-RapidAPI-Key": @"2ebe338c7fmsha84e37a2c76338dp16b94djsn34264f5722a0",
+    NSDictionary *headers = @{ @"X-RapidAPI-Key": @"c151066f31mshf429fe6db920209p199187jsnaf96ca6dffe5",
                                @"X-RapidAPI-Host": @"priceline-com-provider.p.rapidapi.com" };
     
     NSString *dates = [NSString stringWithFormat:@"%@,%@", self.flightUserInfo.departureDate, self.flightUserInfo.returnDate];
@@ -111,11 +109,10 @@
 }
 
 -(void)callCarsAPI:(id)sender{
-    NSDictionary *headers = @{ @"X-RapidAPI-Key": @"2ebe338c7fmsha84e37a2c76338dp16b94djsn34264f5722a0",
+    NSDictionary *headers = @{ @"X-RapidAPI-Key": @"c151066f31mshf429fe6db920209p199187jsnaf96ca6dffe5",
                                @"X-RapidAPI-Host": @"priceline-com-provider.p.rapidapi.com" };
     NSString *dateAndTimePickUp = [NSString stringWithFormat:@"%@ 13:00:00", self.carUserInfo.pickUpDate];
     NSString *dateAndTimeDroppOff = [NSString stringWithFormat:@"%@ 13:00:00", self.carUserInfo.dropOffDate];
-    
     
     NSString *urlCar = [NSString stringWithFormat:@"https://priceline-com-provider.p.rapidapi.com/v1/cars-rentals/search?location_pickup=%@&date_time_return=%@&date_time_pickup=%@&location_return=%@", self.carUserInfo.location,dateAndTimeDroppOff, dateAndTimePickUp,self.carUserInfo.location];
     
@@ -142,7 +139,6 @@
     [dataTask resume];
 }
 
-// I can't make a generic recomendation system, i have to make three different functions because for each service there is a specifc tag I want to check that is unique to the service
 -(void)searchHotelResultsDictionary: (NSDictionary *)hotelSearchInformation returnArray: (NSMutableArray *)hotelResults{
     NSArray *hotelValues = [hotelSearchInformation objectForKey:@"hotels"];
     double minPrice = INT_MAX;
@@ -256,51 +252,20 @@
             NSString *description = [carInfo objectForKey:@"description"];
             NSString *idName = [currCar objectForKey:@"id"];
              
-            
-            if(minPrice <= [price intValue] && [price intValue] <= minPrice+100){
-                if([cancelation intValue] == 1 || [cancelationFee intValue] == 1){
-                    if([automatic intValue] == 1){
-                        if([numPeople intValue] >= 4.0) {
-                            NSMutableDictionary *newAdd = [[NSMutableDictionary alloc]init];
-                            if(idName){
-                                [newAdd setObject:idName forKey:@"id"];
-                            } else {
-                                [newAdd setObject:@"NA" forKey:@"id"];
-                            }
-                            if(description){
-                                [newAdd setObject:description forKey:@"description"];
-                            } else {
-                                [newAdd setObject:@"NA" forKey:@"description"];
-                            }
-                            if(cancelation){
-                                [newAdd setObject:cancelation forKey:@"cancellation_policy"];
-                            } else{
-                                [newAdd setObject:@"NA" forKey:@"cancellation_policy"];
-                            }
-                            if(cancelationFee){
-                                [newAdd setObject:cancelationFee forKey:@"cancellation_fee"];
-                            } else {
-                                [newAdd setObject:@"NA" forKey:@"cancellation_fee"];
-                            }
-                            if(automatic){
-                                [newAdd setObject:automatic forKey:@"automatic"];
-                            } else {
-                                [newAdd setObject:@"NA" forKey:@"automatic"];
-                            }
-                            if(price){
-                                [newAdd setObject:price forKey:@"price"];
-                            } else {
-                                [newAdd setObject:@"NA" forKey:@"price"];
-                            }
-                            if(numPeople){
-                                [newAdd setObject:numPeople forKey:@"number_of_passengers"];
-                            } else {
-                                [newAdd setObject:@"NA" forKey:@"number_of_passengers"];
-                            }
-                            [carResults addObject:newAdd];
-                            count++;
-                        }
+            if((minPrice <= [price intValue] && [price intValue] <= minPrice+100) && ([cancelation intValue]|| [cancelationFee intValue])){
+                if([automatic intValue] && ([numPeople intValue] >= 4.0)){
+                    NSMutableDictionary *newAdd = [[NSMutableDictionary alloc]init];
+                    if(idName && description && cancelation && cancelationFee && automatic && price && numPeople){
+                        [newAdd setObject:idName forKey:@"id"];
+                        [newAdd setObject:description forKey:@"description"];
+                        [newAdd setObject:cancelation forKey:@"cancellation_policy"];
+                        [newAdd setObject:cancelationFee forKey:@"cancellation_fee"];
+                        [newAdd setObject:automatic forKey:@"automatic"];
+                        [newAdd setObject:price forKey:@"price"];
+                        [newAdd setObject:numPeople forKey:@"number_of_passengers"];
+                        [carResults addObject:newAdd];
                     }
+                    count++;
                 }
             }
         }
@@ -310,7 +275,6 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([segue.identifier isEqualToString:@"resultsToDisplay"]){
-        
         DisplayResultsViewController *resultsView = [segue destinationViewController];
         resultsView.flightStatus = self.flightStatus;
         resultsView.hotelStatus = self.hotelStatus;
@@ -327,15 +291,14 @@
     }
 }
 
-
 - (IBAction)saveInfo:(id)sender {
-    if(self.flightStatus == 1){
+    if(self.flightStatus){
         [self callFlightsAPI:sender];
     }
-    if(self.flightStatus == 0 && self.hotelStatus == 1){
+    if(!self.flightStatus && self.hotelStatus){
         [self callHotelAPI:sender];
     }
-    if(self.flightStatus == 0 && self.hotelStatus == 0 && self.carStatus == 1){
+    if(!self.flightStatus && !self.hotelStatus && self.carStatus){
         [self callCarsAPI:sender];
     }
 }

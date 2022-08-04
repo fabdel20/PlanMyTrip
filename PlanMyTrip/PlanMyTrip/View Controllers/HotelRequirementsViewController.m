@@ -29,7 +29,7 @@
 -(void)callAPI:(NSString *)location action:(id)sender{
     NSDictionary *headers = @{ @"X-RapidAPI-Key": @"c151066f31mshf429fe6db920209p199187jsnaf96ca6dffe5",
                                @"X-RapidAPI-Host": @"priceline-com-provider.p.rapidapi.com" };
-    
+
     NSString *urlT = [NSString stringWithFormat:@"https://priceline-com-provider.p.rapidapi.com/v1/hotels/locations?name=%@&search_type=ALL", location];
     
     NSString* url = [urlT stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -45,19 +45,17 @@
                                                     } else {
                                                         NSMutableArray *resDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
                                                         NSMutableDictionary *firstElem = [resDict firstObject];
+                                                        self.destination.text = [firstElem objectForKey:@"id"];
                                                         dispatch_async(dispatch_get_main_queue(), ^{
                                                             if(self.carStatus == 1){
-                                                                self.destination.text = [firstElem objectForKey:@"id"];
                                                                 [self performSegueWithIdentifier:@"hotelToCars" sender:sender];
                                                             } else {
-                                                                self.destination.text = [firstElem objectForKey:@"id"];
                                                                 [self performSegueWithIdentifier:@"hotelToResults" sender:sender];
                                                             }
                                                         });
                                                     }
                                                 }];
     [dataTask resume];
-    
 }
 
 - (IBAction)saveData:(id)sender {
@@ -73,37 +71,25 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    Hotels_Information *hotelsInfo = [[Hotels_Information alloc] init];
+    if(self.destination.text && self.arrivalDate.date != self.departureDate.date && self.numberOfGuests.text){
+        hotelsInfo.destination = self.destination.text;
+        NSDate *tempArrival = self.arrivalDate.date;
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy-MM-dd"];
+        hotelsInfo.arrivalDate = [formatter stringFromDate:tempArrival];
+        NSDate *tempDeparture = self.departureDate.date;
+        NSDateFormatter *formatter2 = [[NSDateFormatter alloc] init];
+        [formatter2 setDateFormat:@"yyyy-MM-dd"];
+        hotelsInfo.departureDate = [formatter2 stringFromDate:tempDeparture];
+        hotelsInfo.numberOfGuests = self.numberOfGuests.text;
+    } else {
+        [self showAlert];
+    }
+    
     if(self.carStatus == 1){
-        Hotels_Information *hotelsInfo = [[Hotels_Information alloc] init];
-        if(self.destination.text){
-            hotelsInfo.destination = self.destination.text;
-        } else {
-            [self showAlert];
-        }
-        
-        if(self.arrivalDate.date == self.departureDate.date){
-            [self showAlert];
-        } else {
-            NSDate *tempArrival = self.arrivalDate.date;
-            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-            [formatter setDateFormat:@"yyyy-MM-dd"];
-            hotelsInfo.arrivalDate = [formatter stringFromDate:tempArrival];
-            NSDate *tempDeparture = self.departureDate.date;
-            NSDateFormatter *formatter2 = [[NSDateFormatter alloc] init];
-            [formatter2 setDateFormat:@"yyyy-MM-dd"];
-            hotelsInfo.departureDate = [formatter2 stringFromDate:tempDeparture];
-        }
-        
-        if(self.numberOfGuests.text){
-            hotelsInfo.numberOfGuests = self.numberOfGuests.text;
-        } else {
-            [self showAlert];
-        }
-        
         CarRequirmentsViewController *carsView = [segue destinationViewController];
-        if(self.flightStatus == 1){
-            carsView.flightInfoSaved = self.flightInfoSaved2;
-        }
+        carsView.flightInfoSaved = self.flightInfoSaved2;
         carsView.hotelInfoSaved = hotelsInfo;
         carsView.flightStatus = self.flightStatus;
         carsView.hotelStatus = self.hotelStatus;
@@ -114,36 +100,6 @@
         
     } else {
         ResultsViewController *resView = [segue destinationViewController];
-        Hotels_Information *hotelsInfo = [[Hotels_Information alloc] init];
-        if(self.destination.text){
-            hotelsInfo.destination = self.destination.text;
-        } else {
-            [self showAlert];
-        }
-        
-        if(self.arrivalDate.date == self.departureDate.date){
-            [self showAlert];
-        } else {
-            NSDate *tempArrival = self.arrivalDate.date;
-            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-            [formatter setDateFormat:@"yyyy-MM-dd"];
-            hotelsInfo.arrivalDate = [formatter stringFromDate:tempArrival];
-            NSDate *tempDeparture = self.departureDate.date;
-            NSDateFormatter *formatter2 = [[NSDateFormatter alloc] init];
-            [formatter2 setDateFormat:@"yyyy-MM-dd"];
-            hotelsInfo.departureDate = [formatter2 stringFromDate:tempDeparture];
-        }
-        
-        if(self.numberOfGuests.text){
-            hotelsInfo.numberOfGuests = self.numberOfGuests.text;
-        } else {
-            [self showAlert];
-        }
-        
-        if(self.flightStatus == 1){
-            resView.flightUserInfo = self.flightInfoSaved2;
-        }
-        
         resView.hotelUserInfo = hotelsInfo;
         resView.flightStatus = self.flightStatus;
         resView.hotelStatus = self.hotelStatus;
@@ -153,5 +109,4 @@
         resView.userLocal = self.userLocal;
     }
 }
-
 @end

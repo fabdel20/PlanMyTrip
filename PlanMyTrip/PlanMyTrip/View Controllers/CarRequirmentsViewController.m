@@ -4,7 +4,6 @@
 //
 //  Created by Farida Abdelmoneum on 7/8/22.
 //
-
 #import "CarRequirmentsViewController.h"
 #import "ResultsViewController.h"
 #import "Cars_Information.h"
@@ -15,16 +14,8 @@
 @property (strong, nonatomic) IBOutlet UITextField *location;
 @property (strong, nonatomic) IBOutlet UIDatePicker *pickUpDate;
 @property (strong, nonatomic) IBOutlet UIDatePicker *dropOffDate;
-
-
 @end
-
 @implementation CarRequirmentsViewController
-
--(void)parseDict:(NSMutableArray *)dict resHandle:(NSString *)res{
-    NSMutableDictionary *firstElem = [dict firstObject];
-    res = [firstElem objectForKey:@"id"];
-}
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
@@ -73,33 +64,20 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([segue.identifier isEqualToString:@"carToResults"]){
         Cars_Information *carInfo = [[Cars_Information alloc] init];
-        
-        if(self.location.text){
+        if(self.location.text && self.pickUpDate.date &&self.dropOffDate.date){
             carInfo.location = self.location.text;
-        } else {
-            [self showAlert];
-        }
-        
-        if(self.pickUpDate.date){
             NSDate *tempArrival = self.pickUpDate.date;
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
             [formatter setDateFormat:@"yyyy-MM-dd"];
             carInfo.pickUpDate = [formatter stringFromDate:tempArrival];
-        } else {
-            [self showAlert];
-        }
-        if(self.dropOffDate.date){
-            NSDate *tempArrival = self.dropOffDate.date;
-            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            NSDate *tempDrop = self.dropOffDate.date;
+            NSDateFormatter *formatter2 = [[NSDateFormatter alloc] init];
             [formatter setDateFormat:@"yyyy-MM-dd"];
-            carInfo.dropOffDate = [formatter stringFromDate:tempArrival];
+            carInfo.dropOffDate = [formatter2 stringFromDate:tempDrop];
         } else {
             [self showAlert];
         }
-        
-        
         self.carInfoSaved = carInfo;
-        
         ResultsViewController *resultsView = [segue destinationViewController];
         resultsView.flightUserInfo = self.flightInfoSaved;
         resultsView.hotelUserInfo = self.hotelInfoSaved;

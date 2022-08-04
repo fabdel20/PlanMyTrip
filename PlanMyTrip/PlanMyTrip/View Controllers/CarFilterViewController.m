@@ -76,6 +76,16 @@
             NSString *idName = [currCar objectForKey:@"id"];
             BOOL carTypeFlag = 0;
             
+            int minPrice = INT_MIN;
+            int maxPrice = INT_MAX;
+            
+            if(self.minPrice.text != nil){
+                minPrice = [self.minPrice.text intValue];
+            }
+            if(self.maxPrice.text != nil){
+                maxPrice = [self.maxPrice.text intValue];
+            }
+            
             if(self.isLuxuryCarButtonTapped == 1 && [carType isEqualToString:@"Luxury Car"]){
                 carTypeFlag = 1;
             }
@@ -105,8 +115,11 @@
                 carTypeFlag = 1;
             }
             
+            if(self.numberOfPassengers.text == nil){
+                self.numberOfPassengers.text = @"1";
+            }
             if(carTypeFlag == 1){
-                if([self.minPrice.text intValue] <= [price intValue] && [price intValue] <= [self.maxPrice.text intValue]){
+                if(minPrice <= [price intValue] && [price intValue] <= maxPrice){
                     if((self.isCancelButtonTapped == 1 &&[cancelation intValue] == 1) || self.isCancelButtonTapped == 0){
                         if([automatic intValue] == 1){
                             if([numPeople intValue] >= [self.numberOfPassengers.text intValue]) {
@@ -160,7 +173,7 @@
 
 
 -(void)callCarsAPI:(id)sender{
-    NSDictionary *headers = @{ @"X-RapidAPI-Key": @"2ebe338c7fmsha84e37a2c76338dp16b94djsn34264f5722a0",
+    NSDictionary *headers = @{ @"X-RapidAPI-Key": @"c151066f31mshf429fe6db920209p199187jsnaf96ca6dffe5",
                                @"X-RapidAPI-Host": @"priceline-com-provider.p.rapidapi.com" };
     NSString *dateAndTimePickUp = [NSString stringWithFormat:@"%@ 13:00:00", self.carUserInfo.pickUpDate];
     NSString *dateAndTimeDroppOff = [NSString stringWithFormat:@"%@ 13:00:00", self.carUserInfo.dropOffDate];
