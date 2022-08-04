@@ -7,6 +7,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Parse/Parse.h"
+#import "Flights_Information.h"
+#import "Hotels_Information.h"
+#import "Cars_Information.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DisplayResultsViewController : UIViewController
@@ -20,6 +23,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSMutableDictionary *savedItineraries;
 @property (nonatomic, strong) NSString *itinCount;
 @property (nonatomic, strong) PFUser *userLocal;
+@property (nonatomic, strong) Flights_Information *flightUserInfo;
+@property (nonatomic, strong) Hotels_Information *hotelUserInfo;
+@property (nonatomic, strong) Cars_Information *carUserInfo;
 @end
 
 NS_ASSUME_NONNULL_END

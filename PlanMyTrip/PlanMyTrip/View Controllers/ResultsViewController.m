@@ -141,6 +141,7 @@
                                                 }];
     [dataTask resume];
 }
+
 // I can't make a generic recomendation system, i have to make three different functions because for each service there is a specifc tag I want to check that is unique to the service
 -(void)searchHotelResultsDictionary: (NSDictionary *)hotelSearchInformation returnArray: (NSMutableArray *)hotelResults{
     NSArray *hotelValues = [hotelSearchInformation objectForKey:@"hotels"];
@@ -320,7 +321,9 @@
         resultsView.savedItineraries = self.savedItineraries; 
         resultsView.carResults = self.carResults;
         resultsView.userLocal = self.userLocal; 
-        
+        resultsView.flightUserInfo = self.flightUserInfo;
+        resultsView.carUserInfo = self.carUserInfo;
+        resultsView.hotelUserInfo = self.hotelUserInfo; 
     }
 }
 
