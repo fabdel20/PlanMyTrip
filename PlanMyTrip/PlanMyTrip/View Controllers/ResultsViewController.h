@@ -29,6 +29,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSMutableDictionary *savedItineraries;
 @property (nonatomic, strong) NSString *itinCount;
 @property (nonatomic, strong) PFUser *userLocal;
+@property (nonatomic, strong) NSString *tripName;
+@property (nonatomic, strong) NSString *tripType; 
 @end
 
 NS_ASSUME_NONNULL_END

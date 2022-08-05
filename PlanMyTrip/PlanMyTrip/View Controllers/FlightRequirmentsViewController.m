@@ -156,6 +156,8 @@
         hotelsView.itinCount = self.itinCount;
         hotelsView.savedItineraries = self.savedItineraries;
         hotelsView.userLocal = self.userLocal;
+        hotelsView.tripType = self.tripType;
+        hotelsView.tripName = self.tripName;
     }
     if(!self.hotelStatus && self.carStatus){
         CarRequirmentsViewController *carReq = [segue destinationViewController];
@@ -166,6 +168,8 @@
         carReq.itinCount = self.itinCount;
         carReq.savedItineraries = self.savedItineraries;
         carReq.userLocal = self.userLocal;
+        carReq.tripType = self.tripType;
+        carReq.tripName = self.tripName;
     }
     if(!self.hotelStatus && !self.carStatus){
         ResultsViewController *resultsView = [segue destinationViewController];
@@ -176,6 +180,8 @@
         resultsView.itinCount = self.itinCount;
         resultsView.savedItineraries = self.savedItineraries;
         resultsView.userLocal = self.userLocal;
+        resultsView.tripName = self.tripName;
+        resultsView.tripType = self.tripType; 
     }
 }
 @end

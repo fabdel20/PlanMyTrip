@@ -30,7 +30,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonnull) NSDictionary *carSearchInformation;
 @property (strong, nonnull) NSDictionary *flightSearchInformation;
 @property (strong, nonnull) NSString *locationID;
-
+@property (nonatomic, strong) NSString *tripName;
+@property (nonatomic, strong) NSString *tripType; 
 @end
 
 NS_ASSUME_NONNULL_END

@@ -30,6 +30,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *itinCount;
 @property (nonatomic, strong) PFUser *userLocal;
 @property (strong, nonatomic) NSArray *ittinObjects;
+@property (nonatomic, strong) NSString *tripName;
+@property (nonatomic, strong) NSString *tripType; 
 @end
 
 NS_ASSUME_NONNULL_END

@@ -34,11 +34,6 @@
     self.carsButton.backgroundColor = [UIColor whiteColor];
 }
 
--(void)changeColorOfButton:(UIButton *) Button checkState :(BOOL)state{
-    Button.backgroundColor = state ? UIColor.whiteColor : UIColor.redColor;
-    state = !state;
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if(self.isFlightSelected){
         FlightRequirmentsViewController *flightReqsView = [segue destinationViewController];
@@ -48,6 +43,8 @@
         flightReqsView.itinCount = self.itinCount;
         flightReqsView.savedItineraries = self.savedItineraries;
         flightReqsView.userLocal = self.userLocal;
+        flightReqsView.tripType = self.tripType;
+        flightReqsView.tripName = self.tripName;
     }
     if(!self.isFlightSelected && self.isHotelSelected){
         HotelRequirementsViewController *hotelReq = [segue destinationViewController];
@@ -57,6 +54,8 @@
         hotelReq.itinCount = self.itinCount;
         hotelReq.savedItineraries = self.savedItineraries;
         hotelReq.userLocal = self.userLocal;
+        hotelReq.tripType = self.tripType;
+        hotelReq.tripName = self.tripName;
     }
     if(!self.isFlightSelected && !self.isHotelSelected&& self.isCarSelected){
         CarRequirmentsViewController *carReqsView = [segue destinationViewController];
@@ -65,7 +64,9 @@
         carReqsView.carStatus = _isCarSelected;
         carReqsView.itinCount = self.itinCount;
         carReqsView.savedItineraries = self.savedItineraries;
-        carReqsView.userLocal = self.userLocal; 
+        carReqsView.userLocal = self.userLocal;
+        carReqsView.tripType = self.tripType;
+        carReqsView.tripName = self.tripName;
     }
 }
 
@@ -77,25 +78,22 @@
     if(!self.isFlightSelected && self.isHotelSelected){
         [self performSegueWithIdentifier:@"servicesToHotel" sender:sender];
     }
-    if(!self.isFlightSelected && !self.isHotelSelected == 0 && self.isCarSelected){
+    if(!self.isFlightSelected && !self.isHotelSelected && self.isCarSelected){
         [self performSegueWithIdentifier:@"servicesToCar" sender:sender];
     }
 }
 
 - (IBAction)hotelsButtonTapped:(id)sender {
-    //[self changeColorOfButton:self.hotelsButton checkState:self.isHotelSelected];
     _hotelsButton.backgroundColor = _isHotelSelected ? UIColor.whiteColor : UIColor.redColor;
     _isHotelSelected = !_isHotelSelected;
 }
 
 - (IBAction)flightsButtonTapped:(id)sender {
-    //[self changeColorOfButton:self.flightsButton checkState:self.isFlightSelected];
     _flightsButton.backgroundColor = _isFlightSelected ? UIColor.whiteColor : UIColor.redColor;
     _isFlightSelected = !_isFlightSelected;
 }
 
 - (IBAction)carsButtonTapped:(id)sender {
-    //[self changeColorOfButton:self.carsButton checkState:self.isCarSelected];
     _carsButton.backgroundColor = _isCarSelected ? UIColor.whiteColor : UIColor.redColor;
     _isCarSelected = !_isCarSelected;
 }

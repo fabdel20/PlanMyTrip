@@ -11,7 +11,8 @@
 @interface TripTypeViewController ()
 - (IBAction)buisnessTripButton:(id)sender;
 - (IBAction)personalTripButton:(id)sender;
-
+@property (strong, nonatomic) IBOutlet UITextField *tripName;
+@property (strong, nonatomic) NSString *tripType;
 @end
 
 @implementation TripTypeViewController
@@ -25,13 +26,17 @@
     newView.itinCount = self.itinCount;
     newView.savedItineraries = self.savedItineraries;
     newView.userLocal = self.userLocal;
+    newView.tripName = self.tripName.text;
+    newView.tripType = self.tripType; 
 }
 
 - (IBAction)personalTripButton:(id)sender {
+    self.tripType = @"Personal";
     [self performSegueWithIdentifier:@"tripTypeToServices" sender:sender];
 }
 
 - (IBAction)buisnessTripButton:(id)sender {
+    self.tripType = @"Buisness"; 
     [self performSegueWithIdentifier:@"tripTypeToServices" sender:sender];
 }
 @end

@@ -92,30 +92,24 @@
             NSString *price = [pricingInfo objectForKey:@"total_fare"];
             NSString *duration = [value objectForKey:@"total_trip_duration_in_hours"];
             NSString *cancelStatus = [value objectForKey:@"changes_allowed"];
-            if(([minDuration intValue] <= ([duration intValue] * 60))){
-                if(([duration intValue]) <= ([minDuration intValue] + [maxDuration intValue])/2){
-                    if((minPrice <= [price intValue]) && ([price intValue] <= maxPrice)){
-                        if([cancelStatus intValue] == self.isCancelSelected && ticketingAirline && price && duration){
-                            NSMutableDictionary *newAdd = [[NSMutableDictionary alloc]init];
-                            [newAdd setObject:ticketingAirline forKey:@"Ticketing_Airline"];
-                            [newAdd setObject:price forKey:@"Price"];
-                            [newAdd setObject:duration forKey:@"Duration"];
-                            NSDictionary *itin_ref = [pricingInfo objectForKey:@"itinerary_reference"];
-                            NSString *group_id = [itin_ref objectForKey:@"group_id"];
-                            NSString *ref_id = [itin_ref objectForKey:@"ref_id"];
-                            NSString *ref_key = [itin_ref objectForKey:@"ref_key"];
-                            NSString *token = [itin_ref objectForKey:@"token"];
-                            if(group_id && ref_id && ref_key && token){
-                                [newAdd setObject:group_id forKey:@"group_id"];
-                                [newAdd setObject:ref_id forKey:@"ref_id"];
-                                [newAdd setObject:ref_key forKey:@"ref_key"];
-                                [newAdd setObject:token forKey:@"token"];
-                                [flightResults addObject:newAdd];
-                                count++;
-                            }
-                        }
+            if(([minDuration intValue] <= ([duration intValue] * 60)) && (([duration intValue]) <= ([minDuration intValue] + [maxDuration intValue])/2) && ((minPrice <= [price intValue]) && ([price intValue] <= maxPrice)) && ([cancelStatus intValue] == self.isCancelSelected && ticketingAirline && price && duration)){
+                    NSMutableDictionary *newAdd = [[NSMutableDictionary alloc]init];
+                    [newAdd setObject:ticketingAirline forKey:@"Ticketing_Airline"];
+                    [newAdd setObject:price forKey:@"Price"];
+                    [newAdd setObject:duration forKey:@"Duration"];
+                    NSDictionary *itin_ref = [pricingInfo objectForKey:@"itinerary_reference"];
+                    NSString *group_id = [itin_ref objectForKey:@"group_id"];
+                    NSString *ref_id = [itin_ref objectForKey:@"ref_id"];
+                    NSString *ref_key = [itin_ref objectForKey:@"ref_key"];
+                    NSString *token = [itin_ref objectForKey:@"token"];
+                    if(group_id && ref_id && ref_key && token){
+                        [newAdd setObject:group_id forKey:@"group_id"];
+                        [newAdd setObject:ref_id forKey:@"ref_id"];
+                        [newAdd setObject:ref_key forKey:@"ref_key"];
+                        [newAdd setObject:token forKey:@"token"];
+                        [flightResults addObject:newAdd];
+                        count++;
                     }
-                }
             }
         }
     }
@@ -139,6 +133,8 @@
     displayView.flightUserInfo = self.flightUserInfo;
     displayView.hotelUserInfo = self.hotelUserInfo;
     displayView.carUserInfo = self.carUserInfo;
+    displayView.tripType = self.tripType;
+    displayView.tripName = self.tripName;
 }
 
 - (IBAction)seatButtonTapped:(id)sender {

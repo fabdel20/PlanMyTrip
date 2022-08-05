@@ -72,7 +72,7 @@
     if(self.flightStatus){
         self.FirstTitle.text = @"Flight Recomendations";
     }
-    if(!self.flightStatus&& self.hotelStatus){
+    if(!self.flightStatus && self.hotelStatus){
         self.FirstTitle.text = @"Hotel Recomendations";
     }
     if(!self.flightStatus && !self.hotelStatus && self.carStatus){
@@ -118,47 +118,33 @@
                 NSString *name = [item objectForKey:@"name"];
                 NSString *price = [item objectForKey:@"price"];
                 NSString *rating = [item objectForKey:@"rating"];
-                
+                NSString *sentence = [NSString stringWithFormat:@"The first hotel recomendation is the %@. It costs %@ per night and is rated %@ stars.", name, price, rating];
+                NSMutableDictionary *sub = [[NSMutableDictionary alloc] init];
+                [sub setObject:name forKey:@"name"];
+                [sub setObject:price forKey:@"price"];
+                [sub setObject:rating forKey:@"rating"];
                 if(count == 1){
-                    NSString *sentence1 = [NSString stringWithFormat:@"The first hotel recomendation is the %@. It costs %@ per night and is rated %@ stars.", name, price, rating];
                     if(!self.flightStatus){
-                        self.firstOutput.text = sentence1;
+                        self.firstOutput.text = sentence;
+                    } else {
+                        self.fourthOutput.text = sentence;
                     }
-                    if(self.flightStatus) {
-                        self.fourthOutput.text = sentence1;
-                    }
-                    NSMutableDictionary *sub = [[NSMutableDictionary alloc] init];
-                    [sub setObject:name forKey:@"name"];
-                    [sub setObject:price forKey:@"price"];
-                    [sub setObject:rating forKey:@"rating"];
                     [newItem setObject:sub forKey:@"firstHotel"];
                 }
                 if(count == 2){
-                    NSString *sentence2 = [NSString stringWithFormat:@"The second hotel recomendation is the %@. It costs %@ per night and is rated %@ stars.", name, price, rating];
                     if(!self.flightStatus){
-                        self.secondOutput.text = sentence2;
+                        self.secondOutput.text = sentence;
+                    } else {
+                        self.fifthOutput.text = sentence;
                     }
-                    if(self.flightStatus){
-                        self.fifthOutput.text = sentence2;
-                    }
-                    NSMutableDictionary *sub = [[NSMutableDictionary alloc] init];
-                    [sub setObject:name forKey:@"name"];
-                    [sub setObject:price forKey:@"price"];
-                    [sub setObject:rating forKey:@"rating"];
                     [newItem setObject:sub forKey:@"secondHotel"];
                 }
                 if(count == 3){
-                    NSString *sentence3 = [NSString stringWithFormat:@"The third hotel recomendation is the %@. It costs %@ per night and is rated %@ stars.", name, price, rating];
                     if(!self.flightStatus){
-                        self.thirdOutput.text = sentence3;
+                        self.thirdOutput.text = sentence;
+                    } else {
+                        self.sixthOutput.text = sentence;
                     }
-                    if(self.flightStatus){
-                        self.sixthOutput.text = sentence3;
-                    }
-                    NSMutableDictionary *sub = [[NSMutableDictionary alloc] init];
-                    [sub setObject:name forKey:@"name"];
-                    [sub setObject:price forKey:@"price"];
-                    [sub setObject:rating forKey:@"rating"];
                     [newItem setObject:sub forKey:@"thirdHotel"];
                     NSMutableDictionary *temp = [[NSMutableDictionary alloc]init];
                     [temp setObject:newItem forKey:@"hotels"];
@@ -174,7 +160,6 @@
             }
         }
     }
-    
     if(self.flightStatus){
         int count2 = 1;
         NSMutableDictionary *newItem =[[NSMutableDictionary alloc] init];
@@ -194,31 +179,21 @@
                 if([ticketingAirline isEqualToString:@"UA"]){
                     name = @"United Airlines";
                 }
+                NSString *sentence = [NSString stringWithFormat:@"The first flight recomendation is %@. It costs %@ and lasts %@ minutes.", name, [flight objectForKey:@"Price"], [flight objectForKey:@"Duration"]];
+                NSMutableDictionary *sub = [[NSMutableDictionary alloc] init];
+                [sub setObject:name forKey:@"name"];
+                [sub setObject:[flight objectForKey:@"Price"] forKey:@"price"];
+                [sub setObject:[flight objectForKey:@"Duration"] forKey:@"duration"];
                 if(count2 == 1){
-                    NSString *sentence1 = [NSString stringWithFormat:@"The first flight recomendation is %@. It costs %@ and lasts %@ minutes.", name, [flight objectForKey:@"Price"], [flight objectForKey:@"Duration"]];
-                    self.firstOutput.text = sentence1;
-                    NSMutableDictionary *sub = [[NSMutableDictionary alloc] init];
-                    [sub setObject:name forKey:@"name"];
-                    [sub setObject:[flight objectForKey:@"Price"] forKey:@"price"];
-                    [sub setObject:[flight objectForKey:@"Duration"] forKey:@"duration"];
+                    self.firstOutput.text = sentence;
                     [newItem setObject:sub forKey:@"firstFlight"];
                 }
                 if(count2 == 2){
-                    NSString *sentence2 = [NSString stringWithFormat:@"The second flight recomendation is %@. It costs %@ and lasts %@ minutes.", name, [flight objectForKey:@"Price"], [flight objectForKey:@"Duration"]];
-                    self.secondOutput.text = sentence2;
-                    NSMutableDictionary *sub = [[NSMutableDictionary alloc] init];
-                    [sub setObject:name forKey:@"name"];
-                    [sub setObject:[flight objectForKey:@"Price"] forKey:@"price"];
-                    [sub setObject:[flight objectForKey:@"Duration"] forKey:@"duration"];
+                    self.secondOutput.text = sentence;
                     [newItem setObject:sub forKey:@"secondFlight"];
                 }
                 if(count2 == 3){
-                    NSString *sentence3 = [NSString stringWithFormat:@"The third flight recomendation is %@. It costs %@ and lasts %@ minutes.", name, [flight objectForKey:@"Price"], [flight objectForKey:@"Duration"]];
-                    self.thirdOutput.text = sentence3;
-                    NSMutableDictionary *sub = [[NSMutableDictionary alloc] init];
-                    [sub setObject:name forKey:@"name"];
-                    [sub setObject:[flight objectForKey:@"Price"] forKey:@"price"];
-                    [sub setObject:[flight objectForKey:@"Duration"] forKey:@"duration"];
+                    self.thirdOutput.text = sentence;
                     [newItem setObject:sub forKey:@"thirdFlight"];
                     NSMutableDictionary *temp = [[NSMutableDictionary alloc]init];
                     [temp setObject:newItem forKey:@"flights"];
@@ -234,8 +209,7 @@
             }
         }
     }
-    
-    if(self.carStatus == 1){
+    if(self.carStatus){
         int count3 = 1;
         NSMutableDictionary *newItem =[[NSMutableDictionary alloc] init];
         for(id car in self.carResults){
@@ -243,61 +217,40 @@
             NSString *description = [car objectForKey:@"description"];
             NSString *price = [car objectForKey:@"price"];
             NSString *capacity = [car objectForKey:@"number_of_passengers"];
+            NSString *textOuput = [NSString stringWithFormat:@"The first car is a %@. %@. It costs %@ and can take up to %@ people.", name, description, price, capacity];
             if(count3 == 1){
                 [newItem setObject:car forKey:@"firstCar"];
                 if(!self.flightStatus && !self.hotelStatus){
-                    NSString *textOuput = [NSString stringWithFormat:@"The first car is a %@. %@. It costs %@ and can take up to %@ people.", name, description, price, capacity];
                     self.firstOutput.text = textOuput;
                 }
-                
                 if((self.flightStatus && !self.hotelStatus) || (!self.flightStatus && self.hotelStatus)){
-                    NSString *textOuput = [NSString stringWithFormat:@"The first car is a %@. %@. It costs %@ and can take up to %@ people.", name, description, price, capacity];
                     self.fourthOutput.text = textOuput;
                 }
-                
                 if(self.flightStatus && self.hotelStatus){
-                    // last position
-                    NSString *textOuput = [NSString stringWithFormat:@"The first car is a %@. %@. It costs %@ and can take up to %@ people.", name, description, price, capacity];
                     self.seventhOutput.text = textOuput;
                 }
             }
             if(count3 == 2){
                 [newItem setObject:car forKey:@"secondCar"];
                 if(!self.flightStatus && !self.hotelStatus){
-                    // first position
-                    NSString *textOuput = [NSString stringWithFormat:@"The first car is a %@. %@. It costs %@ and can take up to %@ people.", name, description, price, capacity];
                     self.secondOutput.text = textOuput;
                 }
-                
                 if((self.flightStatus && !self.hotelStatus) || (!self.flightStatus && self.hotelStatus)){
-                    //second position
-                    NSString *textOuput = [NSString stringWithFormat:@"The first car is a %@. %@. It costs %@ and can take up to %@ people.", name, description, price, capacity];
                     self.fifthOutput.text = textOuput;
                 }
-                
                 if(self.flightStatus && self.hotelStatus){
-                    // last position
-                    NSString *textOuput = [NSString stringWithFormat:@"The first car is a %@. %@. It costs %@ and can take up to %@ people.", name, description, price, capacity];
                     self.eighthOutput.text = textOuput;
                 }
             }
             if(count3 == 3){
                 [newItem setObject:car forKey:@"thirdCar"];
                 if(!self.flightStatus && !self.hotelStatus){
-                    // first position
-                    NSString *textOuput = [NSString stringWithFormat:@"The first car is a %@. %@. It costs %@ and can take up to %@ people.", name, description, price, capacity];
                     self.thirdOutput.text = textOuput;
                 }
-                
                 if((self.flightStatus && !self.hotelStatus) || (!self.flightStatus && self.hotelStatus)){
-                    //second position
-                    NSString *textOuput = [NSString stringWithFormat:@"The first car is a %@. %@. It costs %@ and can take up to %@ people.", name, description, price, capacity];
                     self.fourthOutput.text = textOuput;
                 }
-                
                 if(self.flightStatus && self.hotelStatus){
-                    // last position
-                    NSString *textOuput = [NSString stringWithFormat:@"The first car is a %@. %@. It costs %@ and can take up to %@ people.", name, description, price, capacity];
                     self.fifthOutput.text = textOuput;
                 }
                 NSMutableDictionary *temp = [[NSMutableDictionary alloc]init];
@@ -314,7 +267,6 @@
         }
     }
 }
-
 
 - (IBAction)saveItinerary:(id)sender {
     [self performSegueWithIdentifier:@"saveToHomePage" sender:sender];
@@ -574,14 +526,15 @@
         }
         if(self.savedItineraries == nil){
             NSMutableDictionary *temp = [[NSMutableDictionary alloc] init];
-            [temp setObject:newAdd forKey:self.itinCount];
+            [newAdd setObject:self.tripType forKey:@"type"];
+            [temp setObject:newAdd forKey:self.tripName];
             self.savedItineraries = temp;
         } else {
-            [self.savedItineraries setObject:newAdd forKey:self.itinCount];
+            [newAdd setObject:self.tripType forKey:@"type"];
+            [self.savedItineraries setObject:newAdd forKey:self.tripName];
         }
         newView.savedItineraries = self.savedItineraries;
         newView.userLocal.savedItineraries = self.savedItineraries;
-        
         [newView.userLocal saveInBackground];
     }
     if([[segue identifier] isEqualToString:@"displayResultsToFlightFilter"]){
@@ -599,7 +552,8 @@
         flightFilterView.flightUserInfo = self.flightUserInfo;
         flightFilterView.hotelUserInfo = self.hotelUserInfo;
         flightFilterView.carUserInfo = self.carUserInfo;
-        
+        flightFilterView.tripType = self.tripType;
+        flightFilterView.tripName = self.tripName;
     }
     
     if([[segue identifier] isEqualToString:@"displayResultsToHotelFilter"]){
@@ -617,6 +571,8 @@
         hotelFilterView.flightUserInfo = self.flightUserInfo;
         hotelFilterView.hotelUserInfo = self.hotelUserInfo;
         hotelFilterView.carUserInfo = self.carUserInfo;
+        hotelFilterView.tripName = self.tripName;
+        hotelFilterView.tripType = self.tripType;
     }
     if([[segue identifier] isEqualToString:@"displayResultsToCarFilter"]){
         CarFilterViewController *carFilterView = [segue destinationViewController];
@@ -633,6 +589,8 @@
         carFilterView.flightUserInfo = self.flightUserInfo;
         carFilterView.hotelUserInfo = self.hotelUserInfo;
         carFilterView.carUserInfo = self.carUserInfo;
+        carFilterView.tripType = self.tripType;
+        carFilterView.tripName = self.tripName; 
     }
 }
 - (IBAction)firstFilterTapped:(id)sender {

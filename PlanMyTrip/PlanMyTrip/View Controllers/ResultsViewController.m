@@ -287,7 +287,9 @@
         resultsView.userLocal = self.userLocal; 
         resultsView.flightUserInfo = self.flightUserInfo;
         resultsView.carUserInfo = self.carUserInfo;
-        resultsView.hotelUserInfo = self.hotelUserInfo; 
+        resultsView.hotelUserInfo = self.hotelUserInfo;
+        resultsView.tripType = self.tripType;
+        resultsView.tripName = self.tripName; 
     }
 }
 

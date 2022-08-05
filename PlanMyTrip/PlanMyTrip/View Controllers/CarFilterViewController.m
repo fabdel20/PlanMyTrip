@@ -219,6 +219,8 @@
     displayView.flightUserInfo = self.flightUserInfo;
     displayView.hotelUserInfo = self.hotelUserInfo;
     displayView.carUserInfo = self.carUserInfo;
+    displayView.tripType = self.tripType;
+    displayView.tripName = self.tripName; 
 }
 
 - (IBAction)cancelButtonTapped:(id)sender {

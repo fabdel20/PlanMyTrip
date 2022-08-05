@@ -26,6 +26,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) Flights_Information *flightUserInfo;
 @property (nonatomic, strong) Hotels_Information *hotelUserInfo;
 @property (nonatomic, strong) Cars_Information *carUserInfo;
+@property (nonatomic, strong) NSString *tripName;
+@property (nonatomic, strong) NSString *tripType; 
 @end
 
 NS_ASSUME_NONNULL_END

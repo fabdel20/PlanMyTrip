@@ -24,6 +24,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL hotelStatus;
 @property (nonatomic, assign) BOOL carStatus;
 @property (nonatomic, strong) PFUser *userLocal;
+@property (nonatomic, strong) NSString *tripName;
+@property (nonatomic, strong) NSString *tripType; 
 @end
 
 NS_ASSUME_NONNULL_END

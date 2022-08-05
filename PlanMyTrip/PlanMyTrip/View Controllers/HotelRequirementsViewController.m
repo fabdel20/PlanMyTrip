@@ -45,8 +45,8 @@
                                                     } else {
                                                         NSMutableArray *resDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
                                                         NSMutableDictionary *firstElem = [resDict firstObject];
-                                                        self.destination.text = [firstElem objectForKey:@"id"];
                                                         dispatch_async(dispatch_get_main_queue(), ^{
+                                                            self.destination.text = [firstElem objectForKey:@"id"];
                                                             if(self.carStatus == 1){
                                                                 [self performSegueWithIdentifier:@"hotelToCars" sender:sender];
                                                             } else {
@@ -72,7 +72,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     Hotels_Information *hotelsInfo = [[Hotels_Information alloc] init];
-    if(self.destination.text && self.arrivalDate.date != self.departureDate.date && self.numberOfGuests.text){
+    if(self.destination.text && self.arrivalDate.date!=self.departureDate.date && self.numberOfGuests.text){
         hotelsInfo.destination = self.destination.text;
         NSDate *tempArrival = self.arrivalDate.date;
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -97,7 +97,8 @@
         carsView.itinCount = self.itinCount;
         carsView.savedItineraries = self.savedItineraries;
         carsView.userLocal = self.userLocal;
-        
+        carsView.tripType = self.tripType;
+        carsView.tripName = self.tripName;
     } else {
         ResultsViewController *resView = [segue destinationViewController];
         resView.hotelUserInfo = hotelsInfo;
@@ -107,6 +108,8 @@
         resView.itinCount = self.itinCount;
         resView.savedItineraries = self.savedItineraries;
         resView.userLocal = self.userLocal;
+        resView.tripType = self.tripType;
+        resView.tripName = self.tripName; 
     }
 }
 @end
