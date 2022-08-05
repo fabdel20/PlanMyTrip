@@ -7,17 +7,23 @@
 
 #import "HomeViewController.h"
 #import "TripTypeViewController.h"
+#import "Parse/Parse.h"
+
 @interface HomeViewController ()
 - (IBAction)planNewTrip:(id)sender;
-
+@property (strong, nonatomic) NSArray *data;
 @end
 
 @implementation HomeViewController
-//homeToTripType
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"%@", self.savedItineraries);
-    NSLog(@"%@", self.itinCount);
+    if(self.savedItineraries != nil){
+        for(id elem in self.savedItineraries){
+            [self.data arrayByAddingObject:elem];
+        }
+        self.tableView.dataSource = self;
+        [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"TripTableViewCell"];
+    }
 }
 
 
@@ -25,9 +31,23 @@
     TripTypeViewController *newView = [segue destinationViewController];
     newView.itinCount = self.itinCount;
     newView.savedItineraries = self.savedItineraries;
+    newView.userLocal = self.userLocal;
 }
 
 - (IBAction)planNewTrip:(id)sender {
     [self performSegueWithIdentifier:@"homeToTripType" sender:sender];
 }
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TripTableViewCell"];
+    NSDictionary *trip = self.data[indexPath.row];
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.data.count;
+}
+
+
+
+
 @end

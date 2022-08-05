@@ -1,8 +1,8 @@
 //
-//  DisplayResultsViewController.h
+//  CarFilterViewController.h
 //  PlanMyTrip
 //
-//  Created by Farida Abdelmoneum on 7/22/22.
+//  Created by Farida Abdelmoneum on 7/31/22.
 //
 
 #import <UIKit/UIKit.h>
@@ -12,7 +12,7 @@
 #import "Cars_Information.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DisplayResultsViewController : UIViewController
+@interface CarFilterViewController : UIViewController
 @property (strong, nonatomic) NSMutableArray *flightResults;
 @property (strong, nonatomic) NSMutableArray *carResults;
 @property (strong, nonatomic) NSMutableArray *hotelResults;
@@ -26,6 +26,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) Flights_Information *flightUserInfo;
 @property (nonatomic, strong) Hotels_Information *hotelUserInfo;
 @property (nonatomic, strong) Cars_Information *carUserInfo;
+@property (nonatomic, strong) NSDictionary *hotelSearchInformation;
+@property (strong, nonnull) NSDictionary *carSearchInformation;
+@property (strong, nonnull) NSDictionary *flightSearchInformation;
+@property (strong, nonnull) NSString *locationID;
 @property (nonatomic, strong) NSString *tripName;
 @property (nonatomic, strong) NSString *tripType; 
 @end

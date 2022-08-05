@@ -22,68 +22,44 @@
 
 @implementation HotelRequirementsViewController 
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    if(self.flightStatus == 1){
-        NSDictionary *headers = @{ @"X-RapidAPI-Key": @"2ebe338c7fmsha84e37a2c76338dp16b94djsn34264f5722a0",
-                                   @"X-RapidAPI-Host": @"priceline-com-provider.p.rapidapi.com" };
-        
-        NSString *location = [NSString stringWithFormat:@"https://priceline-com-provider.p.rapidapi.com/v1/flights/locations?name=%@", self.flightInfoSaved2.departureCity];
-        
-        NSString* webStringURL = [location stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        
-        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:webStringURL] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0];
-        [request setHTTPMethod:@"GET"];
-        [request setAllHTTPHeaderFields:headers];
-
-        NSURLSession *session = [NSURLSession sharedSession];
-        NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
-                                                    completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                                        if (error) {
-                                                            NSLog(@"%@", error);
-                                                        } else {
-                                                            NSMutableArray *res = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-                                                            NSMutableDictionary *item = [res firstObject];
-                                                            self.flightInfoSaved2.departureCity = [item objectForKey:@"id"];
-                                                        }
-                                                    }];
-        [dataTask resume];
-        
-        NSDictionary *headers2 = @{ @"X-RapidAPI-Key": @"2ebe338c7fmsha84e37a2c76338dp16b94djsn34264f5722a0",
-                                   @"X-RapidAPI-Host": @"priceline-com-provider.p.rapidapi.com" };
-        
-        NSString *location2 = [NSString stringWithFormat:@"https://priceline-com-provider.p.rapidapi.com/v1/flights/locations?name=%@", self.flightInfoSaved2.arrivalCity];
-        
-        NSString* webStringURL2 = [location2 stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        
-        NSMutableURLRequest *request2 = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:webStringURL2] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0];
-        [request2 setHTTPMethod:@"GET"];
-        [request2 setAllHTTPHeaderFields:headers2];
-
-        NSURLSession *session2 = [NSURLSession sharedSession];
-        NSURLSessionDataTask *dataTask2 = [session2 dataTaskWithRequest:request2
-                                                    completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                                        if (error) {
-                                                            NSLog(@"%@", error);
-                                                        } else {
-                                                            NSMutableArray *res = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-                                                            NSMutableDictionary *item = [res firstObject];
-                                                            self.flightInfoSaved2.arrivalCity = [item objectForKey:@"id"];
-                                                        }
-                                                    }];
-        [dataTask2 resume];
-    }
 }
 
+-(void)callAPI:(NSString *)location action:(id)sender{
+    NSDictionary *headers = @{ @"X-RapidAPI-Key": @"c151066f31mshf429fe6db920209p199187jsnaf96ca6dffe5",
+                               @"X-RapidAPI-Host": @"priceline-com-provider.p.rapidapi.com" };
+
+    NSString *urlT = [NSString stringWithFormat:@"https://priceline-com-provider.p.rapidapi.com/v1/hotels/locations?name=%@&search_type=ALL", location];
+    
+    NSString* url = [urlT stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0];
+    [request setHTTPMethod:@"GET"];
+    [request setAllHTTPHeaderFields:headers];
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
+                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                    if (error) {
+                                                        NSLog(@"%@", error);
+                                                    } else {
+                                                        NSMutableArray *resDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+                                                        NSMutableDictionary *firstElem = [resDict firstObject];
+                                                        dispatch_async(dispatch_get_main_queue(), ^{
+                                                            self.destination.text = [firstElem objectForKey:@"id"];
+                                                            if(self.carStatus == 1){
+                                                                [self performSegueWithIdentifier:@"hotelToCars" sender:sender];
+                                                            } else {
+                                                                [self performSegueWithIdentifier:@"hotelToResults" sender:sender];
+                                                            }
+                                                        });
+                                                    }
+                                                }];
+    [dataTask resume];
+}
 
 - (IBAction)saveData:(id)sender {
-    if(self.carStatus == 1){
-        [self performSegueWithIdentifier:@"hotelToCars" sender:sender];
-    } else {
-        [self performSegueWithIdentifier:@"hotelToResults" sender:sender];
-    }
+    [self callAPI:self.destination.text action:sender];
 }
 
 -(void)showAlert{
@@ -95,83 +71,45 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    Hotels_Information *hotelsInfo = [[Hotels_Information alloc] init];
+    if(self.destination.text && self.arrivalDate.date!=self.departureDate.date && self.numberOfGuests.text){
+        hotelsInfo.destination = self.destination.text;
+        NSDate *tempArrival = self.arrivalDate.date;
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy-MM-dd"];
+        hotelsInfo.arrivalDate = [formatter stringFromDate:tempArrival];
+        NSDate *tempDeparture = self.departureDate.date;
+        NSDateFormatter *formatter2 = [[NSDateFormatter alloc] init];
+        [formatter2 setDateFormat:@"yyyy-MM-dd"];
+        hotelsInfo.departureDate = [formatter2 stringFromDate:tempDeparture];
+        hotelsInfo.numberOfGuests = self.numberOfGuests.text;
+    } else {
+        [self showAlert];
+    }
+    
     if(self.carStatus == 1){
-        Hotels_Information *hotelsInfo = [[Hotels_Information alloc] init];
-        if(self.destination.text){
-            hotelsInfo.destination = self.destination.text;
-        } else {
-            [self showAlert];
-        }
-        
-        if(self.arrivalDate.date == self.departureDate.date){
-            [self showAlert];
-        } else {
-            NSDate *tempArrival = self.arrivalDate.date;
-            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-            [formatter setDateFormat:@"yyyy-MM-dd"];
-            hotelsInfo.arrivalDate = [formatter stringFromDate:tempArrival];
-            NSDate *tempDeparture = self.departureDate.date;
-            NSDateFormatter *formatter2 = [[NSDateFormatter alloc] init];
-            [formatter2 setDateFormat:@"yyyy-MM-dd"];
-            hotelsInfo.departureDate = [formatter2 stringFromDate:tempDeparture];
-        }
-        
-        if(self.numberOfGuests.text){
-            hotelsInfo.numberOfGuests = self.numberOfGuests.text;
-        } else {
-            [self showAlert];
-        }
-        
         CarRequirmentsViewController *carsView = [segue destinationViewController];
-        if(self.flightStatus == 1){
-            carsView.flightInfoSaved = self.flightInfoSaved2;
-        }
+        carsView.flightInfoSaved = self.flightInfoSaved2;
         carsView.hotelInfoSaved = hotelsInfo;
         carsView.flightStatus = self.flightStatus;
         carsView.hotelStatus = self.hotelStatus;
         carsView.carStatus = self.carStatus;
         carsView.itinCount = self.itinCount;
         carsView.savedItineraries = self.savedItineraries;
-        
+        carsView.userLocal = self.userLocal;
+        carsView.tripType = self.tripType;
+        carsView.tripName = self.tripName;
     } else {
         ResultsViewController *resView = [segue destinationViewController];
-        Hotels_Information *hotelsInfo = [[Hotels_Information alloc] init];
-        if(self.destination.text){
-            hotelsInfo.destination = self.destination.text;
-        } else {
-            [self showAlert];
-        }
-        
-        if(self.arrivalDate.date == self.departureDate.date){
-            [self showAlert];
-        } else {
-            NSDate *tempArrival = self.arrivalDate.date;
-            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-            [formatter setDateFormat:@"yyyy-MM-dd"];
-            hotelsInfo.arrivalDate = [formatter stringFromDate:tempArrival];
-            NSDate *tempDeparture = self.departureDate.date;
-            NSDateFormatter *formatter2 = [[NSDateFormatter alloc] init];
-            [formatter2 setDateFormat:@"yyyy-MM-dd"];
-            hotelsInfo.departureDate = [formatter2 stringFromDate:tempDeparture];
-        }
-        
-        if(self.numberOfGuests.text){
-            hotelsInfo.numberOfGuests = self.numberOfGuests.text;
-        } else {
-            [self showAlert];
-        }
-        
-        if(self.flightStatus == 1){
-            resView.flightUserInfo = self.flightInfoSaved2;
-        }
-        
         resView.hotelUserInfo = hotelsInfo;
         resView.flightStatus = self.flightStatus;
         resView.hotelStatus = self.hotelStatus;
         resView.carStatus = self.carStatus;
         resView.itinCount = self.itinCount;
-        resView.savedItineraries = self.savedItineraries; 
+        resView.savedItineraries = self.savedItineraries;
+        resView.userLocal = self.userLocal;
+        resView.tripType = self.tripType;
+        resView.tripName = self.tripName; 
     }
 }
-
 @end

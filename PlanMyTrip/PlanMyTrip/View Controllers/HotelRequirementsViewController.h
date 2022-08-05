@@ -8,6 +8,7 @@
 #import <UIKit/UIKit.h>
 #import "Hotels_Information.h"
 #import "Flights_Information.h"
+#import "Parse/Parse.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HotelRequirementsViewController : UIViewController
@@ -18,6 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL flightStatus;
 @property (nonatomic, assign) BOOL hotelStatus;
 @property (nonatomic, assign) BOOL carStatus;
+@property (nonatomic, strong) PFUser *userLocal;
+@property (nonatomic, strong) NSString *tripName;
+@property (nonatomic, strong) NSString *tripType; 
 @end
 
 NS_ASSUME_NONNULL_END

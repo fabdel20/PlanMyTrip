@@ -1,8 +1,8 @@
 //
-//  ResultsViewController.h
+//  HotelFilterViewController.h
 //  PlanMyTrip
 //
-//  Created by Farida Abdelmoneum on 7/11/22.
+//  Created by Farida Abdelmoneum on 7/31/22.
 //
 
 #import <UIKit/UIKit.h>
@@ -12,7 +12,7 @@
 #import "Parse/Parse.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ResultsViewController : UIViewController
+@interface HotelFilterViewController : UIViewController
 @property (nonatomic, strong) Flights_Information *flightUserInfo;
 @property (nonatomic, strong) Hotels_Information *hotelUserInfo;
 @property (nonatomic, strong) Cars_Information *carUserInfo;
@@ -29,6 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSMutableDictionary *savedItineraries;
 @property (nonatomic, strong) NSString *itinCount;
 @property (nonatomic, strong) PFUser *userLocal;
+@property (strong, nonatomic) NSArray *ittinObjects;
 @property (nonatomic, strong) NSString *tripName;
 @property (nonatomic, strong) NSString *tripType; 
 @end
