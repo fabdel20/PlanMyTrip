@@ -64,7 +64,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([segue.identifier isEqualToString:@"carToResults"]){
         Cars_Information *carInfo = [[Cars_Information alloc] init];
-        if(self.location.text && self.pickUpDate.date &&self.dropOffDate.date){
+        if(self.location.text && self.pickUpDate.date && self.dropOffDate.date){
             carInfo.location = self.location.text;
             NSDate *tempArrival = self.pickUpDate.date;
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
