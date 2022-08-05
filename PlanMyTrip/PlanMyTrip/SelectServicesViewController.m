@@ -11,13 +11,13 @@
 #import "HotelRequirementsViewController.h"
 
 @interface SelectServicesViewController ()
--(void)changeColorOfButton:(UIButton *) Button checkState:(BOOL)state;
 @property (strong, nonatomic) IBOutlet UIButton *carsButton;
 @property (strong, nonatomic) IBOutlet UIButton *flightsButton;
 @property (strong, nonatomic) IBOutlet UIButton *hotelsButton;
 @property (assign) BOOL isHotelSelected;
 @property (assign) BOOL isFlightSelected;
 @property (assign) BOOL isCarSelected;
+@property (nonatomic, strong) NSArray *buttons;
 - (IBAction)carsButtonTapped:(id)sender;
 - (IBAction)flightsButtonTapped:(id)sender;
 - (IBAction)hotelsButtonTapped:(id)sender;
@@ -33,7 +33,6 @@
     self.flightsButton.backgroundColor = [UIColor whiteColor];
     self.carsButton.backgroundColor = [UIColor whiteColor];
 }
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if(self.isFlightSelected){
         FlightRequirmentsViewController *flightReqsView = [segue destinationViewController];
@@ -69,8 +68,6 @@
         carReqsView.tripName = self.tripName;
     }
 }
-
-
 - (IBAction)nextButton:(id)sender {
     if(self.isFlightSelected){
         [self performSegueWithIdentifier:@"servicesToFlightReq" sender:sender];
@@ -82,17 +79,14 @@
         [self performSegueWithIdentifier:@"servicesToCar" sender:sender];
     }
 }
-
 - (IBAction)hotelsButtonTapped:(id)sender {
     _hotelsButton.backgroundColor = _isHotelSelected ? UIColor.whiteColor : UIColor.redColor;
     _isHotelSelected = !_isHotelSelected;
 }
-
 - (IBAction)flightsButtonTapped:(id)sender {
     _flightsButton.backgroundColor = _isFlightSelected ? UIColor.whiteColor : UIColor.redColor;
     _isFlightSelected = !_isFlightSelected;
 }
-
 - (IBAction)carsButtonTapped:(id)sender {
     _carsButton.backgroundColor = _isCarSelected ? UIColor.whiteColor : UIColor.redColor;
     _isCarSelected = !_isCarSelected;
